@@ -1,2 +1,2 @@
-# bakou-raffle
-Offer prize as a raffle
+# bakou-pos
+Bakou POS main development repo
