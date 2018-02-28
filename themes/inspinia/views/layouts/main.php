@@ -14,6 +14,8 @@
     <link href="<?= baseurl() ?>/css/animate.css" rel="stylesheet">
     <link href="<?= baseurl() ?>/css/style.css" rel="stylesheet">
 
+    
+
 </head>
 
 <body>
@@ -63,5 +65,6 @@
     <script src="<?= baseurl() ?>/js/inspinia.js"></script>
     <script src="<?= baseurl() ?>/js/plugins/pace/pace.min.js"></script>
 
+    
 </body>
 </html>
