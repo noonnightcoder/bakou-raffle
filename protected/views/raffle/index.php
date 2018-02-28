@@ -31,7 +31,7 @@
 								<v-card color="blue-grey darken-2" class="white--text">
 									<v-toolbar color="blue-grey darken-4">
 										<v-toolbar-title class="white--text">
-											Ratha
+											<?= Yii::app()->session['emp_fullname'] ?>
 										</v-toolbar-title>
 									</v-toolbar>
 									<v-flex xs12 sm12 md12>
@@ -79,7 +79,8 @@
 							<img src="<?=baseurl().'/images/'?>gif1.gif" width="100%">
 						</div>
 					</v-container>
-				</v-flex>	
+				</v-flex>
+
 				<v-flex xs12 sm4 md4>
 					<v-container fluid style="min-height: 0;" grid-list-lg>
 						<v-toolbar color="blue-grey darken-4">
@@ -150,6 +151,7 @@
     </v-footer>
 	  </v-app>
   </div>
+
   <!--Vuejs and Vuetify javascript-->
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
@@ -167,7 +169,7 @@
 				luckyDraw:[],
 				links: ['Home', 'About Us', 'Team', 'Services', 'Blog', 'Contact Us'],
 				luckyAmt:[
-					100,300,400,500,700,1000
+					100
 				]
 			}
 		},
