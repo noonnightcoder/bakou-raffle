@@ -2,7 +2,7 @@
 
 class RaffleController extends Controller
 {
-	public $layout='//layouts/column4';
+	public $layout='//layouts/column_frontend';
 	/**
 	 * @return array action filters
 	 */
@@ -23,7 +23,7 @@ class RaffleController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view'),
-				'users'=>array('*'),
+				'users'=>array('@'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update','AjaxRefresh'),
@@ -46,6 +46,7 @@ class RaffleController extends Controller
             'dataProvider' => $dataProvider,
         ));
 	}
+
 	public function raffleForm()
 	{
 		echo "Raffle";

@@ -132,9 +132,9 @@ class SiteController extends Controller
             $this->render('login_ace', array('model' => $model));
         } else {
             if (Yii::app()->user->checkAccess('report.index')) {
-                $this->redirect(array('dashboard/view'));
+                $this->redirect(array('raffle/index'));
             } else {
-                $this->redirect(array('saleItem/index'));
+                $this->redirect(array('raffle/index'));
             }
 
         }
