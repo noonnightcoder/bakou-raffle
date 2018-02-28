@@ -504,7 +504,6 @@ class EmployeeController extends Controller
         }
     }
 
-
     protected function authItemPermission() {
         return array('items', 'sales', 'employees', 'customers', 'suppliers', 'store', 'receivings', 'reports', 'invoices', 'payments','rptprofits','categories');
     }

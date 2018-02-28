@@ -58,13 +58,21 @@
             'model' => $model,
             'user' => $user,
             'form' => $form,
-            'disabled' => true,
+            'disabled' => $disabled,
         ));?>
 
-        <?php $this->renderPartial('//contact/_form',array(
+        <?php /*$this->renderPartial('//contact/_form',array(
             'contact' => $contact,
             'form' => $form
+        ));*/?>
+
+
+        <h4 class="header blue bolder"><i class="ace-icon fa fa-gavel blue"></i><?= Yii::t('app','Permissions and Access'); ?></h4>
+
+        <?php $this->renderPartial('//rbacUser/_permission_form',array(
+            'user' => $user,
         ));?>
+
 
         <div class="form-actions">
             <?= TbHtml::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Save'),

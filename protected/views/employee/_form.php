@@ -21,11 +21,11 @@
 
                 <?php //echo $form->errorSummary($model); ?>
 
-                <?php echo $form->textFieldControlGroup($model,'first_name',array('class'=>'span10','maxlength'=>50,'data-required'=>'true')); ?>
+                <?= $form->textFieldControlGroup($model,'first_name',array('class'=>'span10','maxlength'=>50,'data-required'=>'true')); ?>
 
-                <?php echo $form->textFieldControlGroup($model,'last_name',array('class'=>'span10','maxlength'=>50,'data-required'=>'true')); ?>
+                <?= $form->textFieldControlGroup($model,'last_name',array('class'=>'span10','maxlength'=>50,'data-required'=>'true')); ?>
 
-                <?php echo $form->textFieldControlGroup($model,'mobile_no',array('class'=>'span10','maxlength'=>15)); ?>
+                <?= $form->textFieldControlGroup($model,'mobile_no',array('class'=>'span10','maxlength'=>15)); ?>
 
                 <div class="form-group">
 
@@ -33,28 +33,22 @@
 
                     <div class="col-sm-9">
 
-                        <?php echo CHtml::activeDropDownList($model, 'day', Employee::itemAlias('day'), array('prompt' => yii::t('app','Day'))); ?>
+                        <?= CHtml::activeDropDownList($model, 'day', Employee::itemAlias('day'), array('prompt' => yii::t('app','Day'))); ?>
 
-                        <?php echo CHtml::activeDropDownList($model, 'month', Employee::itemAlias('month'), array('prompt' => yii::t('app','Month'))); ?>
+                        <?= CHtml::activeDropDownList($model, 'month', Employee::itemAlias('month'), array('prompt' => yii::t('app','Month'))); ?>
 
-                        <?php echo CHtml::activeDropDownList($model, 'year', Employee::itemAlias('year'), array('prompt' => yii::t('app','Year'))); ?>
+                        <?= CHtml::activeDropDownList($model, 'year', Employee::itemAlias('year'), array('prompt' => yii::t('app','Year'))); ?>
 
                         <span class="help-block"> <?php echo $form->error($model,'dob'); ?> </span>
                     </div>
 
                 </div>
 
-                <?php echo $form->textFieldControlGroup($model,'adddress1',array('class'=>'span10','maxlength'=>60)); ?>
+                <?php $this->renderPartial('_address',array(
+                    'model' => $model,
+                    'form' => $form,
+                ));?>
 
-                <?php echo $form->textFieldControlGroup($model,'address2',array('class'=>'span10','maxlength'=>60)); ?>
-
-                <?php //echo $form->textFieldControlGroup($model,'city_id',array('class'=>'span10')); ?>
-
-                <?php echo $form->textFieldControlGroup($model,'country_code',array('class'=>'span10','maxlength'=>2)); ?>
-
-                <?php echo $form->textFieldControlGroup($model,'email',array('class'=>'span10','maxlength'=>30,'data-type'=>'email')); ?>
-
-                <?php echo $form->textAreaControlGroup($model,'notes',array('rows'=>2, 'cols'=>20, 'class'=>'span10')); ?>
         </div>
 
         <div class="col-sm-7"   >
@@ -68,7 +62,7 @@
                 ));?>
 
 
-                <h4 class="header blue bolder"><i class="ace-icon fa fa-gavel blue"></i><?php echo Yii::t('app','Employee Permissions and Access'); ?></h4>
+                <h4 class="header blue bolder"><i class="ace-icon fa fa-gavel blue"></i><?= Yii::t('app','Employee Permissions and Access'); ?></h4>
 
                 <?php $this->renderPartial('//rbacUser/_permission_form',array(
                     'user' => $user,

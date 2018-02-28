@@ -89,10 +89,11 @@ class ClientController extends Controller
      */
     public function actionCreate($sale_mode = 'N')
     {
-        $model = new Client;
-        $contact = new Contact;
-        $user = new RbacUser;
-        $has_error = "";
+        $data['model'] = new Client;
+        $data['contact'] = new Contact;
+        $data['user'] = new RbacUser;
+        $data['has_error'] = "";
+        $data['disabled'] = "";
 
         if (Yii::app()->user->checkAccess('client.create')) {
             if (isset($_POST['Client'])) {
@@ -180,7 +181,7 @@ class ClientController extends Controller
 
             Yii::app()->end();
         } else {
-            $this->render('create', array('model' => $model, 'contact' => $contact, 'has_error' => $has_error,'user' => $user));
+            $this->render('create', $data);
         }
     }
 
