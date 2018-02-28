@@ -31,15 +31,15 @@
 								<v-card color="blue-grey darken-2" class="white--text">
 									<v-toolbar color="blue-grey darken-4">
 										<v-toolbar-title class="white--text">
-											Bet Amount
+											Ratha
 										</v-toolbar-title>
 									</v-toolbar>
 									<v-flex xs12 sm12 md12>
 										<div>
-										<v-text-field :label="'Input Amount'" type="number" v-model="price" class="white--text"/>
+											Phone: 012 234 678
 										</div>
-										<div class="text-lg-right">
-										<v-btn class="white--text" color="blue-grey darken-3" :disabled="betAmount>0 & betAmount<=credit & credit>0?false:true" @click="bet">Bet</v-btn>
+										<div>
+											Welcome To WinWin97
 										</div>
 									</v-flex>
 								</v-card>
@@ -66,12 +66,12 @@
 						<v-flex xs12 sm12 md12>
 							<v-card color="blue-grey darken-2" class="white--text text-lg-center">
 								<v-flex>
-									Bet Amount: {{betAmount}}
+									Choose Your Lucky Price
 								</v-flex>
-								<v-btn class="white--text" color="blue-grey darken-3" 
-								@click="insertLuckyNumber" 
-								:disabled="betAmount>0 & betAmount<=credit & credit>0?false:true">
-									Get Your Lucky Number
+								<v-btn class="white--text" v-for="(amt,i) in luckyAmt" color="blue-grey darken-3" 
+								@click="insertLuckyNumber(amt)" 
+								:disabled="betAmount<=credit & credit>0?false:true">
+									{{amt}}
 								</v-btn>
 							</v-card>
 						</v-flex>
@@ -165,7 +165,10 @@
 				spinNumber:0,
 				spining:false,
 				luckyDraw:[],
-				links: ['Home', 'About Us', 'Team', 'Services', 'Blog', 'Contact Us']
+				links: ['Home', 'About Us', 'Team', 'Services', 'Blog', 'Contact Us'],
+				luckyAmt:[
+					100,300,400,500,700,1000
+				]
 			}
 		},
 		created(){
@@ -199,11 +202,11 @@
 					this.credit=parseInt(this.credit)
 				}
 			},
-			insertLuckyNumber(){
+			insertLuckyNumber(amt){
 				
 				if(this.credit>0){
-					this.credit=parseInt(this.credit)-parseInt(this.betAmount)
-					this.luckyDraw.push({price:this.betAmount,luckyNum:this.spinNumber})
+					this.credit=parseInt(this.credit)-parseInt(amt)
+					this.luckyDraw.push({price:amt,luckyNum:this.spinNumber})
 				}else{
 					
 				}
