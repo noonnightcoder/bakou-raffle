@@ -93,13 +93,14 @@
                                     <h1 v-else style="text-align: center;">
                                         ยังไม่มีบัญชี
                                     </h1>
-                                    <div>
-                                        <img src="<?=baseurl().'/images/'?>gif1.gif" width="100%">
-                                    </div>
-                                    <div>
-                                        <img src="<?=baseurl().'/images/'?>gif1.gif" width="100%">
-                                    </div>
+                                    
                                 </v-card>
+                                <div>
+                                    <img src="<?=baseurl().'/images/'?>gif1.gif" width="100%">
+                                </div>
+                                <div>
+                                    <img src="<?=baseurl().'/images/'?>gif1.gif" width="100%">
+                                </div>
                             </v-flex>
                         </v-layout>
                     </v-container>

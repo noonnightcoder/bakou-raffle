@@ -3,10 +3,10 @@
     <v-dialog v-model="dialog" persistent max-width="400">
         <v-card>
             <v-toolbar justify-center dense color="blue-grey darken-4">
-                <v-toolbar-title class="white--text">Message</v-toolbar-title>
+                <v-toolbar-title class="white--text">ข่าวสาร</v-toolbar-title>
             </v-toolbar>
-            <v-card-title class="headline">You don't have enough credit!!!</v-card-title>
-            <v-card-text>Please contact us to TOPUP</v-card-text>
+            <v-card-title class="headline">ขอโทสคุณไม่มีพอเงิน!!!</v-card-title>
+            <v-card-text>ติดต่อเราเพื่อฝากเงิน</v-card-text>
             <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn color="green darken-1" flat @click="resetAmount">ปิด</v-btn>
@@ -19,12 +19,12 @@
     <v-dialog v-model="dialog2" persistent max-width="400">
         <v-card>
             <v-toolbar justify-center dense color="blue-grey darken-4">
-                <v-toolbar-title class="white--text">Message</v-toolbar-title>
+                <v-toolbar-title class="white--text">ข่าวสาร</v-toolbar-title>
             </v-toolbar>
-            <v-card-title class="headline">Contact Us VIA</v-card-title>
+            <v-card-title class="headline">ติดต่อเราตาม</v-card-title>
             <v-card-text>
                 <strong>
-                    PHONE:
+                    โทรมาศัพท์:
                 </strong>
                 <p>
                     091-996-9183,

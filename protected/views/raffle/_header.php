@@ -7,7 +7,10 @@
         <v-toolbar-title class="white--text">ยินดีต้อนรับที่มาเล่นใน WinWin97 Lucky Draw</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn color="success">โปรไฟล์</v-btn>
-        <v-btn color="info" @click="dialog2=true">ใส่เงิน</v-btn>
-        <v-btn color="warning">ออกจากระบบ</v-btn>
+        <v-btn color="info" @click="dialog2=true">แจ้งถอนเงิน</v-btn>
+        <a href="<?php echo Yii::app()->createUrl('site/logout'); ?>">
+            <v-btn color="warning">ออกจากระบบ</v-btn>
+        </a>
+
     </v-toolbar>
 </v-flex>

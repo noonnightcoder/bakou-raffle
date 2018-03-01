@@ -14,10 +14,10 @@
     <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
 
 
-    <?php
+   <?php
         $cs->registerScriptFile('https://unpkg.com/vue/dist/vue.js',CClientScript::POS_BEGIN);
         $cs->registerScriptFile('https://unpkg.com/vuetify/dist/vuetify.js',CClientScript::POS_BEGIN);
-    ?>
+    ?> 
 
     <?php
         if (Yii::app()->components['user']->loginRequiredAjaxResponse){

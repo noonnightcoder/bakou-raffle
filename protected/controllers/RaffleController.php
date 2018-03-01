@@ -22,7 +22,7 @@ class RaffleController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','login'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -47,9 +47,12 @@ class RaffleController extends Controller
         ));
 	}
 
-	public function raffleForm()
+	public function actionLogin()
 	{
-		echo "Raffle";
+		$dataProvider = new CActiveDataProvider('Raffle');
+		$this->render('_login',array(
+			'dataProvider'=>$dataProvider
+		));
 	}
 
 	// Uncomment the following methods and override them if needed

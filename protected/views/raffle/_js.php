@@ -4,6 +4,7 @@
         el: '#app' ,
         data(){
             return{
+                hide:false,
                 dialog:false,
                 dialog2:false,
                 credit:1000,
