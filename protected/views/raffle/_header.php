@@ -1,4 +1,24 @@
 <v-flex xs12 sm12 md12>
+	<v-toolbar dense style="height: 30px;">
+        <v-toolbar-items>
+        <a href="#" style="font-size: 13px;text-decoration: none;color:#333; padding: 5px 10px 0px 10px;">
+          Register
+        </a>
+        <a href="#" style="font-size: 13px;text-decoration: none;color:#333; padding: 5px 10px 0px 10px;">
+          Deposit
+        </a>
+        <a href="#" style="font-size: 13px;text-decoration: none;color:#333; padding: 5px 10px 0px 10px;">
+          Payment
+        </a>
+        <span style="font-size: 13px;text-decoration: none;color:#333; padding: 5px 10px 0px 10px;">
+        	<?=date('Y-m-d H:i:s');?>
+        </span>
+        </v-toolbar-items>
+        <v-spacer></v-spacer>
+        
+      </v-toolbar>
+</v-flex>
+<v-flex xs12 sm12 md12>
     <img src="<?=baseurl().'/images/'?>head-winwin97.jpg" width="100%">
 </v-flex>
 
@@ -7,10 +27,17 @@
         <v-toolbar-title class="white--text">ยินดีต้อนรับที่มาเล่นใน WinWin97 Lucky Draw</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn color="success">โปรไฟล์</v-btn>
-        <v-btn color="info" @click="dialog2=true">แจ้งถอนเงิน</v-btn>
+        <v-btn color="info" @click="dialog2=true">แจ้งฝากเงิน</v-btn>
         <a href="<?php echo Yii::app()->createUrl('site/logout'); ?>">
             <v-btn color="warning">ออกจากระบบ</v-btn>
         </a>
 
     </v-toolbar>
 </v-flex>
+<style type="text/css">
+	a.a-link{
+		font-size: 11px;
+		color: #333 !important;
+		text-decoration: none !important;
+	}
+</style>

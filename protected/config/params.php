@@ -24,6 +24,6 @@ return array(
 	// the copyright information displayed in the footer section
 	'copyrightInfo'=>'Copyright &copy; 2009 by My Company.',
     // Company Name
-    'company_name' => 'Raffle',
+    'company_name' => 'WinWin97 Lucky Draw',
     'company_slogan' => 'camera of your biz',
 );

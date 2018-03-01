@@ -129,7 +129,7 @@ class SiteController extends Controller
         // display the login form
         if (Yii::app()->user->isGuest) {
             $this->layout = '//layouts/main_frontend';
-            $this->render('front_end_login', array('model' => $model));
+            $this->render('frontend_login', array('model' => $model));
         } else {
             if (Yii::app()->user->checkAccess('report.index')) {
                 $this->redirect(array('raffle/index'));

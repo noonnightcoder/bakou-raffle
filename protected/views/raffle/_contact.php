@@ -24,7 +24,7 @@
             <v-card-title class="headline">ติดต่อเราตาม</v-card-title>
             <v-card-text>
                 <strong>
-                    โทรมาศัพท์:
+                    โทรศัพท์:
                 </strong>
                 <p>
                     091-996-9183,
