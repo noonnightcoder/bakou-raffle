@@ -20,19 +20,7 @@
 	        </a>
 	    </v-toolbar-items>
         <v-spacer></v-spacer>
-        
     </v-toolbar>
-    <!-- <v-toolbar justify-center dense color="blue-grey darken-4">
-        <v-toolbar-title class="white--text">ยินดีต้อนรับที่มาเล่นใน WinWin97 Lucky Draw</v-toolbar-title>
-        <v-spacer></v-spacer>
-        <v-btn color="success">โปรไฟล์</v-btn>
-        <v-btn color="info" @click="dialog2=true">แจ้งฝากเงิน</v-btn>
-        <a href="<?php echo Yii::app()->createUrl('site/logout'); ?>">
-            <v-btn color="warning">ออกจากระบบ</v-btn>
-=======
-<v-flex xs12 sm12 md12 flat height="100px" tile>
-    <v-toolbar justify-center dense color="blue-grey darken-4">
-        <!--<v-toolbar-title class="white--text">ยินดีต้อนรับที่มาเล่นใน WinWin97 Lucky Draw</v-toolbar-title>-->
         <a href="#" style="font-size: 13px;text-decoration: none;color:#333; padding: 5px 10px 0px 10px;">
             Register
         <!-- Stashed changes -->

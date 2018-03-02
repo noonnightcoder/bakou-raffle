@@ -22,7 +22,7 @@ class RaffleController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','login'),
+				'actions'=>array('index','view','login','onlinecasino'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -51,6 +51,12 @@ class RaffleController extends Controller
 	{
 		$dataProvider = new CActiveDataProvider('Raffle');
 		$this->render('_login',array(
+			'dataProvider'=>$dataProvider
+		));
+	}
+	public function actionOnlineCasino(){
+		$dataProvider = new CActiveDataProvider('Raffle');
+		$this->render('online_casino',array(
 			'dataProvider'=>$dataProvider
 		));
 	}

@@ -1,18 +1,27 @@
-
-    new Vue({
+new Vue({
         el: '#app' ,
         data(){
             return{
                 hide:false,
                 dialog:false,
                 dialog2:false,
+                dialog3:true,
                 credit:1000,
                 price:0,
                 betAmount:10,
                 spinNumber:0,
                 spining:false,
                 luckyDraw:[],
-                links: ['Home', 'About Us', 'Team', 'Services', 'Contact Us']
+                links: ['Home', 'About Us', 'Team', 'Services', 'Contact Us'],
+                menus:[
+                    {text:'Home',link:'http://localhost/bakou-raffle/index.php/Raffle/'},
+                    {text:'Online Casino',link:'http://localhost/bakou-raffle/index.php/Raffle/OnlineCasino'},
+                    {text:'Online Sport',link:'#'},
+                    {text:'Online Lottery',link:'#'},
+                    {text:'Online Raffle',link:'#'},
+                    {text:'Promotion',link:'#'},
+                    {text:'Raffle Result',link:'#'},
+                ],
             }
         },
         created(){

@@ -60,73 +60,34 @@
                                 </v-layout>
                             </v-flex>
                             <v-flex xs12 sm3 md3>
-                                <v-card color="grey lighten-4" flat  tile>
+                                <v-card color="grey lighten-4" flat  tile scrollable style="height: auto;max-height: 300px;"> 
                                     <v-toolbar class="text-lg-center" dense color="blue-grey darken-2">
-                                        <v-toolbar-title class="white--text">บัญชีของคุณ</v-toolbar-title>
+                                    	
+                                        <v-toolbar-title class="white--text">บัญชีของคุณ 	<v-btn icon class="white--text" style="position: absolute;right: 0px;">
+									          {{luckyDraw.length}}
+									        </v-btn>
+                                        </v-toolbar-title>
                                     </v-toolbar>
                                     <v-divider></v-divider>
-                                    <v-list v-if="luckyDraw.length>0">
-                                        <v-list-tile v-for="(ld,index) in luckyDraw" :key="index">
-                                            <v-list-tile-content>
-                                                <v-list-tile-title v-text="ld.luckyNum"></v-list-tile-title>
-                                            </v-list-tile-content>
-                                                {{ld.price}} บาท
-                                        </v-list-tile>
-                                    </v-list>
-                                    <h1 v-else style="text-align: center;">
-                                        ยังไม่มีบัญชี
-                                    </h1>
-                                    
+                                    <v-content style="max-height: 300vh; overflow: hidden;">
+                                    <div style="max-height:250px;overflow-y:scroll;backface-visibility:hidden;">
+	                                    <v-list v-if="luckyDraw.length>0">
+	                                        <v-list-tile v-for="(ld,index) in luckyDraw" :key="index">
+	                                            <v-list-tile-content>
+	                                                <v-list-tile-title v-text="ld.luckyNum"></v-list-tile-title>
+	                                            </v-list-tile-content>
+	                                                {{ld.price}} บาท
+	                                        </v-list-tile>
+	                                    </v-list>
+	                                    <h1 v-else style="text-align: center;">
+	                                        ยังไม่มีบัญชี
+	                                    </h1>
+                                	</div>
+                                	</v-content>
                                 </v-card>
                             </v-flex>
                         </v-layout>
-                        <v-divider></v-divider>
-                        <v-flex xs12 sm12 md12 style="margin-top: 10px;">
-                        	<v-layout row wrap>
-                        		<v-flex xs12 sm2 md2>
-                        			<img src="<?=baseurl().'/images/img1.png'?>" width="100%">
-                        		</v-flex>
-                        		<v-flex xs12 sm10 md10>
-
-                        			<a href="#" style="text-decoration: none;color: gold;text-indent: 10px;">
-                        				<h3>G ClubGClub Casino</h3>
-                        			</a> 
-                        			<p style="color:#FFF;padding: 0px 10px;">
-                        				คาสิโนออนไลน์อันดับ 1 วัดสถิติความนิยมของผู้เล่นครั้งใด คาสิโนค่ายนี้ไม่ลดความนิยมลงไปเลย พูดได้ว่าต้นตำรับบาคาร่าออนไลน์ก็มาจากที่นี้ นี้เอง เนื่องด้วย หน้าตาโปรแกรมการเล่น รูปแบบการเล่นเข้าใจง่าย เดิมพันง่าย รวดเร็ว ทำให้คาสิโนค่ายนี้เป็นที่นิยมของผู้เล่นออนไลน์ตลอด
-                        			</p>
-                        		</v-flex>
-                        	</v-layout>
-                        	<v-divider></v-divider>
-                        	<v-layout row wrap>
-                        		<v-flex xs12 sm2 md2>
-                        			<img src="<?=baseurl().'/images/img1.png'?>" width="100%">
-                        		</v-flex>
-                        		<v-flex xs12 sm10 md10>
-
-                        			<a href="#" style="text-decoration: none;color: gold;text-indent: 10px;">
-                        				<h3>G ClubGClub Casino</h3>
-                        			</a> 
-                        			<p style="color:#FFF;padding: 0px 10px;">
-                        				คาสิโนออนไลน์อันดับ 1 วัดสถิติความนิยมของผู้เล่นครั้งใด คาสิโนค่ายนี้ไม่ลดความนิยมลงไปเลย พูดได้ว่าต้นตำรับบาคาร่าออนไลน์ก็มาจากที่นี้ นี้เอง เนื่องด้วย หน้าตาโปรแกรมการเล่น รูปแบบการเล่นเข้าใจง่าย เดิมพันง่าย รวดเร็ว ทำให้คาสิโนค่ายนี้เป็นที่นิยมของผู้เล่นออนไลน์ตลอด
-                        			</p>
-                        		</v-flex>
-                        	</v-layout>
-                        	<v-divider></v-divider>
-                        	<v-layout row wrap>
-                        		<v-flex xs12 sm2 md2>
-                        			<img src="<?=baseurl().'/images/img1.png'?>" width="100%">
-                        		</v-flex>
-                        		<v-flex xs12 sm10 md10>
-
-                        			<a href="#" style="text-decoration: none;color: gold;text-indent: 10px;">
-                        				<h3>G ClubGClub Casino</h3>
-                        			</a> 
-                        			<p style="color:#FFF;padding: 0px 10px;">
-                        				คาสิโนออนไลน์อันดับ 1 วัดสถิติความนิยมของผู้เล่นครั้งใด คาสิโนค่ายนี้ไม่ลดความนิยมลงไปเลย พูดได้ว่าต้นตำรับบาคาร่าออนไลน์ก็มาจากที่นี้ นี้เอง เนื่องด้วย หน้าตาโปรแกรมการเล่น รูปแบบการเล่นเข้าใจง่าย เดิมพันง่าย รวดเร็ว ทำให้คาสิโนค่ายนี้เป็นที่นิยมของผู้เล่นออนไลน์ตลอด
-                        			</p>
-                        		</v-flex>
-                        	</v-layout>
-                        </v-flex>
+                        
                     </v-container>
 
                 </v-card>
@@ -134,7 +95,6 @@
         </v-layout>
     </v-container>
 </v-content>
-
 <!-- The footer suppose to include in theme/ace/views/layouts/tpl_footer_frontend.php but not work so put here :) to fix later -->
 <?php $this->renderPartial('_footer') ?>
 
@@ -152,7 +112,7 @@
 
 
 <!-- Specific Javascript code keep in separate page) -->
-<?php $this->renderPartial('_js') ?>
+
 
 <!-- Will check why register JS in Yii way not working here -->
 <?php /*Yii::app()->clientScript->registerScriptFile(Yii::app()->basePath .'/views/raffle/_js.js', CClientScript::POS_END); */?>

@@ -13,11 +13,7 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
     <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
 
-
-   <?php
-        $cs->registerScriptFile('https://unpkg.com/vue/dist/vue.js',CClientScript::POS_BEGIN);
-        $cs->registerScriptFile('https://unpkg.com/vuetify/dist/vuetify.js',CClientScript::POS_BEGIN);
-    ?> 
+   
 
     <?php
         if (Yii::app()->components['user']->loginRequiredAjaxResponse){
@@ -35,12 +31,18 @@
 </head>
 
 <body>
+    
      <div id="app">
          <v-app id="aspire" xs12 style="background-image:url('<?=baseurl().'/images/'?>bd_bg.png') !important;background-repeat:repeat !important; ">
              <!-- Include content pages -->
              <?= $content ?>
-             <?php include('tpl_footer_frontend.php') ?>
+             
          </v-app>
     </div>
+    <?php
+        $cs->registerScriptFile(baseurl().'/js/vue.js',CClientScript::POS_END);
+        $cs->registerScriptFile(baseurl().'/js/vuetify.js',CClientScript::POS_END);
+        $cs->registerScriptFile(baseurl().'/js/_js.js',CClientScript::POS_END);
+    ?>
 </body>
 </html>

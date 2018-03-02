@@ -1,20 +1,12 @@
 <?php $this->pageTitle=Yii::app()->name . ' - Login'; ?>
 <v-content>
-    <v-container fluid fill-height>
         <v-layout align-center justify-center>
                 
-            <v-flex xs12 sm9 md9>
-            	<h1>
-                    <span class="white--text" ><?= Yii::t('app', companyName()); ?></span>
-                    <!-- <span class="white--text"><?= Yii::t('app','APP'); ?></span> -->
-                </h1>
-                <h4 class="white--text" id="id-company-text">&copy; <?= Yii::t('app',bizNameFirstUpper() . ' Solution'); ?>
-                </h4>
-                 
+            <v-flex xs12 sm12 md12>
                 <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array()); ?>
 
-                <v-card class="elevation-12"  color="blue-grey darken-4" style="background-image: url(<?=baseurl().'/images/winwin97-login-bg.png'?>);background-size: 100% 421px; height: 421px; margin-top: 50px;">
-                    <v-layout>
+                <v-card class="elevation-12"  color="blue-grey darken-4" style="background-image: url(<?=baseurl().'/images/login-bg.png'?>);background-size: 100% 100%; height: 645px; ">
+                    <v-layout style="position: absolute; top: 5px;">
                         <v-btn color="info">
                             Thai
                         </v-btn>
@@ -26,26 +18,27 @@
                         </v-btn>
                     </v-layout>
                     <!--fotter-->
-                    <div style="position: absolute;bottom: 30px;display: block;width: 100%; text-align: center;" >
+                    <div style="position: absolute;bottom: 5px;display: block;width: 100%; text-align: center;" >
                     		<?= TbHtml::submitButton(Yii::t('app', 'Login'),array(
                                 'color'=>'warning',
-                                'style'=>'background-color: yellow;padding:1px 15px; border-radius: 1px;border: solid 1px #FFFFFF;float:right;height:27px;margin-top:0px;'
+                                'style'=>'background-color: yellow;padding:5px 15px 5px 15px; border-radius: 1px;border: solid 1px #FFFFFF;float:right;margin-top:0px;',
+                                'tabindex'=>3
                             )); ?>
                             <?= $form->passwordField($model,'password',
                                 array('value'=>'',
-                                    'style'=>'padding:1px 5px;border-radius: 1px;border: solid 1px #FFFFFF;float:right;background-color:#FFFFFF;',
+                                    'style'=>'padding:5px 5px;border-radius: 1px;border: solid 1px #FFFFFF;float:right;background-color:#FFFFFF;',
                                     'maxlength'=>30,
                                     'placeholder'=>Yii::t('app','Password'),
                                     'autocomplete'=>'off',
-                                    'tabindex' => 1
+                                    'tabindex' => 2
                                 ));
                             ?>
                             <?= $form->textField($model,'username',
-                                array('style'=>'padding:1px 5px;border-radius: 1px;border: solid 1px #FFFFFF;float:right;margin-right:10px;background-color:#FFFFFF;',
+                                array('style'=>'padding:5px 5px;border-radius: 1px;border: solid 1px #FFFFFF;float:right;margin-right:10px;background-color:#FFFFFF;',
                                       'maxlength'=>30,
                                       'placeholder'=>Yii::t('app','User Name'),
                                       'autocomplete'=>'off',
-                                      'tabindex' => 2
+                                      'tabindex' => 1
                                 ));
                             ?>
                     </div>
@@ -62,7 +55,6 @@
                 <?php $this->endWidget(); ?>
             </v-flex>
         </v-layout>
-    </v-container>
 </v-content>
 
 
