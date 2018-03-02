@@ -145,7 +145,7 @@
 <!--Vuejs and Vuetify javascript-->
 
 <!-- You can delete this comments after you could find where the file is -->
-<!-- I have move this Global JS (use everywhere I project) to the place where it suppose to theme/ace/views/layouts/main_front_end.php -->
+<!-- I have move this Global JS (use everywhere in project) to the place where it suppose to theme/ace/views/layouts/main_front_end.php -->
 
 <!--<script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>-->
