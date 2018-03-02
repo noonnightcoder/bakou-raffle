@@ -9,14 +9,14 @@
                     <v-divider></v-divider>
 
                     <v-container>
-                        <v-layout row wrap>
+                        <v-layout row wrap style="height: 300px;">
                             <v-flex xs12 sm3 md3>
-                                <v-card color="grey lighten-4" flat  tile>
+                                <v-card color="grey lighten-4" flat  tile style="height: 300px;">
                                     <v-toolbar class="text-lg-center" dense color="blue-grey darken-2">
                                         <v-toolbar-title class="white--text">เครดิตของคุณ</v-toolbar-title>
                                     </v-toolbar>
                                     <v-divider></v-divider>
-                                    <h4 style="font-size: 25px; text-align: center;"><?= Yii::app()->session['emp_fullname'] ?></h4>
+                                    
                                     <h3 style="font-size: 40px; text-align: center;">
                                         {{credit}} บาท
                                     </h3>
@@ -32,28 +32,14 @@
                                                 Lucky Draw
                                         </v-btn>
                                     </div>
-
-                                </v-card>
-                                <v-card color="grey lighten-4" flat  tile>
-                                    <v-toolbar class="text-lg-center" dense color="blue-grey darken-2">
-                                        <v-toolbar-title class="white--text">ของบริษัท</v-toolbar-title>
-                                    </v-toolbar>
                                     <v-divider></v-divider>
+                                    <h4 style="font-size: 25px; text-align: center;"><?= Yii::app()->session['emp_fullname'] ?>
+                                    </h4>
                                     <v-container>
-                                        <p>
-                                            <b>DTAC:</b> 091-996-9183-6
-                                        </p>
-                                        <p>
-                                            <b>AIS:</b> 092 616-6912-5
-                                        </p>
-                                    </v-container>
+	                                    <strong>DTAC: </strong>xxx xxx-xxx-xx<br>
+	                                    <strong>AIS: </strong>xxx xxx-xxx-xxx
+	                                </v-container>
                                 </v-card>
-                                <div>
-                                        <img src="<?=baseurl().'/images/'?>gif1.gif" width="100%">
-                                    </div>
-                                    <div>
-                                        <img src="<?=baseurl().'/images/'?>gif1.gif" width="100%">
-                                    </div>
                             </v-flex>
                             <v-flex xs12 sm6 md6>
                                 <v-layout align-center row wrap justify-center>
@@ -70,9 +56,6 @@
                                         <p  class="white--text">
                                             Buy the lucky draw number to have chance to win BIG PRIZE. The more you BET the more you win. Wish you good luck and win with WinWin97 Lucky Draw. THANK YOU!
                                         </p>
-                                    </v-flex>
-                                    <v-flex xs12 sm10 md10>
-                                        <img src="<?=baseurl().'/images/'?>gif1.gif" width="100%">
                                     </v-flex>
                                 </v-layout>
                             </v-flex>
@@ -95,14 +78,55 @@
                                     </h1>
                                     
                                 </v-card>
-                                <div>
-                                    <img src="<?=baseurl().'/images/'?>gif1.gif" width="100%">
-                                </div>
-                                <div>
-                                    <img src="<?=baseurl().'/images/'?>gif1.gif" width="100%">
-                                </div>
                             </v-flex>
                         </v-layout>
+                        <v-divider></v-divider>
+                        <v-flex xs12 sm12 md12 style="margin-top: 10px;">
+                        	<v-layout row wrap>
+                        		<v-flex xs12 sm2 md2>
+                        			<img src="<?=baseurl().'/images/img1.png'?>" width="100%">
+                        		</v-flex>
+                        		<v-flex xs12 sm10 md10>
+
+                        			<a href="#" style="text-decoration: none;color: gold;text-indent: 10px;">
+                        				<h3>G ClubGClub Casino</h3>
+                        			</a> 
+                        			<p style="color:#FFF;padding: 0px 10px;">
+                        				คาสิโนออนไลน์อันดับ 1 วัดสถิติความนิยมของผู้เล่นครั้งใด คาสิโนค่ายนี้ไม่ลดความนิยมลงไปเลย พูดได้ว่าต้นตำรับบาคาร่าออนไลน์ก็มาจากที่นี้ นี้เอง เนื่องด้วย หน้าตาโปรแกรมการเล่น รูปแบบการเล่นเข้าใจง่าย เดิมพันง่าย รวดเร็ว ทำให้คาสิโนค่ายนี้เป็นที่นิยมของผู้เล่นออนไลน์ตลอด
+                        			</p>
+                        		</v-flex>
+                        	</v-layout>
+                        	<v-divider></v-divider>
+                        	<v-layout row wrap>
+                        		<v-flex xs12 sm2 md2>
+                        			<img src="<?=baseurl().'/images/img1.png'?>" width="100%">
+                        		</v-flex>
+                        		<v-flex xs12 sm10 md10>
+
+                        			<a href="#" style="text-decoration: none;color: gold;text-indent: 10px;">
+                        				<h3>G ClubGClub Casino</h3>
+                        			</a> 
+                        			<p style="color:#FFF;padding: 0px 10px;">
+                        				คาสิโนออนไลน์อันดับ 1 วัดสถิติความนิยมของผู้เล่นครั้งใด คาสิโนค่ายนี้ไม่ลดความนิยมลงไปเลย พูดได้ว่าต้นตำรับบาคาร่าออนไลน์ก็มาจากที่นี้ นี้เอง เนื่องด้วย หน้าตาโปรแกรมการเล่น รูปแบบการเล่นเข้าใจง่าย เดิมพันง่าย รวดเร็ว ทำให้คาสิโนค่ายนี้เป็นที่นิยมของผู้เล่นออนไลน์ตลอด
+                        			</p>
+                        		</v-flex>
+                        	</v-layout>
+                        	<v-divider></v-divider>
+                        	<v-layout row wrap>
+                        		<v-flex xs12 sm2 md2>
+                        			<img src="<?=baseurl().'/images/img1.png'?>" width="100%">
+                        		</v-flex>
+                        		<v-flex xs12 sm10 md10>
+
+                        			<a href="#" style="text-decoration: none;color: gold;text-indent: 10px;">
+                        				<h3>G ClubGClub Casino</h3>
+                        			</a> 
+                        			<p style="color:#FFF;padding: 0px 10px;">
+                        				คาสิโนออนไลน์อันดับ 1 วัดสถิติความนิยมของผู้เล่นครั้งใด คาสิโนค่ายนี้ไม่ลดความนิยมลงไปเลย พูดได้ว่าต้นตำรับบาคาร่าออนไลน์ก็มาจากที่นี้ นี้เอง เนื่องด้วย หน้าตาโปรแกรมการเล่น รูปแบบการเล่นเข้าใจง่าย เดิมพันง่าย รวดเร็ว ทำให้คาสิโนค่ายนี้เป็นที่นิยมของผู้เล่นออนไลน์ตลอด
+                        			</p>
+                        		</v-flex>
+                        	</v-layout>
+                        </v-flex>
                     </v-container>
 
                 </v-card>

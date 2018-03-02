@@ -13,7 +13,16 @@
                 spinNumber:0,
                 spining:false,
                 luckyDraw:[],
-                links: ['Home', 'About Us', 'Team', 'Services', 'Contact Us']
+                links: ['Home', 'About Us', 'Team', 'Services', 'Contact Us'],
+                menus:[
+                    {text:'Home',link:'#'},
+                    {text:'Online Casino',link:'#'},
+                    {text:'Online Sport',link:'#'},
+                    {text:'Online Lottery',link:'#'},
+                    {text:'Online Raffle',link:'#'},
+                    {text:'Promotion',link:'#'},
+                    {text:'Raffle Result',link:'#'},
+                ]
             }
         },
         created(){
