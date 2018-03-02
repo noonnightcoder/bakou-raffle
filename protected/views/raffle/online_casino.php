@@ -6,8 +6,6 @@
 
                     <?php $this->renderPartial('_header') ?>
 
-                    <v-divider></v-divider>
-
                     <v-container>
                     	<v-divider></v-divider>
                         <v-flex xs12 sm12 md12 style="margin-top: 10px;">

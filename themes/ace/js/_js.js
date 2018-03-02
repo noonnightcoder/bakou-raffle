@@ -12,6 +12,7 @@ new Vue({
                 spinNumber:0,
                 spining:false,
                 luckyDraw:[],
+                current:'',
                 links: ['Home', 'About Us', 'Team', 'Services', 'Contact Us'],
                 menus:[
                     {text:'Home',link:'http://localhost/bakou-raffle/index.php/Raffle/'},
