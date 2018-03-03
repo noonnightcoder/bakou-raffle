@@ -8,7 +8,7 @@
                         <v-divider></v-divider>
                         <v-layout row wrap>
                             <v-flex xs12 sm3 md3 style="z-index: 1">
-                                <v-card style="height: 300px; z-index: 1">
+                                <v-card style="height: 350px; z-index: 1">
                                     <v-toolbar class="text-lg-center" color="blue-grey darken-2">
                                         <v-toolbar-title class="white--text">เครดิตของคุณ</v-toolbar-title>
                                     </v-toolbar>
@@ -57,7 +57,7 @@
                                 </v-layout>
                             </v-flex>
                             <v-flex xs12 sm3 md3>
-                                <v-card color="grey lighten-4" flat  tile scrollable style="height: auto;max-height: 300px; z-index: 1"> 
+                                <v-card color="grey lighten-4" flat  tile scrollable style="height: auto;max-height: 350px; z-index: 1"> 
                                     <v-toolbar class="text-lg-center" dense color="blue-grey darken-2">
                                     	
                                         <v-toolbar-title class="white--text">บัญชีของคุณ 	<v-btn icon class="white--text" style="position: absolute;right: 0px;">
@@ -66,8 +66,8 @@
                                         </v-toolbar-title>
                                     </v-toolbar>
                                     <v-divider></v-divider>
-                                    <v-content style="max-height: 300vh; overflow: hidden;">
-                                    <div style="max-height:250px;overflow-y:scroll;backface-visibility:hidden;">
+                                    <v-content style="max-height: 350vh; overflow: hidden;">
+                                    <div style="max-height:270px;overflow-y:scroll;backface-visibility:hidden;">
 	                                    <v-list v-if="luckyDraw.length>0">
 	                                        <v-list-tile v-for="(ld,index) in luckyDraw" :key="index">
 	                                            <v-list-tile-content>
@@ -83,10 +83,17 @@
                                 	</v-content>
                                 </v-card>
                             </v-flex>
+                            
+                            
                         </v-layout>
                     </v-container>
                 </v-card>
+                <v-divider></v-divider>
+                <v-flex xs12 sm12 md12>
+                                <?php $this->renderPartial('WinWin97') ?>
+                            </v-flex>
             </v-flex>
+
         </v-layout>
     </v-container>
 </v-content>
