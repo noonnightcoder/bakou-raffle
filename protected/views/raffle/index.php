@@ -2,13 +2,14 @@
     <v-container fluid>
         <v-layout justify-center>
             <v-flex xs12 sm9 md9>
-                <v-card class="elevation-12"  color="blue-grey darken-4" style="z-index: 1">
+                <v-card class="elevation-12"  color="blue-grey darken-4" >
                     <?php $this->renderPartial('_header') ?>
                     <v-container >
+                        <v-divider></v-divider>
                         <v-layout row wrap>
-                            <v-flex xs12 sm3 md3>
-                                <v-card color="grey lighten-4" flat  tile style="height: 300px; z-index: -1">
-                                    <v-toolbar class="text-lg-center" dense color="blue-grey darken-2">
+                            <v-flex xs12 sm3 md3 style="z-index: 1">
+                                <v-card style="height: 300px; z-index: 1">
+                                    <v-toolbar class="text-lg-center" color="blue-grey darken-2">
                                         <v-toolbar-title class="white--text">เครดิตของคุณ</v-toolbar-title>
                                     </v-toolbar>
                                     <v-divider></v-divider>
@@ -40,7 +41,7 @@
                             <v-flex xs12 sm6 md6>
                                 <v-layout align-center row wrap justify-center>
                                     <v-flex xs12 sm10 md10>
-                                        <v-card style=" z-index: -1">
+                                        <v-card>
                                             <h1 style="font-size: 650%; text-align: center;">{{spinNumber}}</h1>
                                         </v-card>
                                     </v-flex>
@@ -56,7 +57,7 @@
                                 </v-layout>
                             </v-flex>
                             <v-flex xs12 sm3 md3>
-                                <v-card color="grey lighten-4" flat  tile scrollable style="height: auto;max-height: 300px; z-index: -1"> 
+                                <v-card color="grey lighten-4" flat  tile scrollable style="height: auto;max-height: 300px; z-index: 1"> 
                                     <v-toolbar class="text-lg-center" dense color="blue-grey darken-2">
                                     	
                                         <v-toolbar-title class="white--text">บัญชีของคุณ 	<v-btn icon class="white--text" style="position: absolute;right: 0px;">

@@ -18,7 +18,7 @@
                         </v-btn>
                     </v-layout>
                     <!--fotter-->
-                    <div style="position: absolute;bottom: -7px;display: block;width: 100%;">
+                    <div style="position: absolute;bottom: 5px;display: block;width: 100%;">
                         <v-layout justify-center>
                             <v-layout row wrap>
                                 <v-container>

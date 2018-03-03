@@ -13,7 +13,7 @@
 
 <!-- Updated upstream  -->
 <v-flex xs12 sm12 md12  flat tile>
-    <nav style="height: 30px !important;z-index: 100 !important;margin-top: -10px; color: #FFF">
+    <nav style="height: 30px !important;z-index: 1 !important;margin-top: -10px; color: #FFF">
     <v-toolbar class="hidden-sm-and-down text-sm-left" style="height: 30px !important; background-image: url('<?=baseurl().'/images/menu-bar-bg.png'?>');background-repeat: repeat-x;">
           <v-toolbar-items v-for="(menu,i) in menus" :key="i" >
               <a :href="menu.link" style="font-size: 13px;text-decoration: none;color:#FFF; padding: 5px 10px 0px 10px;">
@@ -27,7 +27,7 @@
           <div slot="header" style="margin-top: -5px;">
             <a href='localhost/bakou-raflle/index.php/Raffle/' style="font-size: 13px;text-decoration: none;color:#FFF; padding: 5px 10px 0px 10px; margin-left: -20px;">Home</a>
           </div>
-            <div scrollable style="max-height:350px;overflow-y:scroll;backface-visibility:hidden;">
+            <div scrollable style="max-height:350px;overflow-y:scroll;backface-visibility:hidden;z-index: 1000;position: relative;">
               <v-card v-for="(menu,i) in menus" :key="i" style="background-color: #660607;margin-top: -20px;">
                 <a :href="menu.link" style="font-size: 13px;text-decoration: none;color:#FFFFFF; padding: 5px 10px 0px 10px;">
                     <v-card-text>{{menu.text}}</v-card-text>
