@@ -13,7 +13,7 @@
 
 <!-- Updated upstream  -->
 <v-flex xs12 sm12 md12  flat tile>
-    <nav style="height: 30px !important;z-index: 100 !important;">
+    <nav style="height: 30px !important;z-index: 100 !important;margin-top: -10px; color: #FFF">
     <v-toolbar class="hidden-sm-and-down text-sm-left" style="height: 30px !important; background-image: url('<?=baseurl().'/images/menu-bar-bg.png'?>');background-repeat: repeat-x;">
           <v-toolbar-items v-for="(menu,i) in menus" :key="i" >
               <a :href="menu.link" style="font-size: 13px;text-decoration: none;color:#FFF; padding: 5px 10px 0px 10px;">

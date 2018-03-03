@@ -15,7 +15,6 @@ new Vue({
                 current:'',
                 links: ['Home', 'About Us', 'Team', 'Services', 'Contact Us'],
                 menus:[
-                    {text:'Home',link:'http://localhost/bakou-raffle/index.php/Raffle/'},
                     {text:'Online Casino',link:'http://localhost/bakou-raffle/index.php/Raffle/OnlineCasino'},
                     {text:'Online Sport',link:'#'},
                     {text:'Online Lottery',link:'#'},

@@ -8,7 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
     <?php
         $cs = Yii::app()->getClientScript();
+        $cs->registerScriptFile(baseurl().'/js/jquery.min.js',CClientScript::POS_BEGIN);
     ?>
+
 
     <link href="<?=baseurl().'/css/materailize-icon.css'?>" rel="stylesheet">
     <link href="<?=baseurl().'/css/vuetify.min.css'?>" rel="stylesheet">
