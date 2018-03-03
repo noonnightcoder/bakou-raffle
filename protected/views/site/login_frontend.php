@@ -42,14 +42,14 @@
                                 ));
                             ?>
                     </div>
-                    <!--<div style="position: absolute;bottom:7px; width: 100%; ">
-	                    <div class="control-group error" style="width: 300px !important; color: #FFFFFF; float: right;margin-right: 10px;border-radius: 3px;">
-			                <?/*= $form->error($model,'username'); */?>
+                    <div style="position: absolute;bottom:70px; width: 100%; ">
+	                    <div class="control-group error" style="max-width: 300px !important; color: #FFFFFF; float: right;margin-right: 10px;border-radius: 3px;  padding: 0 10px;">
+			                <?= $form->error($model,'username'); ?>
 			            </div>
-			            <div class="control-group error" style="width: 300px !important; color: #FFFFFF; float: right;margin-right: 10px;border-radius: 3px;">
-			                <?/*= $form->error($model,'password'); */?>
+			            <div class="control-group error" style="max-width: 300px !important; color: #FFFFFF; float: right;margin-right: 10px;border-radius: 3px; padding: 0 10px;">
+			                <?= $form->error($model,'password'); ?>
 			            </div>
-			        </div>-->
+			        </div>
                     <!--end footer-->
                 </v-card>
                 <?php $this->endWidget(); ?>
