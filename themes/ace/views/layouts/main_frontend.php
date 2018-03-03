@@ -10,8 +10,8 @@
         $cs = Yii::app()->getClientScript();
     ?>
 
-    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
-    <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
+    <link href="<?=baseurl().'/css/materailize-icon.css'?>" rel="stylesheet">
+    <link href="<?=baseurl().'/css/vuetify.min.css'?>" rel="stylesheet">
 
    
 

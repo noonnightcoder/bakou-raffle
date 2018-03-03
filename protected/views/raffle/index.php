@@ -2,16 +2,12 @@
     <v-container fluid>
         <v-layout justify-center>
             <v-flex xs12 sm9 md9>
-                <v-card class="elevation-12"  color="blue-grey darken-4">
-
+                <v-card class="elevation-12"  color="blue-grey darken-4" style="z-index: 1">
                     <?php $this->renderPartial('_header') ?>
-
-                    <v-divider></v-divider>
-
-                    <v-container>
-                        <v-layout row wrap style="height: 300px;">
+                    <v-container >
+                        <v-layout row wrap>
                             <v-flex xs12 sm3 md3>
-                                <v-card color="grey lighten-4" flat  tile style="height: 300px;">
+                                <v-card color="grey lighten-4" flat  tile style="height: 300px; z-index: -1">
                                     <v-toolbar class="text-lg-center" dense color="blue-grey darken-2">
                                         <v-toolbar-title class="white--text">เครดิตของคุณ</v-toolbar-title>
                                     </v-toolbar>
@@ -22,7 +18,7 @@
                                     </h3>
 
                                     <v-container v-if="hide">
-                                        <v-text-field :label="'Input Amount'" type="number" v-model="price" @keyup="betAmount>0 & betAmount<=credit & credit>0?dialog=false:dialog=true" class="white--text"/>
+                                        <v-text-field :label="'Input Amount'" type="number" v-model="price" @keyup="betAmount>0 & betAmount<=credit & credit>0?dialog=false:dialog=true" class="white--text"></v-text-field>
                                     </v-container>
 
                                     <div class="text-lg-right">
@@ -44,8 +40,8 @@
                             <v-flex xs12 sm6 md6>
                                 <v-layout align-center row wrap justify-center>
                                     <v-flex xs12 sm10 md10>
-                                        <v-card>
-                                            <h1 style="font-size: 100px; text-align: center;">{{spinNumber}}</h1>
+                                        <v-card style=" z-index: -1">
+                                            <h1 style="font-size: 650%; text-align: center;">{{spinNumber}}</h1>
                                         </v-card>
                                     </v-flex>
                                     <v-flex xs12 sm10 md10>
@@ -60,7 +56,7 @@
                                 </v-layout>
                             </v-flex>
                             <v-flex xs12 sm3 md3>
-                                <v-card color="grey lighten-4" flat  tile scrollable style="height: auto;max-height: 300px;"> 
+                                <v-card color="grey lighten-4" flat  tile scrollable style="height: auto;max-height: 300px; z-index: -1"> 
                                     <v-toolbar class="text-lg-center" dense color="blue-grey darken-2">
                                     	
                                         <v-toolbar-title class="white--text">บัญชีของคุณ 	<v-btn icon class="white--text" style="position: absolute;right: 0px;">
@@ -87,9 +83,7 @@
                                 </v-card>
                             </v-flex>
                         </v-layout>
-                        
                     </v-container>
-
                 </v-card>
             </v-flex>
         </v-layout>
