@@ -19,30 +19,21 @@
  
 
 <div class="tt_main" style="margin-top: -35px;">
-<div class="tt-l tt-full tt_slide">
-<div class = "owl-carousel">
-  <div class="item"><a  href="" title="slide1"><img class="thaitheme_pc" src="http://www.winwin97.com/wp-content/uploads/2017/03/slide01.jpg?v=1.0" alt="" /></a>
-  </div>
-  <div class="item"><a  href="" title="slide2"><img class="thaitheme_pc" src="http://www.winwin97.com/wp-content/uploads/2017/03/slide02.jpg?v=1.0" alt="" /></a>
-  </div>
-  <div class="item"><a  href="" title="slide3"><img class="thaitheme_pc" src="http://www.winwin97.com/wp-content/uploads/2017/03/slide03.jpg?v=1.0" alt="" /></a>
-  </div>
-  <div class="item"><a  href="" title="slide4"><img class="thaitheme_pc" src="http://www.winwin97.com/wp-content/uploads/2017/03/slide04.jpg?v=1.0" alt="" /></a>
+
+
+    <?php $this->renderPartial('_carousel'); ?>
+
+    <img src="http://www.winwin97.com/wp-content/uploads/2017/03/howtoplay-bg.jpg?v=1.0"/>
+
 </div>
-</div>
-</div>
-</div><div class="tt_main">
-<div class="tt-l tt-full tt-ct pdh">
-<div class="tt_l tt-full tt_ag_bt mt-10">
-<a href="">
-<img src="http://www.winwin97.com/wp-content/uploads/2017/03/howtoplay-bg.jpg?v=1.0"/>
+
+<div class="tt_l tt_full sec_link">
+<div class="tt_l tt_full head_link">
+    <a href="http://www.winwin97.com/casino/">
+    <img src="http://www.winwin97.com/wp-content/uploads/2017/03/ca.png?v=1.0"/>
 </a>
 </div>
-<div class="tt_l tt_full sec_link">
-<div class="tt_l tt_full head_link"><a href="http://www.winwin97.com/casino/">
-<img src="http://www.winwin97.com/wp-content/uploads/2017/03/ca.png?v=1.0"/>
-</a></div>
- 
+
 <div class="tt_list_game sport1">
 <a href="http://99a.bacc1688.com" title="G Club" target="_blank">
 <div class="tt-l tt_img banner_hover">
@@ -50,11 +41,11 @@
 <img class="tt_img_df" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2016/11/gc.png?v=1.0"/>
 <img class="tt_img_hover" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2016/11/gc.png?v=1.0"/>
 </figure>
-</div> 
+</div>
 <h3>G Club</h3>
 </a>
-</div> 
-  
+</div>
+
 <div class="tt_list_game sport2">
 <a href="http://www.edy99.com/mem/index.jsp" title="Genting Crown" target="_blank">
 <div class="tt-l tt_img banner_hover">
@@ -62,11 +53,11 @@
 <img class="tt_img_df" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/gentingcrown-1.jpg?v=1.0"/>
 <img class="tt_img_hover" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/gentingcrown-1.jpg?v=1.0"/>
 </figure>
-</div> 
+</div>
 <h3>Genting Crown</h3>
 </a>
-</div> 
-  
+</div>
+
 <div class="tt_list_game sport3">
 <a href="http://www.bpt88.com/OLTGames/home.jsp" title="GREEN DRAGON" target="_blank">
 <div class="tt-l tt_img banner_hover">
@@ -74,11 +65,11 @@
 <img class="tt_img_df" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/greendragon-1.jpg?v=1.0"/>
 <img class="tt_img_hover" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/greendragon-1.jpg?v=1.0"/>
 </figure>
-</div> 
+</div>
 <h3>GREEN DRAGON</h3>
 </a>
-</div> 
-  
+</div>
+
 <div class="tt_list_game sport4">
 <a href="https://simpson.viva9988.com" title="Holiday Palace" target="_blank">
 <div class="tt-l tt_img banner_hover">
@@ -86,11 +77,11 @@
 <img class="tt_img_df" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/holidaypalace-1.jpg?v=1.0"/>
 <img class="tt_img_hover" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/holidaypalace-1.jpg?v=1.0"/>
 </figure>
-</div> 
+</div>
 <h3>Holiday Palace</h3>
 </a>
-</div> 
-  
+</div>
+
 <div class="tt_list_game sport5">
 <a href="http://reddg.linksbo.com/OLTGames/index.jsp" title="Red Dragon" target="_blank">
 <div class="tt-l tt_img banner_hover">
@@ -98,11 +89,11 @@
 <img class="tt_img_df" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/reddragon-1.jpg?v=1.0"/>
 <img class="tt_img_hover" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/reddragon-1.jpg?v=1.0"/>
 </figure>
-</div> 
+</div>
 <h3>Red Dragon</h3>
 </a>
-</div> 
-  
+</div>
+
 <div class="tt_list_game sport6">
 <a href="http://www.855bets.com/Default5.aspx" title="855 CROWN" target="_blank">
 <div class="tt-l tt_img banner_hover">
@@ -110,11 +101,11 @@
 <img class="tt_img_df" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/855crown-1.jpg?v=1.0"/>
 <img class="tt_img_hover" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/855crown-1.jpg?v=1.0"/>
 </figure>
-</div> 
+</div>
 <h3>855 CROWN</h3>
 </a>
-</div> 
-  
+</div>
+
 <div class="tt_list_game sport7">
 <a href="http://www.golddenslot.com" title="GOLDEN SLOT" target="_blank">
 <div class="tt-l tt_img banner_hover">
@@ -122,11 +113,11 @@
 <img class="tt_img_df" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/goldenslot-1.jpg?v=1.0"/>
 <img class="tt_img_hover" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/goldenslot-1.jpg?v=1.0"/>
 </figure>
-</div> 
+</div>
 <h3>GOLDEN SLOT</h3>
 </a>
-</div> 
-  
+</div>
+
 <div class="tt_list_game sport8">
 <a href="http://8vy9.ruby999.com" title="Royal Ruby" target="_blank">
 <div class="tt-l tt_img banner_hover">
@@ -134,11 +125,11 @@
 <img class="tt_img_df" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/royalruby-1.jpg?v=1.0"/>
 <img class="tt_img_hover" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/royalruby-1.jpg?v=1.0"/>
 </figure>
-</div> 
+</div>
 <h3>Royal Ruby</h3>
 </a>
-</div> 
-  
+</div>
+
 <div class="tt_list_game sport9">
 <a href="http://www.savanvegas.com" title="SAVAN VEGAS" target="_blank">
 <div class="tt-l tt_img banner_hover">
@@ -146,11 +137,11 @@
 <img class="tt_img_df" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/savanvagas-1.jpg?v=1.0"/>
 <img class="tt_img_hover" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/savanvagas-1.jpg?v=1.0"/>
 </figure>
-</div> 
+</div>
 <h3>SAVAN VEGAS</h3>
 </a>
-</div> 
-  
+</div>
+
 <div class="tt_list_game sport10">
 <a href="" title="COMING SOON" target="_blank">
 <div class="tt-l tt_img banner_hover">
@@ -158,11 +149,11 @@
 <img class="tt_img_df" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/comingsoon-1.jpg?v=1.0"/>
 <img class="tt_img_hover" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/comingsoon-1.jpg?v=1.0"/>
 </figure>
-</div> 
+</div>
 <h3>COMING SOON</h3>
 </a>
-</div> 
-  
+</div>
+
 <div class="tt_list_game sport11">
 <a href="" title="COMING SOON" target="_blank">
 <div class="tt-l tt_img banner_hover">
@@ -170,11 +161,11 @@
 <img class="tt_img_df" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/comingsoon-1.jpg?v=1.0"/>
 <img class="tt_img_hover" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/comingsoon-1.jpg?v=1.0"/>
 </figure>
-</div> 
+</div>
 <h3>COMING SOON</h3>
 </a>
-</div> 
-  
+</div>
+
 <div class="tt_list_game sport12">
 <a href="" title="COMING SOON" target="_blank">
 <div class="tt-l tt_img banner_hover">
@@ -182,15 +173,15 @@
 <img class="tt_img_df" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/comingsoon-1.jpg?v=1.0"/>
 <img class="tt_img_hover" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/comingsoon-1.jpg?v=1.0"/>
 </figure>
-</div> 
+</div>
 <h3>COMING SOON</h3>
 </a>
-</div> 
-  
+</div>
+
 </div>
 <div class="tt_l tt_full tt_ag_bt ct_bank">
 <img src="http://www.winwin97.com/wp-content/uploads/2017/03/banking-bg.jpg?v=1.0"/>
-<div class="tt_l tt_full link_bank"> 
+<div class="tt_l tt_full link_bank">
 <a class="tt_bank_btn" title="ธนาคารกรุงเทพ" target="_blank" href="https://ibanking.bangkokbank.com/SignOn.aspx"></a>
 <a class="tt_bank_btn" title="ธนาคารกสิกรไทย" target="_blank" href="http://www.kasikornbank.com/TH/Pages/Default.aspx"></a>
 <a class="tt_bank_btn" title="ธนาคารกรุงไทย" target="_blank" href="https://www.ktbnetbank.com/consumer/"></a>
@@ -202,7 +193,7 @@
 <div class="tt_l tt_full head_link"><a href="http://www.winwin97.com/sport/">
 <img src="http://www.winwin97.com/wp-content/uploads/2017/03/sp.png?v=1.0"/>
 </a></div>
- 
+
 <div class="tt_list_game sport1">
 <a href="http://www.pic5678.com" title="SBOBET" target="_blank">
 <div class="tt-l tt_img banner_hover">
@@ -210,11 +201,11 @@
 <img class="tt_img_df" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/sbobet-1.jpg?v=1.0"/>
 <img class="tt_img_hover" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/sbobet-1.jpg?v=1.0"/>
 </figure>
-</div> 
+</div>
 <h3>SBOBET</h3>
 </a>
-</div> 
-  
+</div>
+
 <div class="tt_list_game sport2">
 <a href="http://www.maxbet.com/Default.aspx" title="IBCBET" target="_blank">
 <div class="tt-l tt_img banner_hover">
@@ -222,11 +213,11 @@
 <img class="tt_img_df" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/ibcbet-1.jpg?v=1.0"/>
 <img class="tt_img_hover" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/ibcbet-1.jpg?v=1.0"/>
 </figure>
-</div> 
+</div>
 <h3>IBCBET</h3>
 </a>
-</div> 
-  
+</div>
+
 <div class="tt_list_game sport3">
 <a href="http://a684.afb2.linksbo.com/Default1.aspx" title="AFB88" target="_blank">
 <div class="tt-l tt_img banner_hover">
@@ -234,11 +225,11 @@
 <img class="tt_img_df" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/afb88-1.jpg?v=1.0"/>
 <img class="tt_img_hover" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/afb88-1.jpg?v=1.0"/>
 </figure>
-</div> 
+</div>
 <h3>AFB88</h3>
 </a>
-</div> 
-  
+</div>
+
 <div class="tt_list_game sport4">
 <a href="http://www.855cam.com/855win/Index.aspx?lang=th" title="855BET" target="_blank">
 <div class="tt-l tt_img banner_hover">
@@ -246,11 +237,11 @@
 <img class="tt_img_df" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/855bet-1.jpg?v=1.0"/>
 <img class="tt_img_hover" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/855bet-1.jpg?v=1.0"/>
 </figure>
-</div> 
+</div>
 <h3>855BET</h3>
 </a>
-</div> 
-  
+</div>
+
 <div class="tt_list_game sport5">
 <a href="http://www.m8bet2.linksbo.com/Default1.aspx?r=" title="M8BET" target="_blank">
 <div class="tt-l tt_img banner_hover">
@@ -258,11 +249,11 @@
 <img class="tt_img_df" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/m8bet-1.jpg?v=1.0"/>
 <img class="tt_img_hover" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/m8bet-1.jpg?v=1.0"/>
 </figure>
-</div> 
+</div>
 <h3>M8BET</h3>
 </a>
-</div> 
-  
+</div>
+
 <div class="tt_list_game sport6">
 <a href="http://m.88ken.com/apps/index.html" title="WINNING FT" target="_blank">
 <div class="tt-l tt_img banner_hover">
@@ -270,11 +261,11 @@
 <img class="tt_img_df" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/winningft-1.jpg?v=1.0"/>
 <img class="tt_img_hover" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/winningft-1.jpg?v=1.0"/>
 </figure>
-</div> 
+</div>
 <h3>WINNING FT</h3>
 </a>
-</div> 
-  
+</div>
+
 <div class="tt_list_game sport7">
 <a href="" title="COMING SOON" target="_blank">
 <div class="tt-l tt_img banner_hover">
@@ -282,11 +273,11 @@
 <img class="tt_img_df" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/comingsoon-1.jpg?v=1.0"/>
 <img class="tt_img_hover" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/comingsoon-1.jpg?v=1.0"/>
 </figure>
-</div> 
+</div>
 <h3>COMING SOON</h3>
 </a>
-</div> 
-  
+</div>
+
 <div class="tt_list_game sport8">
 <a href="" title="COMING SOON" target="_blank">
 <div class="tt-l tt_img banner_hover">
@@ -294,11 +285,11 @@
 <img class="tt_img_df" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/comingsoon-1.jpg?v=1.0"/>
 <img class="tt_img_hover" width="230"  height="155" src="http://www.winwin97.com/wp-content/uploads/2017/03/comingsoon-1.jpg?v=1.0"/>
 </figure>
-</div> 
+</div>
 <h3>COMING SOON</h3>
 </a>
-</div> 
-  
+</div>
+
 </div>
 </div>
 </div><div class="tt_main">
@@ -315,7 +306,7 @@
 <li id="menu-item-424" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-424"><a href="http://www.winwin97.com/golden-slot/">GOLDEN SLOT</a></li>
 <li id="menu-item-437" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-437"><a href="http://www.winwin97.com/royal-ruby/">Royal Ruby</a></li>
 <li id="menu-item-428" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-428"><a href="http://www.winwin97.com/savan-vegas/">SAVAN VEGAS</a></li>
-</ul></div> 
+</ul></div>
 </div>
 <div class="tt-l menu_li fr">
 <span>SPORT ONLINE</span>
@@ -325,7 +316,7 @@
 <li id="menu-item-442" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-442"><a href="http://www.winwin97.com/afb88/">AFB88</a></li>
 <li id="menu-item-444" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-444"><a href="http://www.winwin97.com/m8bet/">M8BET</a></li>
 <li id="menu-item-441" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-441"><a href="http://www.winwin97.com/winning-ft/">WINNING FT</a></li>
-</ul></div> 
+</ul></div>
 </div>
 </div>
 <!-- <div class="tt-l menu_footer">
@@ -338,15 +329,15 @@
 <li id="menu-item-293" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-293"><a href="http://www.winwin97.com/banking/">แจ้งฝาก – แจ้งถอน</a></li>
 <li id="menu-item-488" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-488"><a href="http://www.winwin97.com/live-score/">LIVE SCORE</a></li>
 <li id="menu-item-85" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-85"><a href="http://www.winwin97.com/contact/">ติดต่อเรา</a></li>
-</ul></div> 
+</ul></div>
 </div> -->
 <!-- <div class="tt-l tt-full copyright_footer">
 <span class="tt-l tt-full sc_copy">Copyright 2017 ©  <a title="Winwin97 : SPORT AND CASINO ONLINE" href="http://www.winwin97.com/">WINWIN97.COM </a> All Rights Reserved.</span>
  Histats.com  START (html only)
                   <a class="sc_his" href="http://www.histats.com" alt="page hit counter" target="_blank" >
-                  <embed src="http://s10.histats.com/205.swf"  flashvars="jver=1&acsid=2984737&domi=4"  quality="high"  width="255" height="27" name="205.swf"  align="middle" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" wmode="transparent" />        
-                </a> <img  src="http://sstatic1.histats.com/0.gif?2984737&101" alt="hit counter script" border="0"> 
-                  Histats.com  END  
+                  <embed src="http://s10.histats.com/205.swf"  flashvars="jver=1&acsid=2984737&domi=4"  quality="high"  width="255" height="27" name="205.swf"  align="middle" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" wmode="transparent" />
+                </a> <img  src="http://sstatic1.histats.com/0.gif?2984737&101" alt="hit counter script" border="0">
+                  Histats.com  END
 </div> -->
 </div>
 </div>
@@ -371,7 +362,7 @@ $.src="https://v2.zopim.com/?3niPlLGTJI3v1HqYrl1SegGuX9ZgA2fH";z.t=+new Date;$.
 type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
 </script>
 <!--End of Zendesk Chat Script-->
- 
+
 <!-- <div class="md-modal md-effect-11" id="modal-11">
 <div class="md-content">
 <a href=""><img src="http://www.winwin97.com/wp-content/uploads/2017/12/popup.jpg?v=1.0"/></a>

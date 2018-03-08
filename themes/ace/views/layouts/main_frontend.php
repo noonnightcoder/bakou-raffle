@@ -15,8 +15,6 @@
     <link href="<?=baseurl().'/css/materailize-icon.css'?>" rel="stylesheet">
     <link href="<?=baseurl().'/css/vuetify.min.css'?>" rel="stylesheet">
 
-   
-
     <?php
         if (Yii::app()->components['user']->loginRequiredAjaxResponse){
             Yii::app()->clientScript->registerScript('ajaxLoginRequired', '
@@ -35,7 +33,7 @@
 <body>
     
      <div id="app">
-         <v-app id="aspire" xs12 style="background-image:url('<?=baseurl().'/images/'?>bd_bg.png') !important;background-repeat:repeat !important; ">
+         <v-app id="aspire" style="background-image:url('<?=baseurl().'/images/'?>bd_bg.png') !important;background-repeat:repeat !important; ">
              <!-- Include content pages -->
              <?= $content ?>
              

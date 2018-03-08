@@ -22,6 +22,12 @@ new Vue({
                     {text:'Promotion',link:'#'},
                     {text:'Raffle Result',link:'#'},
                 ],
+                items: [
+                    { src: 'https://vuetifyjs.com/static/doc-images/carousel/squirrel.jpg' },
+                    { src: 'http://www.winwin97.com/wp-content/uploads/2017/03/slide02.jpg' },
+                    { src: 'http://www.winwin97.com/wp-content/uploads/2017/03/slide03.jpg?v=1.0' },
+                    { src: 'http://www.winwin97.com/wp-content/uploads/2017/03/slide04.jpg?v=1.0' }
+                ],
             }
         },
         created(){

@@ -23,7 +23,7 @@
           <v-toolbar-items v-for="(menu,i) in menus" :key="i" >
               <a :href="menu.link" style="font-size: 13px;text-decoration: none;color:#FFF; padding: 5px 10px 0px 10px;">
                     {{menu.text}}
-                </a>
+              </a>
           </v-toolbar-items>
     </v-toolbar>
     <div class="hidden-md-and-up">
