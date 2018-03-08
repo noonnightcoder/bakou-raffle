@@ -14,7 +14,7 @@
                 <v-divider></v-divider>
 
                 <v-flex xs12 sm12 md12>
-                    <?php $this->renderPartial('_winwin97_content') ?>
+                    <?php $this->renderPartial('winwin97') ?>
                 </v-flex>
 
             </v-flex>

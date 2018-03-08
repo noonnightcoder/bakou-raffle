@@ -59,9 +59,8 @@
                         </v-btn>
                     </v-toolbar-title>
                 </v-toolbar>
-                <v-divider></v-divider>
                 <v-content style="max-height: 350vh; overflow: hidden;">
-                    <div style="max-height:270px;overflow-y:scroll;backface-visibility:hidden;">
+                    <div style="max-height:300px;overflow-y:scroll;backface-visibility:hidden;">
                         <v-list v-if="luckyDraw.length>0">
                             <v-list-tile v-for="(ld,index) in luckyDraw" :key="index">
                                 <v-list-tile-content>
@@ -70,7 +69,7 @@
                                 {{ld.price}} บาท
                             </v-list-tile>
                         </v-list>
-                        <h1 v-else style="text-align: center;">
+                        <h1 v-else style="text-align: center;font-size: 30px !important;">
                             ยังไม่มีบัญชี
                         </h1>
                     </div>

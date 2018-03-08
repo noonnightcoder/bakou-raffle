@@ -22,8 +22,18 @@ new Vue({
                     {text:'Promotion',link:'#'},
                     {text:'Raffle Result',link:'#'},
                 ],
+                fmenus:[
+                    {text:'หน้าหลัก',link:'http://www.winwin97.com/'},
+                    {text:'คาสิโนออนไลน์',link:'http://www.winwin97.com/casino/'},
+                    {text:'สปอร์ตออนไลน์',link:'http://www.winwin97.com/sport/'},
+                    {text:'หวยออนไลน์',link:'http://www.winwin97.com/lotto/'},
+                    {text:'สมัครสมาชิก',link:'http://www.winwin97.com/register/'},
+                    {text:'โปรโมชั่น',link:'http://www.winwin97.com/promotion/'},
+                    {text:'แจ้งฝาก – แจ้งถอน',link:'http://www.winwin97.com/banking/'},
+                    {text:'LIVE SCORE',link:'http://www.winwin97.com/live-score/'},
+                    {text:'ติดต่อเรา',link:'http://www.winwin97.com/contact/'},
+                ],
                 items: [
-                    { src: 'https://vuetifyjs.com/static/doc-images/carousel/squirrel.jpg' },
                     { src: 'http://www.winwin97.com/wp-content/uploads/2017/03/slide02.jpg' },
                     { src: 'http://www.winwin97.com/wp-content/uploads/2017/03/slide03.jpg?v=1.0' },
                     { src: 'http://www.winwin97.com/wp-content/uploads/2017/03/slide04.jpg?v=1.0' }
