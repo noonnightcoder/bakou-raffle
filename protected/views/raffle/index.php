@@ -22,7 +22,6 @@
 </v-content>
 
 <!-- The footer suppose to include in theme/ace/views/layouts/tpl_footer_frontend.php but not work so put here :) to fix later -->
-<?php $this->renderPartial('_footer') ?>
 
 <?php $this->renderPartial('_contact') ?>
 

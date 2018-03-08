@@ -1,19 +1,6 @@
-<v-footer height="auto" class="grey darken-3">
-    <v-layout justify-center>
-        <!-- <div class="tt-l menu_footer">
-<div class="menu-menu-footer-container"><ul id="menu-menu-footer" class="nav"><li id="menu-item-80" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-80"><a href="http://www.winwin97.com/">หน้าหลัก</a></li>
-<li id="menu-item-81" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-81"><a href="http://www.winwin97.com/casino/">คาสิโนออนไลน์</a></li>
-<li id="menu-item-82" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-82"><a href="http://www.winwin97.com/sport/">สปอร์ตออนไลน์</a></li>
-<li id="menu-item-485" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-485"><a href="http://www.winwin97.com/lotto/">หวยออนไลน์</a></li>
-<li id="menu-item-146" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-146"><a href="http://www.winwin97.com/register/">สมัครสมาชิก</a></li>
-<li id="menu-item-83" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83"><a href="http://www.winwin97.com/promotion/">โปรโมชั่น</a></li>
-<li id="menu-item-293" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-293"><a href="http://www.winwin97.com/banking/">แจ้งฝาก – แจ้งถอน</a></li>
-<li id="menu-item-488" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-488"><a href="http://www.winwin97.com/live-score/">LIVE SCORE</a></li>
-<li id="menu-item-85" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-85"><a href="http://www.winwin97.com/contact/">ติดต่อเรา</a></li>
-</ul></div> 
-</div> -->
-		
-		<div style="padding: 10px 0px;">
+<!-- <v-footer height="auto" class="grey darken-3">
+    <v-layout justify-center> -->
+		<!-- <div style="padding: 10px 0px;">
 			<div>
 				<a class="fmenu" target="blank" color="white" flat v-for="(fmenu,i) in fmenus" :key="i" :href="fmenu.link" style="color:#FFF !important; text-decoration: none; padding: 15px 5px;margin-top:10px !important;">
 					{{fmenu.text}}
@@ -24,6 +11,88 @@
 					<span  style="color:#FFF !important; text-decoration: none;text-align: center;">Copyright 2017 ©  <a title="Winwin97 : SPORT AND CASINO ONLINE" href="http://www.winwin97.com/" style="color:#FFF !important; text-decoration: none;">WINWIN97.COM </a> All Rights Reserved.</span>
 			</center>
 			
-		</div>
+		</div> -->
+		<div class="tt_main">
+			<div class="tt_l tt_full tt-footer">
+				<div class="tt-l tt_full ct_menu_f">
+					<div class="tt-l menu_li fl">
+						<span>CASINO ONLINE</span>
+						<div class="menu-casino-online-container">
+							<ul id="menu-casino-online" class="nav">
+								<li id="menu-item-422" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-422">
+									<a href="http://www.winwin97.com/g-club/">G Club</a>
+								</li>
+								<li id="menu-item-423" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-423">
+									<a href="http://www.winwin97.com/genting-crown/">Genting Crown</a>
+								</li>
+								<li id="menu-item-425" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-425">
+									<a href="http://www.winwin97.com/green-dragon/">GREEN DRAGON</a>
+								</li>
+								<li id="menu-item-426" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-426">
+									<a href="http://www.winwin97.com/holiday-palace/">Holiday Palace</a>
+								</li>
+								<li id="menu-item-427" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-427">
+									<a href="http://www.winwin97.com/red-dragon/">Red Dragon</a>
+								</li>
+								<li id="menu-item-436" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-436">
+									<a href="http://www.winwin97.com/855-crown/">855 CROWN</a>
+								</li>
+								<li id="menu-item-424" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-424">
+									<a href="http://www.winwin97.com/golden-slot/">GOLDEN SLOT</a>
+								</li>
+								<li id="menu-item-437" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-437">
+									<a href="http://www.winwin97.com/royal-ruby/">Royal Ruby</a>
+								</li>
+								<li id="menu-item-428" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-428">
+									<a href="http://www.winwin97.com/savan-vegas/">SAVAN VEGAS</a>
+								</li>
+							</ul>
+						</div> 
+					</div>
+					<div class="tt-l menu_li fr">
+					<span>SPORT ONLINE</span>
+						<div class="menu-sport-online-container">
+							<ul id="menu-sport-online" class="nav">
+								<li id="menu-item-440" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-440">
+									<a href="http://www.winwin97.com/sbobet/">SBOBET</a>
+								</li>
+								<li id="menu-item-439" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-439">
+									<a href="http://www.winwin97.com/ibcbet/">IBCBET</a>
+								</li>
+								<li id="menu-item-438" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-438">
+									<a href="http://www.winwin97.com/855bet/">855BET</a>
+								</li>
+								<li id="menu-item-442" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-442">
+									<a href="http://www.winwin97.com/afb88/">AFB88</a>
+								</li>
+								<li id="menu-item-444" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-444">
+									<a href="http://www.winwin97.com/m8bet/">M8BET</a>
+								</li>
+								<li id="menu-item-441" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-441">
+									<a href="http://www.winwin97.com/winning-ft/">WINNING FT</a>
+								</li>
+							</ul>
+						</div> 
+					</div>
+				</div>
+				<div class="tt-l menu_footer">
+				<div class="menu-menu-footer-container">
+					<ul id="menu-menu-footer" class="nav">
+						<li id="menu-item-80" v-for="(fmenu,i) in fmenus" :key="i" :href="fmenu.link" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-80">
+							<a :href="fmenu.link" style="font-size: 13px;">{{fmenu.text}}</a>
+						</li>
+					</ul>
+				</div> 
+				</div>
+				<div class="tt-l tt-full copyright_footer">
+					<span class="tt-l tt-full sc_copy">Copyright 2017 ©  <a title="Winwin97 : SPORT AND CASINO ONLINE" href="http://www.winwin97.com/">WINWIN97.COM </a> All Rights Reserved.</span>
+					<!-- Histats.com  START (html only)-->
+					<a class="sc_his" href="http://www.histats.com" alt="page hit counter" target="_blank" >
+					<embed src="http://s10.histats.com/205.swf"  flashvars="jver=1&acsid=2984737&domi=4"  quality="high"  width="255" height="27" name="205.swf"  align="middle" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" wmode="transparent" />        
+					</a> <img  src="http://sstatic1.histats.com/0.gif?2984737&101" alt="hit counter script" border="0">
+					<!-- Histats.com  END  -->
+				</div>
+			</div>
+		</div><!-- 
     </v-layout>
-</v-footer>
+</v-footer> -->

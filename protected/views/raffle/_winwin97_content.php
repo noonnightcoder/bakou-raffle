@@ -2,7 +2,7 @@
 <div class="tt-l tt-full tt-ct pdh">
 <div class="tt_l tt-full tt_ag_bt mt-10">
 <a href="">
-<img src="http://www.winwin97.com/wp-content/uploads/2017/03/howtoplay-bg.jpg?v=1.0"/>
+<img src="http://www.winwin97.com/wp-content/uploads/2017/03/howtoplay-bg.jpg?v=1.0" width="100%" />
 </a>
 </div>
 <div class="tt_l tt_full sec_link">
@@ -269,6 +269,7 @@
 </div>
 </div>
 </div>
+
 <div class="overlay"></div>
 <script type='text/javascript' src='http://www.winwin97.com/wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.51.0-2014.06.20'></script>
 <script type='text/javascript'>

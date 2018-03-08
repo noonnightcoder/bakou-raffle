@@ -22,6 +22,106 @@ new Vue({
                     {text:'Promotion',link:'#'},
                     {text:'Raffle Result',link:'#'},
                 ],
+                /*fmenuGroups:[
+                    {
+                        group:'CASINO ONLINE',id:'menu-casino-online',class:'nav',items:[
+                            {
+                                text:'G Club',
+                                id:'menu-item-422',
+                                class:'menu-item menu-item-type-post_type menu-item-object-post menu-item-422',
+                                link:'http://www.winwin97.com/g-club/'
+                            },
+                            {
+                                text:'Genting Crown',
+                                id:'menu-item-423',
+                                class:'menu-item menu-item-type-post_type menu-item-object-post menu-item-423',
+                                link:'http://www.winwin97.com/genting-crown/'
+                            },
+                            {
+                                text:'GREEN DRAGON',
+                                id:'menu-item-425',
+                                class:'menu-item menu-item-type-post_type menu-item-object-post menu-item-425',
+                                link:'http://www.winwin97.com/green-dragon/'
+                            },
+                            {
+                                text:'Holiday Palace',
+                                id:'menu-item-426',
+                                class:'menu-item menu-item-type-post_type menu-item-object-post menu-item-426',
+                                link:'http://www.winwin97.com/holiday-palace/'
+                            },
+                            {
+                                text:'Red Dragon',
+                                id:'menu-item-427',
+                                class:'menu-item menu-item-type-post_type menu-item-object-post menu-item-427',
+                                link:'http://www.winwin97.com/red-dragon/'
+                            },
+                            {
+                                text:'855 CROWN',
+                                id:'menu-item-436',
+                                class:'menu-item menu-item-type-post_type menu-item-object-post menu-item-436',
+                                link:'http://www.winwin97.com/855-crown/'
+                            },
+                            {
+                                text:'GOLDEN SLOT',
+                                id:'menu-item-424',
+                                class:'menu-item menu-item-type-post_type menu-item-object-post menu-item-424',
+                                link:'http://www.winwin97.com/golden-slot/'
+                            },
+                            {
+                                text:'Royal Ruby',
+                                id:'menu-item-437',
+                                class:'menu-item menu-item-type-post_type menu-item-object-post menu-item-437',
+                                link:'http://www.winwin97.com/royal-ruby/'
+                            },
+                            {
+                                text:'SAVAN VEGAS',
+                                id:'menu-item-428',
+                                class:'menu-item menu-item-type-post_type menu-item-object-post menu-item-428',
+                                link:'http://www.winwin97.com/savan-vegas/'
+                            },
+                        ]
+                    },
+                    {
+                        group:'SPORT ONLINE',id:'menu-sport-online',class:'nav',items:[
+                            {
+                                text:'SBOBET',
+                                id:'menu-item-440',
+                                class:'menu-item menu-item-type-post_type menu-item-object-post menu-item-440',
+                                link:'http://www.winwin97.com/sbobet/'
+                            },
+                            {
+                                text:'IBCBET',
+                                id:'menu-item-439',
+                                class:'menu-item menu-item-type-post_type menu-item-object-post menu-item-439',
+                                link:'http://www.winwin97.com/ibcbet/'
+                            },
+                            {
+                                text:'855BET',
+                                id:'menu-item-438',
+                                class:'menu-item menu-item-type-post_type menu-item-object-post menu-item-438',
+                                link:'http://www.winwin97.com/855bet/'
+                            },
+                            {
+                                text:'AFB88',
+                                id:'menu-item-442',
+                                class:'menu-item menu-item-type-post_type menu-item-object-post menu-item-442',
+                                link:'http://www.winwin97.com/afb88/'
+                            },
+                            {
+                                text:'M8BET',
+                                id:'menu-item-444',
+                                class:'menu-item menu-item-type-post_type menu-item-object-post menu-item-444',
+                                link:'http://www.winwin97.com/m8bet/'
+                            },
+                            {
+                                text:'WINNING FT',
+                                id:'menu-item-441',
+                                class:'menu-item menu-item-type-post_type menu-item-object-post menu-item-441',
+                                link:'http://www.winwin97.com/winning-ft/'
+                            },
+                        ]
+                    }
+                ],*/
                 fmenus:[
                     {text:'หน้าหลัก',link:'http://www.winwin97.com/'},
                     {text:'คาสิโนออนไลน์',link:'http://www.winwin97.com/casino/'},

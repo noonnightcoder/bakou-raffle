@@ -6,7 +6,6 @@
                 <v-toolbar class="text-lg-center" color="blue-grey darken-2">
                     <v-toolbar-title class="white--text">เครดิตของคุณ</v-toolbar-title>
                 </v-toolbar>
-                <v-divider></v-divider>
 
                 <h3 style="font-size: 40px; text-align: center;">
                     {{credit}} บาท
@@ -24,7 +23,7 @@
                     </v-btn>
                 </div>
                 <v-divider></v-divider>
-                <h4 style="font-size: 25px; text-align: center;"><?= Yii::app()->session['emp_fullname'] ?>
+                <h4 style="font-size: 20px; text-align: center;"><?= Yii::app()->session['emp_fullname'] ?>
                 </h4>
                 <v-container>
                     <strong>DTAC: </strong>xxx xxx-xxx-xx<br>
