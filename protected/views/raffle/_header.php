@@ -15,8 +15,41 @@
 <v-flex xs12 sm12 md12  flat tile>
     <nav style="height: 30px !important;z-index: 1 !important;margin-top: -10px; color: #FFF">
     <v-toolbar class="hidden-sm-and-down text-sm-left" style="height: 30px !important; background-image: url('<?=baseurl().'/images/menu-bar-bg.png'?>');background-repeat: repeat-x;">
-           <v-toolbar-items>
-              <a href="/bakou-raffle/index.php/Raffle" style="font-size: 13px;text-decoration: none;color:#FFF; padding: 5px 10px 0px 10px;">
+
+        <v-toolbar-items>
+            <?= l(t('Home','app'),url('raffle/index'), array(
+                    'style' => 'font-size: 13px;text-decoration: none;color:#FFF; padding: 5px 10px 0px 10px;'
+            )); ?>
+
+            <?= l(t('Online Casino','app'),url('raffle/casino'), array(
+                'style' => 'font-size: 13px;text-decoration: none;color:#FFF; padding: 5px 10px 0px 10px;'
+            )); ?>
+
+            <?= l(t('Online Sport','app'),url('raffle/sport'), array(
+                'style' => 'font-size: 13px;text-decoration: none;color:#FFF; padding: 5px 10px 0px 10px;'
+            )); ?>
+
+            <?= l(t('Online Lottery','app'),url('raffle/lottery'), array(
+                'style' => 'font-size: 13px;text-decoration: none;color:#FFF; padding: 5px 10px 0px 10px;'
+            )); ?>
+
+            <?= l(t('Online Raffle','app'),url('raffle/index'), array(
+                'style' => 'font-size: 13px;text-decoration: none;color:#FFF; padding: 5px 10px 0px 10px;'
+            )); ?>
+
+            <?= l(t('Promotion','app'),url('raffle/promotion'), array(
+                'style' => 'font-size: 13px;text-decoration: none;color:#FFF; padding: 5px 10px 0px 10px;'
+            )); ?>
+
+            <?= l(t('Raffle Result','app'),url('raffle/result'), array(
+                'style' => 'font-size: 13px;text-decoration: none;color:#FFF; padding: 5px 10px 0px 10px;'
+            )); ?>
+
+        </v-toolbar-items>
+
+        <!-- I change to Yii way for time being, it's a bit hard to add URL text link address with translation in _js.js file -->
+        <!--<v-toolbar-items>
+               <a href="#" style="font-size: 13px;text-decoration: none;color:#FFF; padding: 5px 10px 0px 10px;">
                     Home
                 </a>
           </v-toolbar-items>
@@ -24,13 +57,16 @@
               <a :href="menu.link" style="font-size: 13px;text-decoration: none;color:#FFF; padding: 5px 10px 0px 10px;">
                     {{menu.text}}
               </a>
-          </v-toolbar-items>
+          </v-toolbar-items>-->
     </v-toolbar>
-    <div class="hidden-md-and-up">
+
+        <!-- What is this block for in the page - Lux -->
+
+    <!--<div class="hidden-md-and-up">
       <v-expansion-panel >
         <v-expansion-panel-content style="background-color: #660607; color: #FFF" >
           <div slot="header" style="margin-top: -5px;">
-            <a href='/bakou-raffle/index.php/Raffle/' style="font-size: 13px;text-decoration: none;color:#FFF; padding: 5px 10px 0px 10px; margin-left: -20px;">Home</a>
+            <a href='#' style="font-size: 13px;text-decoration: none;color:#FFF; padding: 5px 10px 0px 10px; margin-left: -20px;">Home</a>
           </div>
             <div scrollable style="max-height:350px;overflow-y:scroll;backface-visibility:hidden;z-index: 1000;position: relative;">
               <v-card v-for="(menu,i) in menus" :key="i" style="background-color: #660607;margin-top: -20px;">
@@ -41,7 +77,8 @@
           </div>
         </v-expansion-panel-content>
       </v-expansion-panel>
-    </div>
+    </div>-->
+        
   </nav>
 	
 </v-flex>

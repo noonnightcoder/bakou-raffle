@@ -22,7 +22,7 @@ class RaffleController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','login','onlinecasino','onlinesport','onlinelottery','promotion'),
+				'actions'=>array('index','view','login','Casino','Sport','Lottery','promotion'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -38,70 +38,34 @@ class RaffleController extends Controller
 			),
 		);
 	}
+
 	public function actionIndex()
 	{
-
-        $dataProvider = new CActiveDataProvider('Raffle');
-        $this->render('index', array(
-            'dataProvider' => $dataProvider,
-        ));
+        $this->render('index');
 	}
 
 	public function actionLogin()
 	{
-		$dataProvider = new CActiveDataProvider('Raffle');
-		$this->render('_login',array(
-			'dataProvider'=>$dataProvider
-		));
-	}
-	public function actionOnlineCasino(){
-		$dataProvider = new CActiveDataProvider('Raffle');
-		$this->render('_online_casino',array(
-			'dataProvider'=>$dataProvider
-		));
-	}
-	public function actionOnlineSport(){
-		$dataProvider = new CActiveDataProvider('Raffle');
-		$this->render('_online_sport',array(
-			'dataProvider'=>$dataProvider
-		));
-	}
-	public function actionOnlineLottery(){
-		$dataProvider = new CActiveDataProvider('Raffle');
-		$this->render('_online_lottery',array(
-			'dataProvider'=>$dataProvider
-		));
-	}
-	public function actionPromotion(){
-		$dataProvider = new CActiveDataProvider('Raffle');
-		$this->render('_promotion',array(
-			'dataProvider'=>$dataProvider
-		));
-	}
-	// Uncomment the following methods and override them if needed
-	/*
-	public function filters()
-	{
-		// return the filter configuration for this controller, e.g.:
-		return array(
-			'inlineFilterName',
-			array(
-				'class'=>'path.to.FilterClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
+		$this->render('_login');
 	}
 
-	public function actions()
-	{
-		// return external action classes, e.g.:
-		return array(
-			'action1'=>'path.to.ActionClass',
-			'action2'=>array(
-				'class'=>'path.to.AnotherActionClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
+	public function actionCasino()
+    {
+		$this->render('_online_casino');
 	}
-	*/
+
+	public function actionSport()
+    {
+		$this->render('_online_sport');
+	}
+
+	public function actionLottery()
+    {
+		$this->render('_online_lottery');
+	}
+
+	public function actionPromotion(){
+
+		$this->render('_promotion');
+	}
 }
