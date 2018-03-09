@@ -16,10 +16,10 @@ new Vue({
                 links: ['Home', 'About Us', 'Team', 'Services', 'Contact Us'],
                 menus:[
                     {text:'Online Casino',link:'http://localhost/bakou-raffle/index.php/Raffle/OnlineCasino'},
-                    {text:'Online Sport',link:'#'},
-                    {text:'Online Lottery',link:'#'},
+                    {text:'Online Sport',link:'http://localhost/bakou-raffle/index.php/Raffle/OnlineSport'},
+                    {text:'Online Lottery',link:'http://localhost/bakou-raffle/index.php/Raffle/OnlineLottery'},
                     {text:'Online Raffle',link:'#'},
-                    {text:'Promotion',link:'#'},
+                    {text:'Promotion',link:'http://localhost/bakou-raffle/index.php/Raffle/Promotion/'},
                     {text:'Raffle Result',link:'#'},
                 ],
                 /*fmenuGroups:[

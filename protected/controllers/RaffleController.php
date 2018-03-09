@@ -22,7 +22,7 @@ class RaffleController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','login','onlinecasino'),
+				'actions'=>array('index','view','login','onlinecasino','onlinesport','onlinelottery','promotion'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -56,11 +56,28 @@ class RaffleController extends Controller
 	}
 	public function actionOnlineCasino(){
 		$dataProvider = new CActiveDataProvider('Raffle');
-		$this->render('online_casino',array(
+		$this->render('_online_casino',array(
 			'dataProvider'=>$dataProvider
 		));
 	}
-
+	public function actionOnlineSport(){
+		$dataProvider = new CActiveDataProvider('Raffle');
+		$this->render('_online_sport',array(
+			'dataProvider'=>$dataProvider
+		));
+	}
+	public function actionOnlineLottery(){
+		$dataProvider = new CActiveDataProvider('Raffle');
+		$this->render('_online_lottery',array(
+			'dataProvider'=>$dataProvider
+		));
+	}
+	public function actionPromotion(){
+		$dataProvider = new CActiveDataProvider('Raffle');
+		$this->render('_promotion',array(
+			'dataProvider'=>$dataProvider
+		));
+	}
 	// Uncomment the following methods and override them if needed
 	/*
 	public function filters()
