@@ -61,8 +61,9 @@
     </v-toolbar>
 
         <!-- What is this block for in the page - Lux -->
+        <!--this is menu responsive when user use website via mobile-->
 
-    <!--<div class="hidden-md-and-up">
+    <div class="hidden-md-and-up">
       <v-expansion-panel >
         <v-expansion-panel-content style="background-color: #660607; color: #FFF" >
           <div slot="header" style="margin-top: -5px;">
@@ -77,7 +78,7 @@
           </div>
         </v-expansion-panel-content>
       </v-expansion-panel>
-    </div>-->
+    </div>
         
   </nav>
 	

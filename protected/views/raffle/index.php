@@ -12,7 +12,6 @@
                 </v-card>
 
                 <v-flex xs12 sm12 md12>
-                    <?php $this->renderPartial('_carousel'); ?>
                     <?php $this->renderPartial('_winwin97_content');?>
                     <?php $this->renderPartial('_footer') ?>
                 </v-flex>

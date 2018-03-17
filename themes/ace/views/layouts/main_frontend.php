@@ -9,8 +9,11 @@
     <?php
         $cs = Yii::app()->getClientScript();
         $cs->registerScriptFile(baseurl().'/js/jquery.min.js',CClientScript::POS_BEGIN);
+ 
+        $cs->registerScriptFile(baseurl().'/js/vue.js',CClientScript::POS_END);
+        $cs->registerScriptFile(baseurl().'/js/vuetify.js',CClientScript::POS_END);
+        $cs->registerScriptFile(baseurl().'/js/_js.js',CClientScript::POS_END);
     ?>
-
 
     <link href="<?=baseurl().'/css/materailize-icon.css'?>" rel="stylesheet">
     <link href="<?=baseurl().'/css/vuetify.min.css'?>" rel="stylesheet">
@@ -50,10 +53,6 @@
              
          </v-app>
     </div>
-    <?php
-        $cs->registerScriptFile(baseurl().'/js/vue.js',CClientScript::POS_END);
-        $cs->registerScriptFile(baseurl().'/js/vuetify.js',CClientScript::POS_END);
-        $cs->registerScriptFile(baseurl().'/js/_js.js',CClientScript::POS_END);
-    ?>
+    
 </body>
 </html>

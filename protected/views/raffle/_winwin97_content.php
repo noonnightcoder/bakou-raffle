@@ -1,6 +1,6 @@
 <div class="tt_main">
 <div class="tt-l tt-full tt-ct pdh">
-<div class="tt_l tt-full tt_ag_bt mt-10">
+<!-- <div class="tt_l tt-full tt_ag_bt mt-10">
 <a href="">
 <img src="http://www.winwin97.com/wp-content/uploads/2017/03/howtoplay-bg.jpg?v=1.0" width="100%" />
 </a>
@@ -44,7 +44,7 @@
 </div> 
 <h3>GREEN DRAGON</h3>
 </a>
-</div> 
+</div>  
   
 <div class="tt_list_game sport4">
 <a href="https://simpson.viva9988.com" title="Holiday Palace" target="_blank">
@@ -154,10 +154,10 @@
 </a>
 </div> 
   
-</div>
+</div>-->
 <div class="tt_l tt_full tt_ag_bt ct_bank">
 <img src="http://www.winwin97.com/wp-content/uploads/2017/03/banking-bg.jpg?v=1.0"/>
-<div class="tt_l tt_full link_bank"> 
+<!-- <div class="tt_l tt_full link_bank"> 
 <a class="tt_bank_btn" title="ธนาคารกรุงเทพ" target="_blank" href="https://ibanking.bangkokbank.com/SignOn.aspx"></a>
 <a class="tt_bank_btn" title="ธนาคารกสิกรไทย" target="_blank" href="http://www.kasikornbank.com/TH/Pages/Default.aspx"></a>
 <a class="tt_bank_btn" title="ธนาคารกรุงไทย" target="_blank" href="https://www.ktbnetbank.com/consumer/"></a>
@@ -267,11 +267,11 @@
 </div> 
   
 </div>
-</div>
+</div> -->
 </div>
 
-<div class="overlay"></div>
-<script type='text/javascript' src='http://www.winwin97.com/wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.51.0-2014.06.20'></script>
+<!-- <div class="overlay"></div> -->
+<!-- <script type='text/javascript' src='http://www.winwin97.com/wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.51.0-2014.06.20'></script>
 <script type='text/javascript'>
 /* <![CDATA[ */
 var _wpcf7 = {"recaptcha":{"messages":{"empty":"Please verify that you are not a robot."}}};
@@ -279,7 +279,7 @@ var _wpcf7 = {"recaptcha":{"messages":{"empty":"Please verify that you are not a
 </script>
 <script type='text/javascript' src='http://www.winwin97.com/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.7'></script>
 <script type='text/javascript' src='http://www.winwin97.com/wp-includes/js/wp-embed.min.js?ver=4.7.9'></script>
-<script type="text/javascript" src="http://www.winwin97.com/wp-content/themes/ThaiTheme-SBO/js/jquery-1.10.2.min.js?v=1.1520514968"></script>
+<script type="text/javascript" src="http://www.winwin97.com/wp-content/themes/ThaiTheme-SBO/js/jquery-1.10.2.min.js?v=1.1520514968"></script> -->
 <!-- <script type="text/javascript" src="http://www.winwin97.com/wp-content/themes/ThaiTheme-SBO/js/owl.carousel.min.js?v=1.1520514968"></script> -->
 <!-- <script type="text/javascript" src="http://www.winwin97.com/wp-content/themes/ThaiTheme-SBO/js/thaitheme.min.js?v=1.1520514968"></script> -->
 <!--Start of Zendesk Chat Script-->
@@ -291,5 +291,5 @@ $.src="https://v2.zopim.com/?3niPlLGTJI3v1HqYrl1SegGuX9ZgA2fH";z.t=+new Date;$.
 type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
 </script> -->
 <!--End of Zendesk Chat Script-->
-
-<script type="text/javascript" src="http://www.winwin97.com/wp-content/themes/ThaiTheme-SBO/js/modalEffects.js?v=1.1520514968"></script>
+<!-- 
+<script type="text/javascript" src="http://www.winwin97.com/wp-content/themes/ThaiTheme-SBO/js/modalEffects.js?v=1.1520514968"></script> -->

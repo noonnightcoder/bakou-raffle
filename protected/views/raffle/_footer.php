@@ -86,11 +86,7 @@
 				</div>
 				<div class="tt-l tt-full copyright_footer">
 					<span class="tt-l tt-full sc_copy">Copyright 2017 ©  <a title="Winwin97 : SPORT AND CASINO ONLINE" href="http://www.winwin97.com/">WINWIN97.COM </a> All Rights Reserved.</span>
-					<!-- Histats.com  START (html only)-->
-					<a class="sc_his" href="http://www.histats.com" alt="page hit counter" target="_blank" >
-					<embed src="http://s10.histats.com/205.swf"  flashvars="jver=1&acsid=2984737&domi=4"  quality="high"  width="255" height="27" name="205.swf"  align="middle" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" wmode="transparent" />        
-					</a> <img  src="http://sstatic1.histats.com/0.gif?2984737&101" alt="hit counter script" border="0">
-					<!-- Histats.com  END  -->
+					
 				</div>
 			</div>
 		</div><!-- 

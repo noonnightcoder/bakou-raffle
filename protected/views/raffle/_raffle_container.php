@@ -58,8 +58,8 @@
                         </v-btn>
                     </v-toolbar-title>
                 </v-toolbar>
-                <v-content style="max-height: 350vh; overflow: hidden;">
-                    <div style="max-height:300px;overflow-y:scroll;backface-visibility:hidden;">
+                <v-content style="height:350vh;max-height: 350vh; overflow: hidden;">
+                    <div style="height:300px;max-height:300px;overflow-y:scroll;backface-visibility:hidden;">
                         <v-list v-if="luckyDraw.length>0">
                             <v-list-tile v-for="(ld,index) in luckyDraw" :key="index">
                                 <v-list-tile-content>
