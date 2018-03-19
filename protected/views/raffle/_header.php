@@ -14,36 +14,44 @@
 <!-- Updated upstream  -->
 <v-flex xs12 sm12 md12  flat tile>
     <nav style="height: 30px !important;z-index: 1 !important;margin-top: -10px; color: #FFF">
-    <v-toolbar class="hidden-sm-and-down text-sm-left" style="height: 30px !important; background-image: url('<?=baseurl().'/images/menu-bar-bg.png'?>');background-repeat: repeat-x;">
+    <v-toolbar class="hidden-sm-and-down text-sm-left" style="height: 30px !important; background-color:#ffe8a0;background-repeat: repeat-x;">
 
         <v-toolbar-items>
             <?= l(t('Home','app'),url('raffle/index'), array(
-                    'style' => 'font-size: 13px;text-decoration: none;color:#FFF; padding: 5px 10px 0px 10px;'
+                    'style' => 'font-size: 13px;text-decoration: none;color: #333; padding: 5px 10px 0px 10px;'
             )); ?>
 
-            <?= l(t('Online Casino','app'),url('raffle/casino'), array(
-                'style' => 'font-size: 13px;text-decoration: none;color:#FFF; padding: 5px 10px 0px 10px;'
-            )); ?>
-
-            <?= l(t('Online Sport','app'),url('raffle/sport'), array(
-                'style' => 'font-size: 13px;text-decoration: none;color:#FFF; padding: 5px 10px 0px 10px;'
-            )); ?>
-
-            <?= l(t('Online Lottery','app'),url('raffle/lottery'), array(
-                'style' => 'font-size: 13px;text-decoration: none;color:#FFF; padding: 5px 10px 0px 10px;'
-            )); ?>
-
-            <?= l(t('Online Raffle','app'),url('raffle/index'), array(
-                'style' => 'font-size: 13px;text-decoration: none;color:#FFF; padding: 5px 10px 0px 10px;'
-            )); ?>
-
-            <?= l(t('Promotion','app'),url('raffle/promotion'), array(
-                'style' => 'font-size: 13px;text-decoration: none;color:#FFF; padding: 5px 10px 0px 10px;'
+            <?= l(t('Raffle History','app'),url('raffle/history'), array(
+                'style' => 'font-size: 13px;text-decoration: none;color: #333; padding: 5px 10px 0px 10px;'
             )); ?>
 
             <?= l(t('Raffle Result','app'),url('raffle/result'), array(
-                'style' => 'font-size: 13px;text-decoration: none;color:#FFF; padding: 5px 10px 0px 10px;'
+                'style' => 'font-size: 13px;text-decoration: none;color: #333; padding: 5px 10px 0px 10px;'
             )); ?>
+
+            <!-- <?= l(t('Online Casino','app'),url('raffle/casino'), array(
+                'style' => 'font-size: 13px;text-decoration: none;color: #333; padding: 5px 10px 0px 10px;'
+            )); ?>
+
+            <?= l(t('Online Sport','app'),url('raffle/sport'), array(
+                'style' => 'font-size: 13px;text-decoration: none;color: #333; padding: 5px 10px 0px 10px;'
+            )); ?>
+
+            <?= l(t('Online Lottery','app'),url('raffle/lottery'), array(
+                'style' => 'font-size: 13px;text-decoration: none;color: #333; padding: 5px 10px 0px 10px;'
+            )); ?>
+
+            <?= l(t('Online Raffle','app'),url('raffle/index'), array(
+                'style' => 'font-size: 13px;text-decoration: none;color: #333; padding: 5px 10px 0px 10px;'
+            )); ?>
+
+            <?= l(t('Promotion','app'),url('raffle/promotion'), array(
+                'style' => 'font-size: 13px;text-decoration: none;color: #333; padding: 5px 10px 0px 10px;'
+            )); ?>
+
+            <?= l(t('Raffle Result','app'),url('raffle/result'), array(
+                'style' => 'font-size: 13px;text-decoration: none;color: #333; padding: 5px 10px 0px 10px;'
+            )); ?> -->
 
         </v-toolbar-items>
 

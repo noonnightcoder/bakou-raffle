@@ -58,7 +58,7 @@
                                     <?php endif;?>
                                 </v-flex>
                             </v-container>
-                                <v-flex xs12">
+                                <v-flex xs12>
                                         <?= TbHtml::submitButton(Yii::t('app', 'Login'),array(
                                             'color'=>'warning',
                                             'style'=>'background-color: yellow;padding:5px 0px 5px 0px; border-radius: 1px;border: solid 1px #FFFFFF;width:90%;margin:10px 0px 10px 21px;',

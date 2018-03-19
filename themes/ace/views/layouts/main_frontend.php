@@ -42,12 +42,20 @@
                 ');
         }
     ?>
+    <style type="text/css">
+        .my-grid-table{
+            width: 100%;
+            padding: 3px 10px;
+            border:solid 1px #CCC;
+        }
+    </style>
 </head>
 
 <body>
     
      <div id="app">
-         <v-app id="aspire" style="background-image:url('<?=baseurl().'/images/'?>bd_bg.png') !important;background-repeat:repeat !important; ">
+         <!-- <v-app id="aspire" style="background-image:url('<?=baseurl().'/images/'?>bd_bg.png') !important;background-repeat:repeat !important; "> -->
+        <v-app style="background-color: #e5e1d5;">
              <!-- Include content pages -->
              <?= $content ?>
              

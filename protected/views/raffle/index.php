@@ -3,18 +3,16 @@
         <v-layout justify-center>
             <v-flex xs12 sm9 md9>
 
-                <v-card class="elevation-12"  color="blue-grey darken-4" >
+                <v-card class="elevation-12"  >
 
                     <?php $this->renderPartial('_header') ?>
 
                     <?php $this->renderPartial('_raffle_container') ?>
-
+                    <img src="http://www.winwin97.com/wp-content/uploads/2017/03/banking-bg.jpg?v=1.0"/>
+                    <?php $this->renderPartial('_footer') ?>
                 </v-card>
 
-                <v-flex xs12 sm12 md12>
-                    <?php $this->renderPartial('_winwin97_content');?>
-                    <?php $this->renderPartial('_footer') ?>
-                </v-flex>
+                
 
             </v-flex>
 
