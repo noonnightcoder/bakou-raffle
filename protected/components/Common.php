@@ -1,5 +1,5 @@
 <?php
-Class Common 
+Class Common extends CApplicationComponent
 {
     public static function Discount($discount) {
         if (substr($discount, 0, 1) == '$') {
@@ -167,4 +167,29 @@ Class Common
         return Yii::app()->settings->get('site', 'invoicePrefix') == '' ? '' : Yii::app()->settings->get('site', 'invoicePrefix');
     }
 
+    public function convertArray($array)
+    {
+        $array_3dimension = array();
+        $rst_array = array();
+        $prize_no = array();
+
+        //Convert to 3 multidimensional array without key
+        foreach ($array as $rows)
+        {
+            $array_3dimension[$rows['date']][$rows['text']][]=$rows['result'];
+        }
+
+        //Add the key to 3 multidimensional array
+        foreach ($array_3dimension as $date_key=>$date)
+        {
+            foreach ($date as $text_key=>$text)
+            {
+                $prize_no[]=array('text'=>$text_key,'result'=>$text);
+            }
+            $rst_array[]=array('date'=>$date_key,'priceNo'=>$prize_no);
+            unset($prize_no); //reset array to assign another value in next loop
+        }
+
+        return $rst_array;
+    }
 }
