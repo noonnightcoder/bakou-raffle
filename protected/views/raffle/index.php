@@ -40,3 +40,4 @@
 
 <!-- Will check why register JS in Yii way not working here -->
 <?php /*Yii::app()->clientScript->registerScriptFile(Yii::app()->basePath .'/views/raffle/_js.js', CClientScript::POS_END); */?>
+<?php $this->renderPartial('_js')?>

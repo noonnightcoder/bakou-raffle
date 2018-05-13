@@ -18,7 +18,7 @@
 
                 <div class="text-lg-right">
                     <v-btn xs12 sm12 md12 style="background-color:#ffe8a0;"
-                           @click="insertLuckyNumber"
+                           @click="insertLuckyNumber(1)"
                            :disabled="betAmount>0 & betAmount<=credit & credit>0?false:true">
                         Lucky Draw
                     </v-btn>

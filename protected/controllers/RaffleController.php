@@ -79,32 +79,48 @@ class RaffleController extends Controller
 	public function actionPickupTicket()
 	{
 		$Raffle = new Raffle();
-
+		$status=false;
+		$msg='';
+		$act=$_GET['act'];
 		try {
 			$myID = Yii::app()->user->getId();
 
 			$chk_bal = Account::model()->find('client_id = :clientID',array(':clientID' => $myID)); //check balance of customer first if >0
-
 			if(!empty($chk_bal) and $chk_bal->current_balance >0)
 			{
-				$my_ticket = $Raffle->pickupTicket($myID);
-				$arr = explode('|', $my_ticket); //convert return back from sql to array
-				if ($arr[0]==1 and !empty($arr)) //check if balance enough to buy the ticket
-				{
-					Yii::app()->shoppingCart->addTicket2List($arr[1],$arr[2]);
-					$msg = "Successful";
-				}else{
-					$msg = "Cannot provide the ticket";
-				}
+
+					$my_ticket = $Raffle->pickupTicket($myID);
+					$arr = explode('|', $my_ticket); //convert return back from sql to array
+					if ($arr[0]==1 and !empty($arr)) //check if balance enough to buy the ticket
+					{
+						
+						Yii::app()->shoppingCart->addTicket2List($arr[1],$arr[2]);
+						$msg = "Successful";
+						$status=true;
+						
+						
+					}else{
+						$msg = "Cannot provide the ticket";
+						$status=false;
+					}
+				
 			}else{
-				$msg = "Cannot provide the ticket";
+				$msg = "Cannot provide the ticket, not enough balance!";
+				$status=false;
 			}
 		}catch (Exception $e) {
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
 
 		$myResult=Yii::app()->shoppingCart->getTicketList();
-		echo json_encode($myResult);
+		echo json_encode(
+			array(
+				'status'=>$status,
+				'message'=>$msg,
+				'balance'=>$chk_bal->current_balance,
+				'result'=>$myResult
+			)
+		);
 	}
 
 	public function actionGetTicketList()
@@ -127,6 +143,7 @@ class RaffleController extends Controller
 	{
 		$Raffle = new Raffle();
 		$myList = $Raffle->getResult7Day();
-		echo json_encode($myList);
+		//echo json_encode($myList);
+		echo CJSON::encode($myList);
 	}
 }

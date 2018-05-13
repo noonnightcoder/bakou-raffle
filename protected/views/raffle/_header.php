@@ -110,5 +110,5 @@
     }
 </style>
 <script type="text/javascript">
-    document.getElementsByClassName('header__icon').style.margin-top=-20px;
+   // document.getElementsByClassName('header__icon').style.margin-top=-20px;
 </script>
