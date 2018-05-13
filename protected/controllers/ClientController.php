@@ -97,17 +97,17 @@ class ClientController extends Controller
 
         if (Yii::app()->user->checkAccess('client.create')) {
             if (isset($_POST['Client'])) {
-                $model->attributes = $_POST['Client'];
-                $contact->attributes = $_POST['Contact'];
+                $data['model']->attributes = $_POST['Client'];
+                $data['contact']->attributes = $_POST['Contact'];
 
                 if ($_POST['Client']['year'] !== "" || $_POST['Client']['month'] !== "" || $_POST['Client']['day'] !== "") {
                     $dob = $_POST['Client']['year'] . '-' . $_POST['Client']['month'] . '-' . $_POST['Client']['day'];
-                    $model->dob = $dob;
+                    $data['model']->dob = $dob;
                 }
 
                 // validate BOTH $a and $b
-                $valid = $model->validate();
-                $valid = $contact->validate() && $valid;
+                $valid = $data['model']->validate();
+                $valid = $data['contact']->validate() && $valid;
 
                 //if ($model->validate()) {
                 if ($valid) {
@@ -115,14 +115,14 @@ class ClientController extends Controller
                     try {
 
                         if (isset($_POST['Contact'])) {
-                            $contact->save();
-                            $model->contact_id = $contact->id;
+                            $data['contact']->save();
+                            $data['model']->contact_id = $data['contact']->id;
                         }
 
-                        if ($model->save()) {
-                            $client_id = $model->id;
-                            $client_fname = $model->first_name . ' ' . $model->last_name;
-                            $price_tier_id = $model->price_tier_id;
+                        if ($data['model']->save()) {
+                            $client_id = $data['model']->id;
+                            $client_fname = $data['model']->first_name . ' ' . $data['model']->last_name;
+                            $price_tier_id = $data['model']->price_tier_id;
 
                             Account::model()->saveAccount($client_id, $client_fname);
                             $transaction->commit();
@@ -133,28 +133,14 @@ class ClientController extends Controller
                                 $this->redirect(array('saleItem/index'));
                             } else {
                                 Yii::app()->user->setFlash(TbHtml::ALERT_COLOR_SUCCESS,
-                                    '<strong>' . ucfirst($model->first_name) . '</strong> have been saved successfully!');
+                                    '<strong>' . ucfirst($data['model']->first_name) . '</strong> have been saved successfully!');
                                 $this->redirect(array('create'));
                             }
-
-                            /* Decide to not using Modal diaglog for CRUD form
-                            Yii::app()->clientScript->scriptMap['jquery.js'] = false;
-                            echo CJSON::encode(array(
-                               'status'=>'success',
-                               'div'=>"<div class=alert alert-info fade in>Successfully added ! </div>",
-                               ));
-
-                            Yii::app()->end();
-                             *
-                            */
                         }
                     } catch (CDbException $e) {
                         $transaction->rollback();
-                        //Yii::app()->user->setFlash('error', "{$e->getMessage()}");
-                        Yii::app()->user->setFlash(TbHtml::ALERT_COLOR_WARNING,
-                            'Oop something wrong : <strong>' . $e->getMessage());
+                        Yii::app()->user->setFlash(TbHtml::ALERT_COLOR_WARNING,'Oop something wrong : <strong>' . $e->getMessage());
                     }
-
                 } else {
                     $has_error = "has-error";
                 }
@@ -176,7 +162,10 @@ class ClientController extends Controller
             echo CJSON::encode(array(
                 'status' => 'render',
                 'div' => $this->renderPartial('_form',
-                    array('model' => $model, 'contact' => $contact, 'has_error' => $has_error), true, false),
+                    array('model' => $data['model'],
+                            'contact' => $data['contact'],
+                            'user'=>$data['user'],'disabled'=>$data['disabled'],
+                            'has_error' => $has_error), true, false),
             ));
 
             Yii::app()->end();
@@ -251,7 +240,9 @@ class ClientController extends Controller
     {
         $model = $this->loadModel($id);
         $contact = Contact::model()->conatctByID($model->contact_id);
+        $data['user'] = new RbacUser;
         $has_error = "";
+        $data['disabled'] = "";
 
         if (!$contact) {
             $contact = New Contact;
