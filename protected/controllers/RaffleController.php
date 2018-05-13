@@ -81,7 +81,6 @@ class RaffleController extends Controller
 		$Raffle = new Raffle();
 		$status=false;
 		$msg='';
-		$act=$_GET['act'];
 		try {
 			$myID = Yii::app()->user->getId();
 
