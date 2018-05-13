@@ -40,20 +40,11 @@
     
         <?php if (PriceTier::model()->checkExists()<>0) { ?>
             <p>
-                <?= $form->dropDownListControlGroup($model,'tier_id', PriceTier::model()->getPriceTier(),array('id'=>'price_tier_id',
+                <?php echo $form->dropDownListControlGroup($model,'tier_id', PriceTier::model()->getPriceTier(),array('id'=>'price_tier_id',
                     'options'=>array(Yii::app()->shoppingCart->getPriceTier()=>array('selected'=>true)),
                     'class'=>'col-xs-10 col-sm-8','empty'=>'None','labelOptions'=>array('label'=>Yii::t('app','Item Tier')))); ?>
 
             </p>
         <?php } ?>
-
-        <br /> <br />
-
-        <?= $form->dropDownListControlGroup($model,'payment_term', Common::arrayFactory('payment_term'),
-                array('id'=>'payment_term_id',
-                      'options'=>array($cust_term=>array('selected'=>true)),
-                      'class'=>'col-xs-10 col-sm-8',
-                      'labelOptions'=>array('label'=>Yii::t('app','Term'))));
-        ?>
-
+        
 <?php $this->endWidget(); ?>

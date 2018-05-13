@@ -15,6 +15,8 @@
         )
     )); ?>
 
+<?php /*echo CHtml::dropDownList('Client_district_id','', array()); */?>
+
 <?= $form->dropDownListControlGroup($model, 'district_id', District::model()->getDistrict(),
     array(
         'class' => 'span3',
@@ -40,7 +42,3 @@
         'empty' => Yii::t('app', 'Select Village'),
     )
 ); ?>
-
-<?= $form->textFieldControlGroup($model, 'gps_n', array('class' => 'span3', 'maxlength' => 25)); ?>
-
-<?= $form->textFieldControlGroup($model, 'gps_e', array('class' => 'span3', 'maxlength' => 25)); ?>

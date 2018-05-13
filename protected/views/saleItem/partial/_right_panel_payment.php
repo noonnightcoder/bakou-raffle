@@ -4,22 +4,21 @@
             <?php
             $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
                 'id' => 'finish_sale_form',
-                'action' => Yii::app()->createUrl($sale_save_url),
+                'action' => Yii::app()->createUrl('saleItem/completeSale/'),
                 'enableAjaxValidation' => false,
                 'layout' => TbHtml::FORM_LAYOUT_INLINE,
             ));
             ?>
-
             <table class="table table-bordered table-condensed">
                 <tbody>
                 <tr>
-                    <td><?= Yii::t('app', 'Item in Cart'); ?> :</td>
-                    <td><?= $count_item; ?></td>
+                    <td><?php echo Yii::t('app', 'Item in Cart'); ?> :</td>
+                    <td><?php echo $count_item; ?></td>
                 </tr>
                 <?php //if ($total_discount!==NULL && $discount_amount>0) { ?>
                 <?php if ($discount_amount > 0) { ?>
                     <tr>
-                        <td><?= Yii::t('app', 'Sub Total'); ?> :</td>
+                        <td><?php echo Yii::t('app', 'Sub Total'); ?> :</td>
                         <td><span
                                 class="badge badge-info bigger-120">
                                 <?= Yii::app()->settings->get('site', 'currencySymbol') . number_format($sub_total, Common::getDecimalPlace(), '.', ','); ?>
@@ -142,14 +141,14 @@
                 <tr style="display:none">
                     <td><?= Yii::t('app', 'Payment Type'); ?>:</td>
                     <td>
-                        <?= $form->dropDownList($model, 'payment_type', InvoiceItem::itemAlias('payment_type'), array('id' => 'payment_type_id')); ?>
+                        <?php echo $form->dropDownList($model, 'payment_type', InvoiceItem::itemAlias('payment_type'), array('id' => 'payment_type_id')); ?>
                     </td>
                 </tr>
 
 
                 <?php if ($count_payment == 0) { ?>
                     <tr>
-                        <td colspan="2" style='text-align:right;display:none'>
+                        <td colspan="2" style='text-align:right'>
                             <?php echo $form->textFieldControlGroup($model, 'alt_payment_amount', array(
                                 //'value' => $amount_change,
                                 'class' => 'input-small text-right payment-amount-txt',
@@ -171,7 +170,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2" style='text-align:right;display:none'><?php
+                        <td colspan="2" style='text-align:right'><?php
                             echo TbHtml::linkButton(Yii::t('app', 'Add Payment'), array(
                                 'color' => TbHtml::BUTTON_COLOR_INFO,
                                 'size' => TbHtml::BUTTON_SIZE_MINI,
@@ -211,19 +210,63 @@
                 </tbody>
             </table>
 
-            <?php $this->renderPartial('partial/_right_panel_complete',array(
-                    'count_check' => $count_item,
-                    'sale_save_url' => $sale_save_url,
-                    'color_style' => $color_style
-            )); ?>
+            <?php if ($count_payment > 0) { ?>
+                <table class="table table-striped table-condensed">
+                    <!--
+                                <thead class="thin-border-bottom">
+                                    <tr><th>Type</th><td>Amount</th><th></tr>
+                                </thead>
+                                <tbody id="payment_content">
+                                    <?php //foreach ($payments as $id => $payment): ?>
+                                    <tr>
+                                        <td><?php //echo $payment['payment_type']; ?></td>
+                                        <td><?php //echo Yii::app()->numberFormatter->formatCurrency(($payment['payment_amount']), Yii::app()->settings->get('site', 'currencySymbol')); ?></td>
+                                        <td>
+                                            <?php /*
+                                            echo TbHtml::linkButton('', array(
+                                                //'color'=>TbHtml::BUTTON_COLOR_INFO,
+                                                'size' => TbHtml::BUTTON_SIZE_MINI,
+                                                'icon' => 'glyphicon-remove',
+                                                'url' => Yii::app()->createUrl('SaleItem/DeletePayment', array('payment_id' => $payment['payment_type'])),
+                                                'class' => 'delete-payment',
+                                                //'title' => Yii::t('app', 'Delete Payment'),
+                                            ));
+                                             *
+                                            */
+                    ?>
+                                        </td>
+                                    </tr> -->
+                    <?php //endforeach; ?>
+
+                    <?php //if ($amount_change<=0) { ?>
+
+                    <td colspan="3" style='text-align:right'>
+                        <?php
+                        echo TbHtml::linkButton(Yii::t('app', 'Complete Sale'), array(
+                            'color' => TbHtml::BUTTON_COLOR_SUCCESS,
+                            'icon' => 'glyphicon glyphicon-off white',
+                            //'url' => Yii::app()->createUrl('SaleItem/CompleteSale/'),
+                            'class' => 'complete-sale',
+                            'id' => 'finish_sale_button',
+                            //'title' => Yii::t('app', 'Complete Sale'),
+                        ));
+                        ?>
+                    </td>
+                    <!--
+                                        <div id="comment_content" align="right">
+                                        <?php //echo $form->textArea($model,'comment',array('rows'=>1, 'cols'=>20,'class'=>'input-small','maxlength'=>250,'id'=>'comment_id'));  ?>
+                                        </div>
+                                        -->
+                    <?php //} ?>
+
+                    </tbody>
+                </table>
+            <?php } ?>
 
             <?php $this->endWidget(); ?>
-
         <?php } ?>
-
 
     </div>
     <!-- /section:custom/widget-main -->
 
 </div>
-

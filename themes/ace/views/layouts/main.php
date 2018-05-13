@@ -97,7 +97,7 @@
                         try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
                 </script>
                 
-                <?php require_once('tpl_sidebar_v2.php')?>
+                <?php require_once('tpl_sidebar.php')?>
             </div> <!-- /#side-bar --> 
 
             <!-- /section:basics/sidebar -->

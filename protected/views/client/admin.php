@@ -8,7 +8,7 @@ $this->breadcrumbs = array(
     <div class="col-xs-12 widget-container-col ui-sortable  ">
 
         <?php $box = $this->beginWidget('yiiwheels.widgets.box.WhBox', array(
-            'title' => Yii::t('app', 'List of Customers'),
+            'title' => Yii::t('app', 'List of ' . sysMenuCustomer()),
             'headerIcon' => 'ace-icon fa fa-user',
             'htmlHeaderOptions' => array('class' => 'widget-header-flat widget-header-small'),
         )); ?>

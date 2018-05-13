@@ -1,6 +1,6 @@
 <?php
 $this->breadcrumbs = array(
-    sysMenuItem() => array('admin'),
+    Yii::t('app', sysMenuItem()) => array('admin'),
     Yii::t('app', 'Manage'),
 );
 ?>
@@ -9,7 +9,7 @@ $this->breadcrumbs = array(
 
         <?php $box = $this->beginWidget('yiiwheels.widgets.box.WhBox', array(
             'title' => Yii::t('app', 'List of ' . sysMenuItem()),
-            'headerIcon' => sysMenuItemIcon(),
+            'headerIcon' => 'ace-icon fa fa-list',
             'htmlHeaderOptions' => array('class' => 'widget-header-flat widget-header-small'),
         )); ?>
             <!-- Admin Header layouts.admin._header -->

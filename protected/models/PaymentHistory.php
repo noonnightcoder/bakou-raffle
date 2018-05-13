@@ -123,7 +123,6 @@ class PaymentHistory extends CActiveRecord
             $payment_history->date_paid = $paid_date;
             $payment_history->note = $note;
             $payment_history->employee_id = $employee_id;
-            $payment_history->created_by = $employee_id;
             $payment_history->save();
             $payment_id = $payment_history->id;
         }

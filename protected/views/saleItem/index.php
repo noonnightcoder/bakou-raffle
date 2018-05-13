@@ -1,6 +1,7 @@
 <div id="register_container">
 
-    <?/*= $sale_save_url */?>
+    <?= invNumPrefix() ?>
+
     <?php $this->renderPartial('partial/_left_panel',
         array(
             'model' => $model,
@@ -9,9 +10,6 @@
             'disable_editprice' => $disable_editprice,
             'disable_discount' => $disable_discount,
             'discount_symbol' => $discount_symbol,
-            'sale_header' => $sale_header,
-            'sale_header_icon' => $sale_header_icon,
-            'color_style' => $color_style
         )); ?>
 
     <?php $this->renderPartial('partial/_right_panel', array(
@@ -37,11 +35,6 @@
         'discount_symbol' => $discount_symbol,
         'discount_amt' => $discount_amt,
         'gst_amount' => $gst_amount,
-        'sale_header' => $sale_header,
-        'sale_save_url' => $sale_save_url,
-        'cust_term' => $cust_term,
-        'color_style' => $color_style,
-        'tran_type' => $tran_type
     )); ?>
 
     <?php $this->renderPartial('partial/_js'); ?>

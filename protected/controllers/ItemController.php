@@ -28,10 +28,15 @@ class ItemController extends Controller
     {
         return array(
             array(
+                'allow', // allow all users to perform 'index' and 'view' actions
+                'actions' => array('index', 'view'),
+                'users' => array('@'),
+            ),
+            array(
                 'allow', // allow authenticated user to perform 'create' and 'update' actions
                 'actions' => array(
-                    //'create',
                     'create',
+                    'CreateImage',
                     'update',
                     'UpdateImage',
                     'delete',
@@ -48,8 +53,6 @@ class ItemController extends Controller
                     'LowStock',
                     'OutStock',
                     'loadImage',
-                    'TestExcel',
-                    'UploadFile'
                 ),
                 'users' => array('@'),
             ),
@@ -76,56 +79,29 @@ class ItemController extends Controller
         ));
     }
 
-    public function actionTestExcel()
-    {
-        $model=new Item();
-        $this->render('readExcel',array('model'=>$model));
-    }
-
-    public function actionUploadFile()
-    {
-        $model=new TestExcel();
-        $employee=new Employee();
-        $criteria=new CDbCriteria;
-        if(isset($_POST['btnread']))
-        {
-            $sheet_array = Yii::app()->yexcel->readActiveSheet($_FILES['fileUpload']['tmp_name']);
-            $empFirstName='';
-            $empLastName='';
-            foreach($sheet_array as $key=>$value){
-                $connection=Yii::app()->db; 
-                $sql="insert into sale_import_tmp(NoR ,Sale_Date ,Sale_Month ,Invoice ,Saleman ,Customer ,Address ,Tel ,Products ,Landed_cost ,Selling_price ,Qty_In_CTN ,IN_BTT_PCK ,Discount ,Su_IN_CTN ,IN_PCS ,Cost_of_Sample ,Total_Amount ,Total_Landed_Cost ,Transportation ,Total_Expense ,Return_in_QTY ,Returned_amount ,Profit_Lost ,Payment_Status) values('".$value['A']."','".$value['B']."','".$value['C']."','".$value['D']."','".$value['E']."','".$value['F']."','".$value['G']."','".$value['H']."','".$value['I']."','".$value['J']."','".$value['K']."','".$value['L']."','".$value['M']."','".$value['N']."','".$value['O']."','".$value['P']."','".$value['Q']."','".$value['R']."','".$value['S']."','".$value['T']."','".$value['U']."','".$value['V']."','".$value['W']."','".$value['X']."','".$value['Y']."')";
-                $command=$connection->createCommand($sql);
-                $insert=$command->execute(); // execute the non-query SQL 
-                $message=array();
-                if($insert){
-                    $message=array('message'=>'Data imported successfully');
-                }else{
-                    $message=array('message'=>'Failed to import data');
-                }
-                
-            }
-            $this->render('readExcel',$message);
-        }
-    }
-
+    /**
+     * Deletes a particular model.
+     * If deletion is successful, the browser will be redirected to the 'admin' page.
+     * @param integer $id the ID of the model to be deleted
+     */
     public function actionDelete($id)
     {
-        authorized('item.delete');
+        if (Yii::app()->user->checkAccess('item.delete')) {
+            if (Yii::app()->request->isPostRequest && Yii::app()->request->isAjaxRequest) {
+                // we only allow deletion via POST request
+                //$this->loadModel($id)->delete();
+                Item::model()->deleteItem($id);
 
-        if (Yii::app()->request->isPostRequest && Yii::app()->request->isAjaxRequest) {
-            // we only allow deletion via POST request
-            //$this->loadModel($id)->delete();
-            Item::model()->deleteItem($id);
-
-            // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-            if (!isset($_GET['ajax'])) {
-                $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+                // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+                if (!isset($_GET['ajax'])) {
+                    $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+                }
+            } else {
+                throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
             }
         } else {
-            throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
+            throw new CHttpException(403, 'You are not authorized to perform this action');
         }
-
     }
 
     /**
@@ -166,17 +142,12 @@ class ItemController extends Controller
      */
     public function actionAdmin()
     {
-
-        authorized('item.read');
-
         $model = new Item('search');
 
-        /*
-        if (!ckacc(strtolower(get_class($model)) . '.read') || !ckacc(strtolower(get_class($model)) . '.create') || !ckacc(strtolower(get_class($model)) . '.update') || !ckacc(strtolower(get_class($model)) . '.delete')) {
+        if (!Yii::app()->user->checkAccess(strtolower(get_class($model)) . '.index') || !Yii::app()->user->checkAccess(strtolower(get_class($model)) . '.create') || !Yii::app()->user->checkAccess(strtolower(get_class($model)) . '.update') || !Yii::app()->user->checkAccess(strtolower(get_class($model)) . '.delete')) {
             //throw new CHttpException(403, 'You are not authorized to perform this action');
             $this->redirect(array('site/ErrorException', 'err_no' => 403));
         }
-        */
 
         $model->unsetAttributes();  // clear any default values
         if (isset($_GET['Item'])) {
@@ -207,7 +178,7 @@ class ItemController extends Controller
         $data['grid_id'] = strtolower(get_class($model)) . '-grid';
         $data['main_div_id'] = strtolower(get_class($model)) . '_cart';
         $data['page_size'] = $page_size;
-        $data['create_url'] = 'create';
+        $data['create_url'] = 'CreateImage';
 
         $data['grid_columns'] = Item::getItemColumns();
 
@@ -260,11 +231,10 @@ class ItemController extends Controller
         }
     }
 
-    public function actionCreate($grid_cart = 'N',$sale_status='2')
+    public function actionCreateImage($grid_cart = 'N')
     {
 
         $model = new Item;
-
         $price_tiers = PriceTier::model()->getListPriceTier();
 
         // Uncomment the following line if AJAX validation is needed
@@ -274,23 +244,28 @@ class ItemController extends Controller
             if (isset($_POST['Item'])) {
                 $model->attributes = $_POST['Item'];
                 $qty = isset($_POST['Item']['quantity']) ? $_POST['Item']['quantity'] : 0;
+                $cost_price = isset($_POST['Item']['cost_price']) ? $_POST['Item']['cost_price'] : 0;
                 $model->quantity = $qty;
+                $model->cost_price = $cost_price;
+
 
                 //$publisher_name=$_POST['Item']['publisher_id'];
                 $category_name = $_POST['Item']['category_id'];
-                $unit_measurable_name = isset($_POST['Item']['unit_measurable_id']) ? $_POST['Item']['unit_measurable_id'] : null;
+
+                //$unit_measurable_name = $_POST['Item']['unit_measurable_id'];
 
                 //Saving new category to `category` table
                 $category_id = Category::model()->saveCategory($category_name);
-                $unit_measurable_id = UnitMeasurable::model()->saveUnitMeasurable($unit_measurable_name);
+
+                //$unit_measurable_id = UnitMeasurable::model()->saveUnitMeasurable($unit_measurable_name);
 
                 if ($category_id !== null) {
                     $model->category_id = $category_id;
                 }
 
-                if ($unit_measurable_id !== null) {
+              /*  if ($unit_measurable_id !== null) {
                     $model->unit_measurable_id = $unit_measurable_id;
-                }
+                }*/
 
                 if ($model->validate()) {
                     $transaction = Yii::app()->db->beginTransaction();
@@ -309,10 +284,10 @@ class ItemController extends Controller
                             if ($grid_cart == 'N') {
                                 Yii::app()->user->setFlash(TbHtml::ALERT_COLOR_SUCCESS,
                                     'Item : <strong>' . $model->name . '</strong> have been saved successfully!');
-                                $this->redirect(array('create'));
+                                $this->redirect(array('createImage'));
                             } elseif ($grid_cart == 'S') {
                                 Yii::app()->shoppingCart->addItem($model->id);
-                                $this->redirect(array('saleItem/update?tran_type=?' . $sale_status));
+                                $this->redirect(array('saleItem/index'));
                             } elseif ($grid_cart == 'R') {
                                 Yii::app()->receivingCart->addItem($model->id);
                                 $this->redirect(array('receivingItem/index'));
@@ -356,19 +331,20 @@ class ItemController extends Controller
                 //$qty = isset($_POST['Item']['quantity']) ? $_POST['Item']['quantity'] : 0;
                 //$model->quantity = $qty;  A buggy was not noticed every update reset item to zero EM EUY
                 $category_name = $_POST['Item']['category_id'];
-                $unit_measurable_name = isset($_POST['Item']['unit_measurable_id']) ? $_POST['Item']['unit_measurable_id'] : null;
+                //$unit_measurable_name = $_POST['Item']['unit_measurable_id'];
 
                 //Saving new category to `category` table
                 $category_id = Category::model()->saveCategory($category_name);
-                $unit_measurable_id = UnitMeasurable::model()->saveUnitMeasurable($unit_measurable_name);
+
+                //$unit_measurable_id = UnitMeasurable::model()->saveUnitMeasurable($unit_measurable_name);
 
                 if ($category_id !== null) {
                     $model->category_id = $category_id;
                 }
 
-                if ($unit_measurable_id !== null) {
+                /*if ($unit_measurable_id !== null) {
                     $model->unit_measurable_id = $unit_measurable_id;
-                }
+                }*/
 
                 if ($model->validate()) {
                     $transaction = Yii::app()->db->beginTransaction();
@@ -419,6 +395,10 @@ class ItemController extends Controller
         Yii::app()->end();
     }
 
+    /** Lookup Client for selet 2
+     *
+     * @throws CHttpException
+     */
     public function actionGetItem()
     {
         if (isset($_GET['term'])) {

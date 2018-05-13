@@ -1,3 +1,6 @@
+<h4 class="header blue bolder smaller"><i class="ace-icon fa fa-map-marker blue"></i>
+    <?= Yii::t('app', sysMenuCustomer() . ' Contact Person Info') ?>
+</h4>
 
 <?= $form->textFieldControlGroup($contact, 'mobile_no', array('class' => 'span3', 'maxlength' => 15)); ?>
 
