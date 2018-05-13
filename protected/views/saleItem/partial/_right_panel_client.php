@@ -11,7 +11,8 @@
                     'cust_fullname' => $cust_fullname,
                     'customer_id' => $customer_id,
                     'acc_balance' => $acc_balance,
-                    'sale_mode' => $sale_mode
+                    'sale_mode' => $sale_mode,
+                    'cust_term' => $cust_term,
                 ), true),
             ));
         } else {

@@ -92,7 +92,44 @@ function baseurl(){
     return Yii::app()->theme->baseUrl;
 }
 
-
 function ckacc($permission) {
     return Yii::app()->user->checkAccess($permission);
+}
+
+function loadview($view_name,$partial_view ='_grid',$data) {
+    if (Yii::app()->request->isAjaxRequest) {
+
+        //Yii::app()->clientScript->scriptMap['*.js'] = false;
+        $cs = Yii::app()->clientScript;
+        $cs->scriptMap = array(
+            'jquery.js' => false,
+            'bootstrap.js' => false,
+            'jquery.min.js' => false,
+            'bootstrap.notify.js' => false,
+            'bootstrap.bootbox.min.js' => false,
+            'bootstrap.min.js' => false,
+            'jquery-ui.min.js' => false,
+            //'EModalDlg.js'=>false,
+        );
+
+        Yii::app()->clientScript->scriptMap['jquery-ui.css'] = false;
+        Yii::app()->clientScript->scriptMap['box.css'] = false;
+        Yii::app()->controller->renderPartial($partial_view, $data, false, true);
+
+    } else {
+        Yii::app()->controller->render($view_name, $data);
+    }
+}
+
+function ajaxRequest() {
+    if (!Yii::app()->request->isAjaxRequest) {
+        throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
+    }
+}
+
+function authorized($permission)
+{
+    if (!ckacc($permission)) {
+        Yii::app()->controller->redirect(array('site/ErrorException', 'err_no' => 403));
+    }
 }

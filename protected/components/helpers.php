@@ -1,143 +1,463 @@
 <?php
 
-    function bizName() {
-        return param('biz_name');
+function bizName()
+{
+    return param('biz_name');
+}
+
+function bizNameFirstUpper()
+{
+    return t(ucfirst(param('biz_name')),'app');
+}
+
+function bizTitleUcWord()
+{
+    return t(ucwords(param('biz_title')),'app');
+}
+
+function bizWebsite()
+{
+    return 'http://peedor.com';
+}
+
+function bizVision()
+{
+    return "To bring new exciting experience and creative innovation to all parent business";
+}
+
+function companyName()
+{
+    return param('company_name');
+}
+
+function companyNameUpper()
+{
+    return strtoupper(param('company_name'));
+}
+
+function companyNameFirstUpper()
+{
+    return ucfirst(param('company_name'));
+}
+
+function companySlogan()
+{
+    return param('company_slogan');
+}
+
+function companySloganUcwords()
+{
+    return t(ucwords(param('company_slogan')),'app');
+}
+
+function ddmonyyyy()
+{
+    return date('d M Y');
+}
+
+function freeTrialText()
+{
+    return 'Start Free Trail';
+}
+
+function invFolderPath()
+{
+    return Yii::app()->shoppingCart->getInvoiceFormat();
+}
+
+function invIfSaleRep()
+{
+
+    if (Yii::app()->settings->get('receipt', 'printSaleRep') == '1') {
+        return true;
     }
 
-    function bizNameFirstUpper() {
-        return ucfirst(param('biz_name'));
+    return false;
+}
+
+function invIfCompanyLogo()
+{
+
+    if (Yii::app()->settings->get('receipt', 'printcompanyLogo') == '1') {
+        return true;
     }
 
-    function bizWebsite()
-    {
-        return 'http://peedor.com';
+    return false;
+}
+
+function invIfCompanyName()
+{
+
+    if (Yii::app()->settings->get('receipt', 'printcompanyName') == '1') {
+        return true;
     }
 
-    function bizVision()
-    {
-        return "To bring new exciting experience and creative innovation to all parent business";
+    return false;
+}
+
+function invIfCompanyPhone()
+{
+
+    if (Yii::app()->settings->get('receipt', 'printcompanyPhone') == '1') {
+        return true;
     }
 
-    function companyName() {
-        return param('company_name');
+    return false;
+}
+
+function invIfCompanyAdd()
+{
+
+    if (Yii::app()->settings->get('receipt', 'printcompanyAddress') == '1') {
+        return true;
     }
 
-    function companyNameUpper() {
-        return strtoupper(param('company_name'));
+    return false;
+}
+
+function invIfCompanyAdd1()
+{
+
+    if (Yii::app()->settings->get('receipt', 'printcompanyAddress1') == '1') {
+        return true;
     }
 
-    function companyNameFirstUpper() {
-        return ucfirst(param('company_name'));
+    return false;
+}
+
+function invIfTransTime()
+{
+
+    if (Yii::app()->settings->get('receipt', 'printtransactionTime') == '1') {
+        return true;
     }
 
-    function companySlogan() {
-        return param('company_slogan');
-    }
+    return false;
+}
 
-    function companySloganUcwords() {
-        return ucwords(param('company_slogan'));
-    }
+function curcurrencySympbol()
+{
+    return Yii::app()->settings->get('site', 'currencySymbol');
+}
 
-    function ddmonyyyy() {
-        return date('d M Y');
-    }
+function invNumInterval()
+{
+    return Yii::app()->settings->get('system', 'invoiceNumInterval');
+}
 
-    function freeTrialText()
-    {
-        return 'Start Free Trail';
-    }
+function invNumPrefix()
+{
+    return Yii::app()->settings->get('site', 'invoicePrefix') . date('y') . '-00000';
+}
 
-    function invFolderPath()
-    {
-        return Yii::app()->shoppingCart->getInvoiceFormat();
-    }
+function sysMenuDashboard()
+{
+    return strtoupper(t(param('menu_dashboard'), 'app'));
+}
 
-    function invIfSaleRep(){
+function sysMenuItem()
+{
+    return strtoupper(t(param('menu_item'), 'app'));
+}
 
-        if (Yii::app()->settings->get('receipt', 'printSaleRep')=='1'){
-            return true;
-        }
+function sysMenuItemAdd()
+{
+    return ucwords(t(param('menu_item_add'), 'app'));
+}
 
-        return false;
-    }
+function sysMenuItemView()
+{
+    return ucwords(t(param('menu_item_view'), 'app'));
+}
 
-    function invIfCompanyLogo(){
+function sysMenuItemImpExp()
+{
+    return ucwords(t(param('menu_item_imp_exp'), 'app'));
+}
 
-        if (Yii::app()->settings->get('receipt', 'printcompanyLogo')=='1'){
-            return true;
-        }
+function sysMenuItemMarkupPrice()
+{
+    return ucwords(t(param('menu_item_markup_price'), 'app'));
+}
 
-        return false;
-    }
+function sysMenuInventory()
+{
+    return strtoupper(t(param('menu_inventory'), 'app'));
+}
 
-    function invIfCompanyName(){
+function sysMenuInventoryAdd()
+{
+    return ucwords(t(param('menu_inventory_add'), 'app'));
+}
 
-        if (Yii::app()->settings->get('receipt', 'printcompanyName')=='1'){
-            return true;
-        }
+function sysMenuInventoryMinus()
+{
+    return ucwords(t(param('menu_inventory_minus'), 'app'));
+}
 
-        return false;
-    }
+function sysMenuInventoryCount()
+{
+    return ucwords(t(param('menu_inventory_count'), 'app'));
+}
 
-    function invIfCompanyPhone(){
+function sysMenuInventoryTransfer()
+{
+    return ucwords(t(param('menu_inventory_transfer'), 'app'));
+}
 
-        if (Yii::app()->settings->get('receipt', 'printcompanyPhone')=='1'){
-            return true;
-        }
+function sysMenuPurchase()
+{
+    return strtoupper(t(param('menu_purchase'), 'app'));
+}
 
-        return false;
-    }
+function sysMenuPurchaseReceive()
+{
+    return ucwords(t(param('menu_purchase_receive'), 'app'));
+}
 
-    function invIfCompanyAdd(){
+function sysMenuPurchaseReturn()
+{
+    return ucwords(t(param('menu_purchase_return'), 'app'));
+}
 
-        if (Yii::app()->settings->get('receipt', 'printcompanyAddress')=='1'){
-            return true;
-        }
+function sysMenuPurchasePayment()
+{
+    return ucwords(t(param('menu_purchase_payment'), 'app'));
+}
 
-        return false;
-    }
+function sysMenuSale()
+{
+    return ucwords(t(param('menu_sale'), 'app'));
+}
 
-    function invIfCompanyAdd1(){
+function sysMenuSaleAdd()
+{
+    return ucwords(t(param('menu_sale_add'), 'app'));
+}
 
-        if (Yii::app()->settings->get('receipt', 'printcompanyAddress1')=='1'){
-            return true;
-        }
+function sysMenuSaleView()
+{
+    return ucwords(t(param('menu_sale_view'), 'app'));
+}
 
-        return false;
-    }
+function sysMenuSalePayment()
+{
+    return ucwords(t(param('menu_sale_payment'), 'app'));
+}
 
-    function invIfTransTime(){
+function sysMenuInvoice()
+{
+    return ucwords(t(param('menu_invoice'), 'app'));
+}
 
-        if (Yii::app()->settings->get('receipt', 'printtransactionTime')=='1'){
-            return true;
-        }
+function sysMenuReport()
+{
+    return ucwords(t(param('menu_report'), 'app'));
+}
 
-        return false;
-    }
+function sysMenuAboutUS()
+{
+    return ucwords(t(param('menu_about_us'), 'app'));
+}
 
-    function curcurrencySympbol() {
-        return Yii::app()->settings->get('site', 'currencySymbol');
-    }
+function sysMenuCustomer()
+{
+    return ucwords(t(param('menu_customer'), 'app'));
+}
 
-    function invNumInterval() {
-        return Yii::app()->settings->get('system', 'invoiceNumInterval');
-    }
+function sysMenuEmployee()
+{
+    return ucwords(t(param('menu_employee'), 'app'));
+}
 
-    function invNumPrefix() {
-        return Yii::app()->settings->get('site', 'invoicePrefix') . date('y') . '-00000';
-    }
+function sysMenuSupplier()
+{
+    return ucwords(t(param('menu_supplier'), 'app'));
+}
 
-    function sysMenuCustomer() {
-        return 'Player';
-    }
+function sysMenuAuthorization()
+{
+    return ucwords(t(param('menu_authorization'), 'app'));
+}
 
-    function sysMenuItem() {
-        return 'Reward';
-    }
+function sysMenuSetting()
+{
+    return strtoupper(t(param('menu_setting'), 'app'));
+}
 
-    function sysMenuPayment() {
-        return 'Deposit';
-    }
+function sysMenuCategory()
+{
+    return ucwords(t(param('menu_category'), 'app'));
+}
 
+function sysMenuPriceTier()
+{
+    return ucwords(t(param('menu_price_tier'), 'app'));
+}
+
+function sysMenuDeposit()
+{
+    return strtoupper(t(param('menu_deposit'), 'app'));
+}
+
+function sysMenuWinSetting()
+{
+    return strtoupper(t(param('menu_win_setting'), 'app'));
+}
+
+function sysMenuSaleIcon()
+{
+    return 'menu-icon fa fa-usd';
+}
+
+function sysMenuSaleAddIcon()
+{
+    return 'menu-icon fa fa-plus pink';
+}
+
+function sysMenuSaleViewIcon()
+{
+    return 'menu-icon fa fa-eye pink';
+}
+
+function sysMenuSalePaymentIcon()
+{
+    return 'menu-icon fa fa-heart';
+}
+
+function sysMenuInvoiceIcon()
+{
+    return 'menu-icon fa fa-usd';
+}
+
+function sysMenuItemIcon()
+{
+    return 'menu-icon fa fa-trophy';
+}
+
+function sysMenuDashboardIcon()
+{
+    return 'menu-icon fa fa-tachometer';
+}
+
+function sysMenuInventoryIcon()
+{
+    return 'menu-icon fa fa-desktop';
+}
+
+function sysMenuInventoryAddIcon()
+{
+    return 'menu-icon fa fa-plus pink';
+}
+
+function sysMenuInventoryMinusIcon()
+{
+    return 'menu-icon fa fa-minus';
+}
+
+function sysMenuInventoryCountIcon()
+{
+    return 'menu-icon fa fa-list-ol purple';
+}
+
+function sysMenuInventoryTransferIcon()
+{
+    return 'menu-icon fa fa-exchange';
+}
+
+function sysMenuPurchaseIcon()
+{
+    return 'menu-icon fa fa-money';
+}
+
+function sysMenuPurchaseReceiveIcon()
+{
+    return 'menu-icon fa fa-plus pink';
+}
+
+function sysMenuPurchaseReturnIcon()
+{
+    return 'menu-icon fa fa-minus';
+}
+
+function sysMenuPurchasePaymentIcon()
+{
+    return 'menu-icon fa fa-credit-card';
+}
+
+function sysMenuReportIcon()
+{
+    return 'menu-icon fa fa-signal';
+}
+
+function sysMenuReportSaleIcon()
+{
+    return 'menu-icon fa fa-eur green';
+}
+
+function sysMenuReportAccountIcon()
+{
+    return 'menu-icon fa fa-balance-scale';
+}
+
+function sysMenuReportStockIcon()
+{
+    return 'menu-icon fa fa-cubes';
+}
+
+function sysMenuCustomerIcon()
+{
+    return 'menu-icon fa fa-user';
+}
+
+function sysMenuEmployeeIcon()
+{
+    return 'menu-icon fa fa-user';
+}
+
+function sysMenuSupplierIcon()
+{
+    return 'menu-icon fa fa-user';
+}
+
+function sysMenuAuthorizationIcon()
+{
+    return 'menu-icon fa fa-tasks';
+}
+
+function sysMenuSettingIcon()
+{
+    return 'menu-icon fa fa-cogs';
+}
+
+function sysMenuCategoryIcon()
+{
+    return 'menu-icon fa fa-list';
+}
+
+function sysMenuPriceTierIcon()
+{
+    return 'menu-icon fa fa-adjust';
+}
+
+function sysMenuWinSettingIcon()
+{
+    return 'menu-icon fa fa-wrench';
+}
+
+function getTransType()
+{
+    return Yii::app()->shoppingCart->getMode();
+}
+
+function getEmployeeId()
+{
+    return Yii::app()->session['employeeid'];
+}
+
+function sysFormatNumberDecimal($value)
+{
+    return number_format($value, Common::getDecimalPlace());
+}
 
 

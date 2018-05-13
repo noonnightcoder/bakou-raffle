@@ -3,15 +3,8 @@
 class SalePaymentController extends Controller
 {
 
-    /**
-     * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
-     * using two-column layout. See 'protected/views/layouts/column2.php'.
-     */
     public $layout = '//layouts/column2';
 
-    /**
-     * @return array action filters
-     */
     public function filters()
     {
         return array(
@@ -20,11 +13,6 @@ class SalePaymentController extends Controller
         );
     }
 
-    /**
-     * Specifies the access control rules.
-     * This method is used by the 'accessControl' filter.
-     * @return array access control rules
-     */
     public function accessRules()
     {
         return array(
@@ -33,7 +21,7 @@ class SalePaymentController extends Controller
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'Payment', 'admin','PaymentDetail','SavePayment','SelectCustomer','RemoveCustomer','successPayment','SelectInvoice','removeInvoice'),
+                'actions' => array('create', 'update', 'Payment', 'admin','PaymentDetail','SavePayment','SelectCustomer','RemoveCustomer','successPayment','SelectInvoice','removeInvoice','SaveDeposit'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -46,10 +34,6 @@ class SalePaymentController extends Controller
         );
     }
 
-    /**
-     * Displays a particular model.
-     * @param integer $id the ID of the model to be displayed
-     */
     public function actionView($id)
     {
         $this->render('view', array(
@@ -57,11 +41,6 @@ class SalePaymentController extends Controller
         ));
     }
 
-    /**
-     * Deletes a particular model.
-     * If deletion is successful, the browser will be redirected to the 'admin' page.
-     * @param integer $id the ID of the model to be deleted
-     */
     public function actionDelete($id)
     {
         if (Yii::app()->request->isPostRequest) {
@@ -77,10 +56,6 @@ class SalePaymentController extends Controller
         }
     }
 
-
-    /**
-     * Manages all models.
-     */
     public function actionAdmin()
     {
         $model = new SalePayment('search');
@@ -94,13 +69,6 @@ class SalePaymentController extends Controller
         ));
     }
 
-    /**
-     * Returns the data model based on the primary key given in the GET variable.
-     * If the data model is not found, an HTTP exception will be raised.
-     * @param integer $id the ID of the model to be loaded
-     * @return SalePayment the loaded model
-     * @throws CHttpException
-     */
     public function loadModel($id)
     {
         $model = SalePayment::model()->findByPk($id);
@@ -110,10 +78,6 @@ class SalePaymentController extends Controller
         return $model;
     }
 
-    /**
-     * Performs the AJAX validation.
-     * @param SalePayment $model the model to be validated
-     */
     protected function performAjaxValidation($model)
     {
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'sale-payment-form') {
@@ -122,17 +86,11 @@ class SalePaymentController extends Controller
         }
     }
 
-    /**
-     * Lists all models.
-     */
     public function actionIndex()
     {
-        if (Yii::app()->user->checkAccess('payment.index')) {
-            $this->reload();
-        } else {
-            //throw new CHttpException(403, 'You are not authorized to perform this action');
-            $this->redirect(array('site/ErrorException','err_no'=>403));
-        }
+        authorized('customer.deposit');
+
+        $this->reload();
     }
 
     public function actionInvoicePayment($sale_id,$balance) {
@@ -171,10 +129,7 @@ class SalePaymentController extends Controller
 
     public function actionSavePayment()
     {
-        if (!Yii::app()->user->checkAccess('payment.index')) {
-            throw new CHttpException(403, 'You are not authorized to perform this action');
-            exit;
-        }
+        authorized('customer.deposit');
 
         $data = $this->sessionInfo();
 
@@ -186,7 +141,7 @@ class SalePaymentController extends Controller
                 $note = $_POST['SalePayment']['note'];
 
                 if ( $paid_amount <= $data['balance'] ) {
-                    $data['payment_id'] = SalePayment::model()->payment($data['sale_id'],$data['client_id'],$data['employee_id'],$data['account'],$paid_amount, $paid_date, $note);
+                    $data['payment_id'] = SalePayment::model()->deposit($data['client_id'],$data['employee_id'],$data['account'],$paid_amount, $paid_date, $note);
                     if (substr($data['payment_id'],0,2) == '-1') {
                         $data['warning'] = $data['payment_id'];
                     } else {
@@ -260,11 +215,10 @@ class SalePaymentController extends Controller
 
     private function reload()
     {
-        
         $data = $this->sessionInfo();
- 
+
         if (Yii::app()->request->isAjaxRequest) {
-            
+
             $cs = Yii::app()->clientScript;
             $cs->scriptMap = array(
                 'jquery.js' => false,
@@ -272,14 +226,14 @@ class SalePaymentController extends Controller
                 'jquery.min.js' => false,
                 'bootstrap.notify.js' => false,
                 'bootstrap.bootbox.min.js' => false,
-                'bootstrap.min.js' => false, 
+                'bootstrap.min.js' => false,
                 'jquery-ui.min.js' => false,
-                'jquery.yiigridview.js' => false, 
+                'jquery.yiigridview.js' => false,
                 'jquery.ba-bbq.min.js' => false,
-                'jquery.stickytableheaders.min.js'=>false,
+                'jquery.stickytableheaders.min.js' => false,
                 //'jquery.autocomplete.js' => false,
             );
-            
+
             Yii::app()->clientScript->scriptMap['*.js'] = false;
             Yii::app()->clientScript->scriptMap['jquery-ui.css'] = false;
             Yii::app()->clientScript->scriptMap['box.css'] = false;
@@ -287,7 +241,7 @@ class SalePaymentController extends Controller
         } else {
             $this->render('index', $data);
         }
-        
+
     }
     
     protected function sessionInfo($data=array()) 
@@ -300,7 +254,6 @@ class SalePaymentController extends Controller
         $data['employee_id'] = Yii::app()->session['employeeid'];
 
         //$data['payment_amount_auto_complete'] = Yii::app()->paymentCart->getInvoiceBalance();
-
 
         if ($data['client_id']!==null) {
             $account = Account::model()->getAccountInfo($data['client_id']);
@@ -338,6 +291,36 @@ class SalePaymentController extends Controller
         $this->renderPartial('sale_payment', array(
             'model' => $model,'id'=>$id,
         ));
+    }
+
+    public function actionSaveDeposit()
+    {
+        authorized('customer.deposit');
+
+        $data = $this->sessionInfo();
+
+        if (isset($_POST['SalePayment'])) {
+            $data['model']->attributes = $_POST['SalePayment'];
+            if ($data['model']->validate()) {
+                $paid_amount = $_POST['SalePayment']['payment_amount'];
+                $paid_date = Date('Y-m-d H:i:s'); //$_POST['SalePayment']['date_paid'];
+                $note = $_POST['SalePayment']['note'];
+
+                $data['payment_id'] = SalePayment::model()->deposit($data['client_id'],$data['employee_id'],$data['account'],$paid_amount, $paid_date, $note);
+                if (substr($data['payment_id'],0,2) == '-1') {
+                    $data['warning'] = $data['payment_id'];
+                } else {
+                    $data = $this->sessionInfo();
+                    $data['warning'] = $data['client_name'] .  ' Successfully paid ';
+                    $this->renderPartial('partial/_payment_success',$data);
+                    Yii::app()->paymentCart->clearInvoice();
+                    exit;
+                }
+
+            }
+        }
+
+        loadview('index','index',$data);
     }
 
 }

@@ -11,7 +11,7 @@
             ?>
             <div align="right">
                 <?php
-                echo TbHtml::linkButton(Yii::t('app', 'Save Sale'), array(
+/*                echo TbHtml::linkButton(Yii::t('app', 'Save Sale'), array(
                     'color' => TbHtml::BUTTON_COLOR_INFO,
                     'size' => TbHtml::BUTTON_SIZE_SMALL,
                     'icon' => 'ace-icon fa fa-save white',
@@ -19,10 +19,10 @@
                     'class' => 'suspend-sale',
                     //'title' => Yii::t('app', 'Suspend Sale'),
                 ));
-                ?>
+                */?>
 
                 <?php
-                echo TbHtml::linkButton(Yii::t('app', 'Cancel Sale'), array(
+                echo TbHtml::linkButton(Yii::t('app', 'Empty Cart'), array(
                     'color' => TbHtml::BUTTON_COLOR_DANGER,
                     'size' => TbHtml::BUTTON_SIZE_SMALL,
                     'icon' => '	glyphicon-remove white',

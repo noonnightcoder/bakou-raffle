@@ -1,6 +1,6 @@
 <?php
 $this->breadcrumbs = array(
-    Yii::t('app', sysMenuPayment()) => array('salePayment/index'),
+    sysMenuDeposit() => array('salePayment/index'),
     Yii::t('app', 'Index'),
 );
 
@@ -13,8 +13,8 @@ $this->breadcrumbs = array(
     <?php $this->renderPartial('partial/_search', array('model' => $model, 'client_name' => $client_name)); ?>
 
     <?php $box = $this->beginWidget('yiiwheels.widgets.box.WhBox', array(
-        'title' => Yii::t('app', sysMenuPayment()) . ' :  ' . $client_name,
-        'headerIcon' => 'ace-icon fa fa-credit-card',
+        'title' => sysMenuDeposit() . ' :  ' . $client_name,
+        'headerIcon' => sysMenuSalePaymentIcon(),
         'htmlHeaderOptions' => array('class' => 'widget-header-flat widget-header-small'),
     )); ?>
 
@@ -50,7 +50,7 @@ $this->breadcrumbs = array(
         </div>
 
 
-        <?php // $this->renderPartial('partial/_invoice_payment_sub', array('model' => $model, 'client_id' => $client_id, 'balance' => $balance)); ?>
+        <?php $this->renderPartial('partial/_invoice_payment_sub', array('model' => $model, 'client_id' => $client_id, 'balance' => $balance)); ?>
 
     <?php $this->endWidget(); ?>
 

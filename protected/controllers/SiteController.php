@@ -141,7 +141,7 @@ class SiteController extends Controller
             if (Yii::app()->user->checkAccess('report.index')) {
                 $this->redirect(array('raffle/index'));
             } else {
-                $this->redirect(array('raffle/index'));
+                $this->redirect(array('item/admin'));
             }
 
         }

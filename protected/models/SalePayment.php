@@ -22,17 +22,11 @@ class SalePayment extends CActiveRecord
     public $total_due;
     public $client_id;
 
-        /**
-	 * @return string the associated database table name
-	 */
-	public function tableName()
+    public function tableName()
 	{
 		return 'sale_payment';
 	}
 
-	/**
-	 * @return array validation rules for model attributes.
-	 */
 	public function rules()
 	{
 		// NOTE: you should only define rules for those attributes that
@@ -51,9 +45,6 @@ class SalePayment extends CActiveRecord
 		);
 	}
 
-	/**
-	 * @return array relational rules.
-	 */
 	public function relations()
 	{
 		// NOTE: you may need to adjust the relation name and the related
@@ -63,16 +54,13 @@ class SalePayment extends CActiveRecord
 		);
 	}
 
-	/**
-	 * @return array customized attribute labels (name=>label)
-	 */
 	public function attributeLabels()
 	{
 		return array(
 			'id' => 'ID',
 			'sale_id' => 'Sale',
 			'payment_type' => 'Payment Type',
-			'payment_amount' => 'Payment Amount',
+			'payment_amount' => 'Deposit Amount',
 			'give_away' => 'Give Away',
 			'date_paid' => 'Date Paid',
 			'note' => 'Note',
@@ -80,18 +68,6 @@ class SalePayment extends CActiveRecord
 		);
 	}
 
-	/**
-	 * Retrieves a list of models based on the current search/filter conditions.
-	 *
-	 * Typical usecase:
-	 * - Initialize the model fields with values from filter form.
-	 * - Execute this method to get CActiveDataProvider instance which will filter
-	 * models according to data in model fields.
-	 * - Pass data provider to CGridView, CListView or any similar widget.
-	 *
-	 * @return CActiveDataProvider the data provider that can return the models
-	 * based on the search/filter conditions.
-	 */
 	public function search($sale_id)
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
@@ -114,12 +90,6 @@ class SalePayment extends CActiveRecord
 		));
 	}
 
-	/**
-	 * Returns the static model of the specified AR class.
-	 * Please note that you should have this exact method in all your CActiveRecord descendants!
-	 * @param string $className active record class name.
-	 * @return SalePayment the static model class
-	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
@@ -147,18 +117,6 @@ class SalePayment extends CActiveRecord
 
         return $model;
     }
-
-    /*
-    protected function beforeValidate ()
-    {
-        // convert to storage format
-        $this->date_paid = strtotime ($this->date_paid);
-        $this->date_paid = date ('Y-m-d H:i:s', $this->date_paid);
-
-        return parent::beforeValidate ();
-    }
-     *
-    */
 
     public function invoice($client_id,$compare_operator)
     {
@@ -295,4 +253,11 @@ class SalePayment extends CActiveRecord
                 ORDER BY sale_time";
     }
 
+    public function deposit($client_id, $employee_id, $account, $total_paid, $paid_date, $note) {
+
+        $payment_id = PaymentHistory::model()->savePaymentHistory($client_id, $total_paid, $paid_date, $employee_id, $note);
+        Account::model()->depositAccountBal($account, $total_paid);
+
+        return $payment_id;
+    }
 }
