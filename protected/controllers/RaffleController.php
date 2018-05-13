@@ -76,35 +76,38 @@ class RaffleController extends Controller
 		$this->render('forTest/_draw_button');
 	}
 
-	public function actionPickupTicket()
+	public function actionPickupTicket($act)
 	{
 		$Raffle = new Raffle();
 		$status=false;
 		$msg='';
+		//$act = $_GET['act'];
 		try {
 			$myID = Yii::app()->user->getId();
 
 			$chk_bal = Account::model()->find('client_id = :clientID',array(':clientID' => $myID)); //check balance of customer first if >0
-			if(!empty($chk_bal) and $chk_bal->current_balance >0)
-			{
 
+			if($act==1)
+			{
+				if(!empty($chk_bal) and $chk_bal->current_balance >0)
+				{
 					$my_ticket = $Raffle->pickupTicket($myID);
 					$arr = explode('|', $my_ticket); //convert return back from sql to array
 					if ($arr[0]==1 and !empty($arr)) //check if balance enough to buy the ticket
 					{
-						
 						Yii::app()->shoppingCart->addTicket2List($arr[1],$arr[2]);
 						$msg = "Successful";
 						$status=true;
-						
-						
 					}else{
-						$msg = "Cannot provide the ticket";
+						$msg = "Cannot provide the ticket, not enough balance!";
 						$status=false;
 					}
-				
+				}else{
+					$msg = "Cannot provide the ticket, not enough balance!";
+					$status=false;
+				}
 			}else{
-				$msg = "Cannot provide the ticket, not enough balance!";
+				$msg = "Please press button to pick-up the ticket!";
 				$status=false;
 			}
 		}catch (Exception $e) {
