@@ -650,6 +650,37 @@ class ShoppingCart extends CApplicationComponent
         $this->setSession(Yii::app()->session);
         unset($this->session['invoiceformat']);
     }
+
+    public function addTicket2List($price,$ticket_no)
+    {
+        $this->setSession(Yii::app()->session);
+        $myTicketList=$this->getTicketList();
+
+        $luckyDraw=array('price' => $price,'luckyNum' => $ticket_no);
+
+        if(!in_array($luckyDraw,$myTicketList))
+        {
+            $myTicketList[]=$luckyDraw;
+        }
+
+        $this->setTicketInBracket($myTicketList);
+        return true;
+    }
+
+    public function setTicketInBracket($luckyDraw)
+    {
+        $this->setSession(Yii::app()->session);
+        $this->session['luckyDraw'] = $luckyDraw;
+    }
+
+    public function getTicketList()
+    {
+        $this->setSession(Yii::app()->session);
+        if(!isset($this->session['luckyDraw'])) {
+            $this->setTicketInBracket(array());
+        }
+        return $this->session['luckyDraw'];
+    }
     
     public function clearAll()
     {

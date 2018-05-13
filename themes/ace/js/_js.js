@@ -12,10 +12,7 @@ new Vue({
                 spinNumber:0,
                 spining:false,
                 luckyDraw:[
-                            /*{
-                                price:100,
-                                luckyNum:0046
-                            }*/
+                    {"price":"100","luckyNum":"6798"},{"price":"100","luckyNum":"7831"}
                 ], //should return value from database
                 current:'',
                 links: ['Home', 'About Us', 'Team', 'Services', 'Contact Us'],
@@ -146,22 +143,14 @@ new Vue({
                 lotteries:[
                     {
                         "date":"2018-05-09","priceNo":[
-                            {
-                                "text":"Normal","result":["0667","0016","5913","4189","2525"]
-                            },
-                            {
-                                "text":"1st","result":["6649"]
-                            }
-                        ]
+                            {"text":"1st","result":["6649"]},
+                            {"text":"Normal","result":["0667","0016","5913","4189","2525"]}
+                            ]
                     },
                     {
                         "date":"2018-05-10","priceNo":[
-                            {
-                                "text":"3rd","result":["0995"]
-                            },
-                            {
-                                "text":"2nd","result":["9898","3710","5107","2630"]
-                            }
+                        {"text":"2nd","result":["9898","3710","5107","2630"]},
+                        {"text":"3rd","result":["0995"]}
                         ]
                     },
                     {
@@ -283,6 +272,7 @@ new Vue({
         },
         created(){
             this.Spin()
+            this.insertLuckyNumber()
         },
         watch:{
             price:function(){

@@ -88,8 +88,10 @@ class RaffleController extends Controller
 			if(!empty($chk_bal) and $chk_bal->current_balance >0)
 			{
 				$my_ticket = $Raffle->pickupTicket($myID);
-				if ($my_ticket==1) //check if balance enough to buy the ticket
+				$arr = explode('|', $my_ticket); //convert return back from sql to array
+				if ($arr[0]==1 and !empty($arr)) //check if balance enough to buy the ticket
 				{
+					Yii::app()->shoppingCart->addTicket2List($arr[1],$arr[2]);
 					$msg = "Successful";
 				}else{
 					$msg = "Cannot provide the ticket";
@@ -101,7 +103,8 @@ class RaffleController extends Controller
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
 
-		return $msg;
+		$myResult=Yii::app()->shoppingCart->getTicketList();
+		echo json_encode($myResult);
 	}
 
 	public function actionGetTicketList()
@@ -109,7 +112,7 @@ class RaffleController extends Controller
 		$Raffle = new Raffle();
 		$userid = Yii::app()->user->getId();
 		$myList = $Raffle->getTicketList($userid);
-
+		//return $myList;
 		echo json_encode($myList);
 	}
 
