@@ -16,7 +16,7 @@ $this->breadcrumbs=array(
                   'contact' => $contact,
                   'has_error' => $has_error,
                   'user' => $user,
-                  'disabled' => $disabled
+                  'disabled' => $disabled,
               ), true),
 )); ?>
 
