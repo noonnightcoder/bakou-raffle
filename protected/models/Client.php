@@ -54,7 +54,7 @@ class Client extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('first_name, mobile_no', 'required'),
-			array('city_id, price_tier_id, employee_id, contact_id, district_id,commune_id, village_id', 'numerical', 'integerOnly'=>true),
+			array('city_id, price_tier_id, employee_id, login_id, district_id,commune_id, village_id', 'numerical', 'integerOnly'=>true),
 			array('first_name, last_name, main_biz, size_biz', 'length', 'max'=>100),
             array('gps_e, gps_n', 'length', 'max'=>25),
 			array('mobile_no', 'length', 'max'=>15),

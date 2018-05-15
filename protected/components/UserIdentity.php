@@ -55,8 +55,13 @@ class UserIdentity extends CUserIdentity
             Yii::app()->session['employeeid'] = $employeeId;
             Yii::app()->session['userid'] = $user->id;
 
-            $employee = Employee::model()->findByPk($employeeId);
-            Yii::app()->session['emp_fullname'] = $employee->first_name . ' ' . $employee->last_name;
+            if($employeeId!=0) //check if not client login
+            {
+                $employee = Employee::model()->findByPk($employeeId);
+                Yii::app()->session['emp_fullname'] = $employee->first_name . ' ' . $employee->last_name;
+            }else{
+                Yii::app()->session['emp_fullname']='Client login'; //can replace by name of client
+            }
             
             //Saving User Login & out timing
             Yii::app()->session['unique_id'] = uniqid();

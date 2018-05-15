@@ -95,10 +95,12 @@ class ClientController extends Controller
         $data['has_error'] = "";
         $data['disabled'] = "";
 
-        if (Yii::app()->user->checkAccess('client.create')) {
-            if (isset($_POST['Client'])) {
+        if (Yii::app()->user->checkAccess('client.create'))
+        {
+            if (isset($_POST['Client']))
+            {
                 $data['model']->attributes = $_POST['Client'];
-                $data['contact']->attributes = $_POST['Contact'];
+                //$data['contact']->attributes = $_POST['Contact'];
 
                 if ($_POST['Client']['year'] !== "" || $_POST['Client']['month'] !== "" || $_POST['Client']['day'] !== "") {
                     $dob = $_POST['Client']['year'] . '-' . $_POST['Client']['month'] . '-' . $_POST['Client']['day'];
@@ -107,36 +109,53 @@ class ClientController extends Controller
 
                 // validate BOTH $a and $b
                 $valid = $data['model']->validate();
-                $valid = $data['contact']->validate() && $valid;
+                //$valid = $data['contact']->validate() && $valid;
 
                 //if ($model->validate()) {
                 if ($valid) {
                     $transaction = Yii::app()->db->beginTransaction();
                     try {
 
-                        if (isset($_POST['Contact'])) {
+                        /*if (isset($_POST['Contact'])) {
                             $data['contact']->save();
                             $data['model']->contact_id = $data['contact']->id;
-                        }
+                        }*/
 
-                        if ($data['model']->save()) {
-                            $client_id = $data['model']->id;
-                            $client_fname = $data['model']->first_name . ' ' . $data['model']->last_name;
-                            $price_tier_id = $data['model']->price_tier_id;
+                        if(isset($_POST['RbacUser']) && !empty($_POST['RbacUser']))
+                        {
+                            if(isset($_POST['Submit-btn']) && $_POST['Submit-btn']=='Create') //just wan to make sure it is created only new client only
+                            {
+                                $data['user']->attributes = $_POST['RbacUser'];
+                                $data['user']->employee_id=0;
+                                if($data['user']->validate())
+                                {
+                                    $data['user']->save();
+                                    $myLoginID = $data['user']->id;
 
-                            Account::model()->saveAccount($client_id, $client_fname);
-                            $transaction->commit();
+                                    $data['model']->login_id=$myLoginID;
+                                    if ($data['model']->save())
+                                    {
+                                        $client_id = $data['model']->id;
+                                        $client_fname = $data['model']->first_name . ' ' . $data['model']->last_name;
+                                        $price_tier_id = $data['model']->price_tier_id;
 
-                            if ($sale_mode == 'Y') {
-                                Yii::app()->shoppingCart->setCustomer($client_id);
-                                Yii::app()->shoppingCart->setPriceTier($price_tier_id);
-                                $this->redirect(array('saleItem/index'));
-                            } else {
-                                Yii::app()->user->setFlash(TbHtml::ALERT_COLOR_SUCCESS,
-                                    '<strong>' . ucfirst($data['model']->first_name) . '</strong> have been saved successfully!');
-                                $this->redirect(array('create'));
+                                        Account::model()->saveAccount($myLoginID, $client_fname);
+                                        $transaction->commit();
+
+                                        if ($sale_mode == 'Y') {
+                                            Yii::app()->shoppingCart->setCustomer($client_id);
+                                            Yii::app()->shoppingCart->setPriceTier($price_tier_id);
+                                            $this->redirect(array('saleItem/index'));
+                                        } else {
+                                            Yii::app()->user->setFlash(TbHtml::ALERT_COLOR_SUCCESS,
+                                                '<strong>' . ucfirst($data['model']->first_name) . '</strong> have been saved successfully!');
+                                            $this->redirect(array('create'));
+                                        }
+                                    }
+                                }
                             }
                         }
+
                     } catch (CDbException $e) {
                         $transaction->rollback();
                         Yii::app()->user->setFlash(TbHtml::ALERT_COLOR_WARNING,'Oop something wrong : <strong>' . $e->getMessage());
@@ -239,22 +258,27 @@ class ClientController extends Controller
     public function actionUpdate($id, $sale_mode = 'N')
     {
         $model = $this->loadModel($id);
-        $contact = Contact::model()->conatctByID($model->contact_id);
-        $data['user'] = new RbacUser;
-        $has_error = "";
-        $data['disabled'] = "";
+        //$contact = Contact::model()->conatctByID($model->contact_id);
+        $contact = new Contact();
 
-        if (!$contact) {
+        $user = RbacUser::model()->findByPk($model->login_id);
+
+        $has_error = "";
+        $disabled = "";
+
+        /*if (!$contact) {
             $contact = New Contact;
-        }
+        }*/
 
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
         if (Yii::app()->user->checkAccess('client.update')) {
             if (isset($_POST['Client'])) {
+                //print_r($_POST);
+                //die();
                 $model->attributes = $_POST['Client'];
-                $contact->attributes = $_POST['Contact'];
+                //$contact->attributes = $_POST['Contact'];
 
                 if ($_POST['Client']['year'] !== "" || $_POST['Client']['month'] !== "" || $_POST['Client']['day'] !== "") {
                     $dob = $_POST['Client']['year'] . '-' . $_POST['Client']['month'] . '-' . $_POST['Client']['day'];
@@ -263,21 +287,35 @@ class ClientController extends Controller
 
                 // validate BOTH $a and $b
                 $valid = $model->validate();
-                $valid = $contact->validate() && $valid;
+                //$valid = $contact->validate() && $valid;
 
                 //if ($model->validate())
                 if ($valid) {
                     $transaction = $model->dbConnection->beginTransaction();
                     try {
 
-                        if (isset($_POST['Contact'])) {
+                        /*if (isset($_POST['Contact'])) {
                             $contact->save();
                             $model->contact_id = $contact->id;
+                        }*/
+
+                        if(isset($_POST['RbacUser']) && !empty($_POST['RbacUser']))
+                        {
+                            if (isset($_POST['Submit-btn']) && $_POST['Submit-btn'] == 'Create') //just wan to make sure it is created only new client only
+                            {
+                                $user->attributes = $_POST['RbacUser'];
+                                if($user->validate())
+                                {
+                                    $user->save();
+                                }
+                            }
                         }
 
-                        if ($model->save()) {
+                        if ($model->save())
+                        {
                             $client_fname = $model->first_name . ' ' . $model->last_name;
-                            Account::model()->saveAccount($model->id, $client_fname);
+                            //$getLoginID = Client::model()->findByPk($model->id);
+                            Account::model()->saveAccount($model->login_id, $client_fname);
                             $price_tier_id = $model->price_tier_id;
 
                             $transaction->commit();
@@ -294,7 +332,7 @@ class ClientController extends Controller
                         }
                     } catch (Exception $e) {
                         $transaction->rollback();
-                        print_r($e);
+                        //print_r($e);
                     }
                 } else {
                     $has_error = "has-error";
@@ -321,7 +359,7 @@ class ClientController extends Controller
 
             Yii::app()->end();
         } else {
-            $this->render('update', array('model' => $model, 'contact' => $contact, 'has_error' => $has_error));
+            $this->render('update', array('model' => $model,'user'=>$user, 'contact' => $contact, 'has_error' => $has_error));
         }
     }
 
