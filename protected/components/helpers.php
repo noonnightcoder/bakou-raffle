@@ -139,5 +139,10 @@
         return 'Deposit';
     }
 
+    function sysRWithdraw()
+    {
+        return 'Withdraw';
+    }
+
 
 

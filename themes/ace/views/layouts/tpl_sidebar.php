@@ -35,6 +35,10 @@ $this->widget('bootstrap.widgets.TbNav', array(
                 'active'=>$this->id .'/'. $this->action->id=='salePayment/index',
                 'visible'=>Yii::app()->user->checkAccess('payment.index')),
 
+            array('label'=>'<span class="menu-text">' . strtoupper(Yii::t('app', 'Balance History')) . '</span>', 'icon'=>'menu-icon fa fa-usd', 'url'=>Yii::app()->urlManager->createUrl('salePayment/BalanceHistory'),
+                'active'=>$this->id .'/'. $this->action->id=='salePayment/BalanceHistory',
+                'visible'=>Yii::app()->user->checkAccess('payment.index')),
+
             /*
             array('label'=>'<span class="menu-text">' . strtoupper(Yii::t('app', 'Supplier Payment')) . '</span>', 'icon'=>'menu-icon fa fa-credit-card', 'url'=>Yii::app()->urlManager->createUrl('receivingPayment/index'),
                 'active'=>$this->id .'/'. $this->action->id=='receivingPayment/index',

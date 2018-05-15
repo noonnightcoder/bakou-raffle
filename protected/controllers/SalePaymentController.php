@@ -33,7 +33,11 @@ class SalePaymentController extends Controller
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'Payment', 'admin','PaymentDetail','SavePayment','SelectCustomer','RemoveCustomer','successPayment','SelectInvoice','removeInvoice'),
+                'actions' => array('create', 'update', 'Payment', 'admin','PaymentDetail',
+                                    'SavePayment','SelectCustomer','RemoveCustomer',
+                                    'successPayment','SelectInvoice','removeInvoice',
+                                    'Withdraw','BalanceHistory',
+                                    ),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -128,7 +132,18 @@ class SalePaymentController extends Controller
     public function actionIndex()
     {
         if (Yii::app()->user->checkAccess('payment.index')) {
-            $this->reload();
+            $this->reload('index');
+        } else {
+            //throw new CHttpException(403, 'You are not authorized to perform this action');
+            $this->redirect(array('site/ErrorException','err_no'=>403));
+        }
+    }
+
+
+    public function actionWithdraw()
+    {
+        if (Yii::app()->user->checkAccess('payment.index')) {
+            $this->reload('withdraw');
         } else {
             //throw new CHttpException(403, 'You are not authorized to perform this action');
             $this->redirect(array('site/ErrorException','err_no'=>403));
@@ -171,6 +186,7 @@ class SalePaymentController extends Controller
 
     public function actionSavePayment()
     {
+        $type = $_GET['type'];
         if (!Yii::app()->user->checkAccess('payment.index')) {
             throw new CHttpException(403, 'You are not authorized to perform this action');
             exit;
@@ -185,19 +201,32 @@ class SalePaymentController extends Controller
                 $paid_date = Date('Y-m-d H:i:s'); //$_POST['SalePayment']['date_paid'];
                 $note = $_POST['SalePayment']['note'];
 
-                if ( $paid_amount <= $data['balance'] ) {
-                    $data['payment_id'] = SalePayment::model()->payment($data['sale_id'],$data['client_id'],$data['employee_id'],$data['account'],$paid_amount, $paid_date, $note);
-                    if (substr($data['payment_id'],0,2) == '-1') {
-                        $data['warning'] = $data['payment_id'];
+                if($type=='raffle_deposit' || $type=='raffle_withdraw')
+                {
+                    $data['payment_id'] = SalePayment::model()->payment($data['sale_id'],$data['client_id'],$data['employee_id'],$data['account'],$paid_amount, $paid_date, $note,$type);
+
+                    $data = $this->sessionInfo();
+                    $data['warning'] = $data['client_name'] .  ' Successfully paid ';
+                    $this->renderPartial('partial/_payment_success',$data);
+                    Yii::app()->paymentCart->clearInvoice();
+                    exit;
+                    
+                }else{
+                    if ( $paid_amount <= $data['balance'] )
+                    {
+                        $data['payment_id'] = SalePayment::model()->payment($data['sale_id'],$data['client_id'],$data['employee_id'],$data['account'],$paid_amount, $paid_date, $note);
+                        if (substr($data['payment_id'],0,2) == '-1') {
+                            $data['warning'] = $data['payment_id'];
+                        } else {
+                            $data = $this->sessionInfo();
+                            $data['warning'] = $data['client_name'] .  ' Successfully paid ';
+                            $this->renderPartial('partial/_payment_success',$data);
+                            Yii::app()->paymentCart->clearInvoice();
+                            exit;
+                        }
                     } else {
-                        $data = $this->sessionInfo();
-                        $data['warning'] = $data['client_name'] .  ' Successfully paid ';
-                        $this->renderPartial('partial/_payment_success',$data);
-                        Yii::app()->paymentCart->clearInvoice();
-                        exit;
+                        $data['model']->addError('payment_amount', Yii::t('app','Total amount to paid is only') .  ' <strong>' . number_format($data['balance'],Common::getDecimalPlace()) . '</strong>');
                     }
-                } else {
-                   $data['model']->addError('payment_amount', Yii::t('app','Total amount to paid is only') .  ' <strong>' . number_format($data['balance'],Common::getDecimalPlace()) . '</strong>');
                 }
             }
         }
@@ -213,23 +242,33 @@ class SalePaymentController extends Controller
         }
     }
 
-    public function actionSelectCustomer()
+    public function actionBalanceHistory()
+    {
+        if (Yii::app()->user->checkAccess('payment.index')) {
+            $this->reload('balance_history');
+        } else {
+            //throw new CHttpException(403, 'You are not authorized to perform this action');
+            $this->redirect(array('site/ErrorException','err_no'=>403));
+        }
+    }
+
+    public function actionSelectCustomer($view='')
     {
         if (Yii::app()->request->isPostRequest && Yii::app()->request->isAjaxRequest) {
             Yii::app()->paymentCart->setClientId($_POST['SalePayment']['client_id']);
-            $this->reload();
+            $this->reload($view);
         } else {
             //throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
             $this->redirect(array('site/ErrorException', 'err_no' => 400));
         }
     }
     
-    public function actionRemoveCustomer()
+    public function actionRemoveCustomer($view='')
     {
         if ( Yii::app()->request->isPostRequest && Yii::app()->request->isAjaxRequest ) {
             //Yii::app()->paymentCart->removeCustomer();
             Yii::app()->paymentCart->clearAll();
-            $this->reload();
+            $this->reload($view);
         } else {
             throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
         }
@@ -258,7 +297,7 @@ class SalePaymentController extends Controller
         }
     }
 
-    private function reload()
+    private function reload($view='')
     {
         
         $data = $this->sessionInfo();
@@ -283,9 +322,9 @@ class SalePaymentController extends Controller
             Yii::app()->clientScript->scriptMap['*.js'] = false;
             Yii::app()->clientScript->scriptMap['jquery-ui.css'] = false;
             Yii::app()->clientScript->scriptMap['box.css'] = false;
-            $this->renderPartial('index', $data, false, true);
+            $this->renderPartial($view, $data, false, true);
         } else {
-            $this->render('index', $data);
+            $this->render($view, $data);
         }
         
     }
@@ -295,15 +334,17 @@ class SalePaymentController extends Controller
         $model = new SalePayment;
         $data['model'] = $model;
         $data['client_id'] = Yii::app()->paymentCart->getClientId();
-        $data['sale_id'] = Yii::app()->paymentCart->getInvoiceId();
+        $data['sale_id'] = Yii::app()->user->getId(); //Yii::app()->paymentCart->getInvoiceId();
         $data['invoice_balance'] = Yii::app()->paymentCart->getInvoiceBalance();
         $data['employee_id'] = Yii::app()->session['employeeid'];
+        $data['clientLoginID'] = Client::model()->findByPk($data['client_id']);
 
         //$data['payment_amount_auto_complete'] = Yii::app()->paymentCart->getInvoiceBalance();
 
 
-        if ($data['client_id']!==null) {
-            $account = Account::model()->getAccountInfo($data['client_id']);
+        if ($data['client_id']!==null)
+        {
+            $account = Account::model()->getAccountInfo($data['clientLoginID']->login_id);
             if (isset($account)) {
                 $data['balance'] = $account->current_balance;
                 $data['account'] = $account;
@@ -315,8 +356,8 @@ class SalePaymentController extends Controller
                 $data['balance'] = -3.14159;
                 $data['save_button'] = true;
             }
-            $client = Client::model()->findbyPk($data['client_id']);
-            $data['client_name'] = ucwords( $client->first_name . ' ' . $client->last_name );
+            //$client = Client::model()->findbyPk($data['client_id']);
+            $data['client_name'] = ucwords( $data['clientLoginID']->first_name . ' ' . $data['clientLoginID']->last_name );
 
         } else {
             $data['client_name'] = '';

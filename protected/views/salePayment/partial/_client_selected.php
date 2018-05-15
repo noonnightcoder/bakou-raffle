@@ -2,7 +2,7 @@
 <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
         'id'=>'client_selected_form',
         'layout'=>TbHtml::FORM_LAYOUT_HORIZONTAL,
-        'action'=>Yii::app()->createUrl('salePayment/removeCustomer/'),
+        'action'=>Yii::app()->createUrl('salePayment/removeCustomer?view='.$view),
 )); ?>
  
         <div class="">
@@ -17,7 +17,7 @@
                     <?php if ($balance==-3.14159) {  ?>
                         <?php echo 'The account was not setup, plz update first'; ?>
                     <?php } else {  ?>
-                        <?php echo '( ' . Yii::t('app','Total Due') . ' : ' . number_format($balance,Common::getDecimalPlace()) . ' )'; ?>
+                        <?php echo '( ' . Yii::t('app','Total Balance') . ' : ' . number_format($balance,Common::getDecimalPlace()) . ' )'; ?>
                     <?php } ?>
                     
                 </span>    

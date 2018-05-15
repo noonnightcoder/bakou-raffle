@@ -81,6 +81,7 @@ class RaffleController extends Controller
 		$Raffle = new Raffle();
 		$status=false;
 		$msg='';
+		$balance = 0;
 		//$act = $_GET['act'];
 		try {
 			$myID = Yii::app()->user->getId();
@@ -102,12 +103,14 @@ class RaffleController extends Controller
 						$msg = "Cannot provide the ticket, not enough balance!";
 						$status=false;
 					}
+					$balance = $chk_bal->current_balance;
 				}else{
 					$msg = "Cannot provide the ticket, not enough balance!";
 					$status=false;
 				}
 			}else{
 				$msg = "Please press button to pick-up the ticket!";
+				if(!empty($chk_bal)) $balance = $chk_bal->current_balance; //to prevent when no object found
 				$status=false;
 			}
 		}catch (Exception $e) {
@@ -119,7 +122,7 @@ class RaffleController extends Controller
 			array(
 				'status'=>$status,
 				'message'=>$msg,
-				'balance'=>$chk_bal->current_balance,
+				'balance'=>$balance,
 				'result'=>$myResult
 			)
 		);

@@ -181,7 +181,11 @@ class SalePayment extends CActiveRecord
         $sql = "SELECT p.id,p.`date_paid`,
                     CONCAT(c.first_name,' ',c.last_name) client_name,
                     p.payment_amount,
-                    CONCAT(e.first_name,' ',e.last_name) employee_name    
+                    CONCAT(e.first_name,' ',e.last_name) employee_name,
+                  CASE 
+                    when trans_status='W' then 'Withdraw'
+                    else 'Deposit'
+                  end note  
                   FROM payment_history p, `client` c , employee e
                   WHERE p.`client_id` = c.id 
                   and p.employee_id = e.id
@@ -206,32 +210,55 @@ class SalePayment extends CActiveRecord
         return $dataProvider; // Return as array object
     }
 
-    public function payment($sale_id=null,$client_id, $employee_id, $account, $total_paid, $paid_date, $note) {
+    public function payment($sale_id=null,$client_id, $employee_id, $account, $total_paid, $paid_date, $note,$type='') {
 
-        if ($sale_id==null) {
-            $this->batchPayment($client_id, $employee_id, $account, $total_paid, $paid_date, $note);
-        } else {
-            $this->invoicePayment($sale_id,$client_id, $employee_id, $account, $total_paid, $paid_date, $note);
-        }
-
+        /*if ($type=='raffle_deposit')
+        {
+            $this->invoicePayment($sale_id,$client_id, $employee_id, $account, $total_paid, $paid_date, $note,$type);
+        }else {
+            if($sale_id==null)
+            {
+                $this->batchPayment($client_id, $employee_id, $account, $total_paid, $paid_date, $note,$type);
+            }else{
+                $this->invoicePayment($sale_id,$client_id, $employee_id, $account, $total_paid, $paid_date, $note,$type);
+            }
+        }*/
+        $this->invoicePayment($sale_id,$client_id, $employee_id, $account, $total_paid, $paid_date, $note,$type);
     }
 
-    public function invoicePayment($sale_id,$client_id, $employee_id, $account, $total_paid, $paid_date, $note) {
-
+    public function invoicePayment($sale_id,$client_id, $employee_id, $account, $total_paid, $paid_date, $note,$type='')
+    {
         $trans_code = 'PAY';
-        $trans_status = $total_paid > 0 ? 'N' : 'R'; // If [Payment Amount] > 0 then Paid else Return to Customer
+        //$trans_status = $total_paid > 0 ? 'N' : 'R'; // If [Payment Amount] > 0 then Paid else Return to Customer
 
-        $payment_id = PaymentHistory::model()->savePaymentHistory($client_id, $total_paid, $paid_date, $employee_id, $note);
+        if($type=='raffle_deposit')
+        {
+            $trans_status='D';
 
-        $this->saveSalePayment($sale_id, $payment_id, $total_paid, $paid_date, $note);
+            $payment_id = PaymentHistory::model()->savePaymentHistory($client_id, $total_paid, $paid_date, $employee_id, $note,$trans_status);
 
-        AccountReceivable::model()->saveAccountRecv($account->id, $employee_id, $sale_id, -$total_paid, $paid_date, $note, $trans_code, $trans_status);
+            $this->saveSalePayment($sale_id, $payment_id, $total_paid, $paid_date, $note);
 
-        Account::model()->withdrawAccountBal($account, $total_paid);
+            AccountReceivable::model()->saveAccountRecv($account->id, $employee_id, $sale_id, $total_paid, $paid_date, $note, $trans_code, $trans_status);
 
+            Account::model()->depositAccountBal($account, $total_paid);
+        }elseif($type=='raffle_withdraw'){
+            $trans_status='W';
+
+            $payment_id = PaymentHistory::model()->savePaymentHistory($client_id, $total_paid, $paid_date, $employee_id, $note,$trans_status);
+
+            $this->saveSalePayment($sale_id, $payment_id, $total_paid, $paid_date, $note);
+
+            AccountReceivable::model()->saveAccountRecv($account->id, $employee_id, $sale_id, -$total_paid, $paid_date, $note, $trans_code, $trans_status);
+
+            Account::model()->withdrawAccountBal($account, $total_paid);
+        }else{
+            //$msg='Please check your link!!!';
+            $this->redirect(array('site/ErrorException', 'err_no' => 400));
+        }
     }
 
-    public function batchPayment($client_id, $employee_id, $account, $total_paid, $paid_date, $note)
+    public function batchPayment($client_id, $employee_id, $account, $total_paid, $paid_date, $note,$type='')
     {
 
         $sql = $this->saleInvoiceQuery('>');

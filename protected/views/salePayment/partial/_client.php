@@ -1,7 +1,7 @@
 <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
             'id'=>'client_form',
             'method'=>'post',
-            'action' => Yii::app()->createUrl('salePayment/SelectCustomer/'),
+            'action' => Yii::app()->createUrl('salePayment/SelectCustomer?view='.$view),
             'layout'=>TbHtml::FORM_LAYOUT_HORIZONTAL,
     )); ?>
     
