@@ -26,5 +26,9 @@
                       'header'=>Yii::t('app','Employee'),
                       'value'=>'$data["employee_name"]',
                 ),
+                array('name'=>'note',
+                    'header'=>Yii::t('app','Note'),
+                    'value'=>'$data["note"]',
+                ),
         ),
 )); ?>   

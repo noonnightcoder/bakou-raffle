@@ -30,7 +30,7 @@ $this->breadcrumbs=array(
                         'data-update-dialog-title' => Yii::t('app','Customer Information'),
                     )); ?>
                    
-                <?php echo '(' . Yii::t('app','Total Due') . ' : ' . number_format($balance,Common::getDecimalPlace()) . ' )'; ?>
+                <?php echo '(' . Yii::t('app','Total Balance') . ' : ' . number_format($balance,Common::getDecimalPlace()) . ' )'; ?>
                     
                 </span>    
                 

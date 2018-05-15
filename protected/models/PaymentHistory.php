@@ -113,7 +113,7 @@ class PaymentHistory extends CActiveRecord
 		return parent::model($className);
 	}
 
-    public function savePaymentHistory($client_id, $payment_amount, $paid_date, $employee_id, $note)
+    public function savePaymentHistory($client_id, $payment_amount, $paid_date, $employee_id, $note,$trans_status='')
     {
         $payment_id = 0;
         if ($payment_amount <> 0) {
@@ -123,6 +123,7 @@ class PaymentHistory extends CActiveRecord
             $payment_history->date_paid = $paid_date;
             $payment_history->note = $note;
             $payment_history->employee_id = $employee_id;
+			$payment_history->trans_status=$trans_status;
             $payment_history->save();
             $payment_id = $payment_history->id;
         }

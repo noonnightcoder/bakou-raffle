@@ -24,28 +24,36 @@ $this->breadcrumbs = array(
         <div class="row">
             <div class="sidebar-nav" id="client_cart">
                 <?php
-                if ($client_name == '') {
-                    $this->renderPartial('partial/_client', array('model' => $model));
+                if ($client_name == '')
+                {
+                    $this->renderPartial('partial/_client', array('model' => $model,'view'=>'index'));
+                    $save_button='disabled';
                 } else {
                     $this->renderPartial('partial/_client_selected', array('model' => $model,
                             'balance' => $balance,
                             'client_id' => $client_id,
-                            'client_name' => $client_name
+                            'client_name' => $client_name,
+                            'view'=>'index'
                         )
                     );
+
+                    $save_button='';
                 }
                 ?>
 
-                <?php if ($sale_id !== null ) {
+                <?php /*if ($sale_id !== null ) {
                     $this->renderPartial('partial/_invoice_selected', array('sale_id' => $sale_id, 'invoice_balance' => $invoice_balance, 'employee_id' => $employee_id));
-                } ?>
+                }*/ ?>
 
             </div>
         </div>
 
         <div id="sale_payment_cart">
 
-            <?php $this->renderPartial('partial/_payment_form', array('model' => $model, 'save_button' => $save_button, 'invoice_balance' => $invoice_balance)); ?>
+            <?php $this->renderPartial('partial/_payment_form', array('model' => $model,
+                                        'save_button' => $save_button,
+                                        'invoice_balance' => $invoice_balance,
+                                        'type'=>'raffle_deposit')); ?>
 
         </div>
 

@@ -89,6 +89,7 @@ class PaymentCart extends CApplicationComponent
     {
         $this->removeInvoiceId();
         $this->removeInvoiceBalance();
+        $this->removeCustomer();
     }
     
     public function clearAll()

@@ -2,7 +2,7 @@
     'id'=>'sale-payment-form',
     'enableAjaxValidation'=>false,
     'layout'=>TbHtml::FORM_LAYOUT_HORIZONTAL,
-    'action' => $this->createUrl('SavePayment'),
+    'action' => $this->createUrl('SavePayment?type='.$type),
 )); ?>
 
 <?php //echo $form->textFieldControlGroup($model,'total_due',array('class'=>3,'disabled'=>true,'value'=>$balance)); ?>

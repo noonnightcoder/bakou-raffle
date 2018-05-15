@@ -301,7 +301,7 @@ class ClientController extends Controller
 
                         if(isset($_POST['RbacUser']) && !empty($_POST['RbacUser']))
                         {
-                            if (isset($_POST['Submit-btn']) && $_POST['Submit-btn'] == 'Create') //just wan to make sure it is created only new client only
+                            if (isset($_POST['Submit-btn']) && $_POST['Submit-btn'] == 'Save') //just wan to make sure it is created only new client only
                             {
                                 $user->attributes = $_POST['RbacUser'];
                                 if($user->validate())
