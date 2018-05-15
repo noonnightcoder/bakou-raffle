@@ -20,6 +20,7 @@
 <?= $form->dropDownListControlGroup($model, 'district_id', District::model()->getDistrict(),
     array(
         'class' => 'span3',
+        'id'=>'Client_district_id',
         'empty' => Yii::t('app', 'Select District'),
         'ajax' => array(
             'type' => 'POST', //request type
@@ -32,6 +33,7 @@
 <?= $form->dropDownListControlGroup($model, 'commune_id', Commune::model()->getCommune(),
     array(
         'class' => 'span3',
+        'Client_commune_id'=>'Client_commune_id',
         'empty' => Yii::t('app', 'Select Commune'),
     )
 ); ?>
