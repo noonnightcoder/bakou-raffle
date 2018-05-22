@@ -593,6 +593,12 @@ class Item extends CActiveRecord
                 'filter' => '',
             ),
             array(
+                'name' => 'Qty',
+                'value' => '$data->status=="1" ? $data->quantity : "<s class=\"red\">  $data->quantity <span>"',
+                'type' => 'raw',
+                'filter' => '',
+            ),
+            array(
                 'class' => 'bootstrap.widgets.TbButtonColumn',
                 'header' => Yii::t('app','Action'),
                 'template' => '<div class="hidden-sm hidden-xs btn-group">{detail}{price}{delete}{undeleted}</div>',

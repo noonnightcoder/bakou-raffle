@@ -202,7 +202,7 @@
 
 	<?php //echo $form->textFieldControlGroup($model,'allow_alt_description',array('class'=>'span3')); ?>
 
-	<?php //echo $form->textFieldControlGroup($model,'is_serialized',array('class'=>'span4')); ?>
+	<?php echo $form->textFieldControlGroup($model,'quantity',array('class'=>'span4')); ?>
         
 		<!--
         <div class="form-group">

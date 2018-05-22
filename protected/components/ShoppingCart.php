@@ -681,6 +681,24 @@ class ShoppingCart extends CApplicationComponent
         }
         return $this->session['luckyDraw'];
     }
+
+    public function setProfitOption($option,$win_percentage)
+    {
+        $this->setSession(Yii::app()->session);
+        $this->session['profitOption'] = array('option'=>$option,'win_percentage'=>$win_percentage);
+    }
+
+    public function getProfitOption()
+    {
+        $this->setSession(Yii::app()->session);
+        return $this->session['profitOption'];
+    }
+
+    public function emptyProfitOption()
+    {
+        $this->setSession(Yii::app()->session);
+        unset($this->session['profitOption']);
+    }
     
     public function clearAll()
     {

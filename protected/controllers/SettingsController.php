@@ -6,6 +6,8 @@ class SettingsController extends Controller
     /**
      * @return array action filters
      */
+    //public $layout = '//layouts/column2';
+
     public function filters()
     {
         return array(
@@ -13,12 +15,13 @@ class SettingsController extends Controller
         );
     }
 
-    /*
+
     public function accessRules()
     {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'view'),
+                'actions' => array('index', 'view','ProfitSetting',
+                                    'SelectOption','RemoveOption'),
                 'users' => array('@'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -34,7 +37,7 @@ class SettingsController extends Controller
             ),
         );
     }
-    */
+
 
     public function actionIndex()
     {
@@ -68,6 +71,93 @@ class SettingsController extends Controller
         $this->render('index', array('model' => $model));
     }
 
+    public function actionProfitSetting()
+    {
+        $this->reload('admin');
+    }
+
+    public function actionSelectOption($view='')
+    {
+        if (Yii::app()->request->isPostRequest && Yii::app()->request->isAjaxRequest) {
+
+            if(isset($_POST['SettingsForm']))
+            {
+                if(!empty($_POST['SettingsForm']['ProfitOptions']))
+                {
+                    Yii::app()->shoppingCart->setProfitOption($_POST['SettingsForm']['ProfitOptions'],$_POST['SettingsForm']['amount_win_perc']);
+                }
+            }
+            $this->reload($view);
+        } else {
+            //throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
+            $this->redirect(array('site/ErrorException', 'err_no' => 400));
+        }
+    }
+
+    public function actionRemoveOption($view='')
+    {
+        if ( Yii::app()->request->isPostRequest && Yii::app()->request->isAjaxRequest ) {
+            Yii::app()->shoppingCart->emptyProfitOption();
+            $this->reload($view);
+        } else {
+            throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
+        }
+    }
+
+    private function reload($view='')
+    {
+
+        $data = $this->sessionInfo();
+
+        if (Yii::app()->request->isAjaxRequest) {
+
+            $cs = Yii::app()->clientScript;
+            $cs->scriptMap = array(
+                'jquery.js' => false,
+                'bootstrap.js' => false,
+                'jquery.min.js' => false,
+                'bootstrap.notify.js' => false,
+                'bootstrap.bootbox.min.js' => false,
+                'bootstrap.min.js' => false,
+                'jquery-ui.min.js' => false,
+                'jquery.yiigridview.js' => false,
+                'jquery.ba-bbq.min.js' => false,
+                'jquery.stickytableheaders.min.js'=>false,
+                //'jquery.autocomplete.js' => false,
+            );
+
+            Yii::app()->clientScript->scriptMap['*.js'] = false;
+            Yii::app()->clientScript->scriptMap['jquery-ui.css'] = false;
+            Yii::app()->clientScript->scriptMap['box.css'] = false;
+
+            $this->renderPartial($view, $data, false,true);
+        } else {
+            $this->render($view, $data);
+        }
+
+    }
+
+    protected function sessionInfo($data=array())
+    {
+        $data['TmpBetResult'] = new BetPrizeTmp;
+
+        $data['grid_columns'] = $data['TmpBetResult']->getProfitColumns();
+
+        $data['data_provider'] = $data['TmpBetResult']->getBetTest();
+
+        $data['model']=new SettingsForm;
+        $data['profitOption']=Yii::app()->shoppingCart->getProfitOption();
+        if(!empty($data['profitOption']))
+        {
+            $data['option']=$data['profitOption']['option'];
+            $data['win_percentage']=$data['profitOption']['win_percentage'];
+        }else{
+            $data['option']='';
+            $data['win_percentage']='';
+        }
+
+        return $data;
+    }
 }
 
 ?>

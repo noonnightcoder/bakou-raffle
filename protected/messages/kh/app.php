@@ -171,4 +171,7 @@ return array(
     'To' => 'ដល់',
     'Start Date' => 'ពីថ្ងៃ',
     'End Date' => 'ដល់ថ្ងៃ',
+    'Ticket Number'=>'Ticket Number',
+    'Prize Category'=>'Prize Category',
+    'Raffle Price'=>'Raffle Price'
 );

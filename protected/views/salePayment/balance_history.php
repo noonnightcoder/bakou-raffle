@@ -22,7 +22,7 @@ $this->breadcrumbs = array(
     <?php $this->renderPartial('//layouts/partial/_flash_message'); ?>
 
     <div class="row">
-        <div class="sidebar-nav" id="client_cart">
+        <div class="page-header" id="client_cart">
             <?php
             if ($client_name == '')
             {

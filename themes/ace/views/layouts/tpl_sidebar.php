@@ -112,7 +112,7 @@ $this->widget('bootstrap.widgets.TbNav', array(
             )),
             */
             array('label'=>'<span class="menu-text">'. strtoupper(Yii::t('app','PIM')) . '</span>', 'icon'=>'menu-icon fa fa-group','url'=>Yii::app()->urlManager->createUrl('client/admin'),
-                           'active'=>$this->id=='employee' || $this->id=='supplier' || $this->id=='client' || $this->id=='publisher',
+                           'active'=>$this->id=='employee' || $this->id=='supplier' || $this->id=='client' || $this->id=='settings',
                            'visible'=> Yii::app()->user->checkAccess('store.update') || Yii::app()->user->checkAccess('employee.index') || Yii::app()->user->checkAccess('client.index'),
                            'items'=>array(
                                array('label'=>Yii::t('app', sysMenuCustomer()) , 'icon'=> TbHtml::ICON_USER, 'url'=>Yii::app()->urlManager->createUrl('client/admin'),
@@ -121,6 +121,11 @@ $this->widget('bootstrap.widgets.TbNav', array(
                                ),
                                array('label'=>Yii::t('app', 'Operator'), 'icon'=> TbHtml::ICON_USER, 'url'=>Yii::app()->urlManager->createUrl('employee/admin'),
                                    'active'=>$this->id =='employee', //'active'=>$this->id .'/'. $this->action->id=='employee/admin',
+                                   'visible'=> Yii::app()->user->checkAccess('employee.index') || Yii::app()->user->checkAccess('employee.create') || Yii::app()->user->checkAccess('employee.update') || Yii::app()->user->checkAccess('employee.delete')
+                               ),
+
+                               array('label'=>Yii::t('app', 'Profit Set'), 'icon'=> TbHtml::ICON_USER, 'url'=>Yii::app()->urlManager->createUrl('settings/ProfitSetting'),
+                                   'active'=>$this->id =='settings', //'active'=>$this->id .'/'. $this->action->id=='employee/admin',
                                    'visible'=> Yii::app()->user->checkAccess('employee.index') || Yii::app()->user->checkAccess('employee.create') || Yii::app()->user->checkAccess('employee.update') || Yii::app()->user->checkAccess('employee.delete')
                                ),
             )),
