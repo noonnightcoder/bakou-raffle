@@ -1,7 +1,20 @@
 <?php
 class SettingsForm extends CFormModel
 {
-    
+
+    public $archived_attr;
+    public $amount_win_perc;
+    public $profit_option;
+    public $ProfitOptions;
+
+    /*public function rules()
+    {
+        return array(
+            array('amount_win_perc, ProfitOptions', 'required'),
+        );
+    }*/
+
+
     public $exchange_rate = array(
         'USD2KHR' => '',
         //'USD2THB' => '',
