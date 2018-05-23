@@ -16,10 +16,10 @@
         <div class="middle col-sm-5">
 
         <?php echo $form->radioButtonList($model,'ProfitOptions',array(
-                'option1' => '<div class="inline" title="This is my tooltip 1">Option one</div>',
-                'option2' => '<div class="inline" title="This is my tooltip 2">Option two</div>',
-                'option3' => '<div class="inline" title="This is my tooltip 3">Option three</div>',
-                'option4' => '<div class="inline" title="This is my tooltip 4">Option four</div>',
+                'Option1' => '<div class="inline" title="This is my tooltip 1">Option one</div>',
+                'Option2' => '<div class="inline" title="This is my tooltip 2">Option two</div>',
+                'Option3' => '<div class="inline" title="This is my tooltip 3">Option three</div>',
+                'Option4' => '<div class="inline" title="This is my tooltip 4">Option four</div>',
         ), array()); ?>
 
         </div>

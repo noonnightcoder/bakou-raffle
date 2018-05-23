@@ -1,7 +1,7 @@
 <style>
     form { display:inline }
 </style>
-<label class="col-xs-3 control-label required" for="SalePayment_payment_amount">  </label>
+<label class="col-xs-2 control-label required" for="SalePayment_payment_amount">  </label>
 <div class="col-xs-9">
 
     <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
@@ -26,9 +26,9 @@
     <?php $this->endWidget(); ?>
 
     <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
-        'id'=>'profit_form',
+        'id'=>'deal-option-form',
         'method'=>'post',
-        //'action' => Yii::app()->createUrl('settings/RemoveOption?view='.$view),
+        'action' => Yii::app()->createUrl('settings/GenerateOption?view='.$view),
         'layout'=>TbHtml::FORM_LAYOUT_INLINE,
     )); ?>
 
@@ -36,7 +36,7 @@
             'color'=>TbHtml::BUTTON_COLOR_SUCCESS,
             'size'=>TbHtml::BUTTON_SIZE_MINI,
             'icon'=>'glyphicon-ok white',
-            'class'=>'btn btn-sm detach-customer',
+            'class'=>'btn btn-sm deal-option',
             'title'=>'Ok to go!'
         )); ?>
 
