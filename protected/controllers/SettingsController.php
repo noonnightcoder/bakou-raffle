@@ -21,7 +21,7 @@ class SettingsController extends Controller
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
                 'actions' => array('index', 'view','ProfitSetting',
-                                    'SelectOption','RemoveOption'),
+                                    'SelectOption','RemoveOption','GenerateOption'),
                 'users' => array('@'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -80,11 +80,15 @@ class SettingsController extends Controller
     {
         if (Yii::app()->request->isPostRequest && Yii::app()->request->isAjaxRequest) {
 
+            $BetPrizeTmp = new BetPrizeTmp;
+
             if(isset($_POST['SettingsForm']))
             {
                 if(!empty($_POST['SettingsForm']['ProfitOptions']))
                 {
                     Yii::app()->shoppingCart->setProfitOption($_POST['SettingsForm']['ProfitOptions'],$_POST['SettingsForm']['amount_win_perc']);
+
+                    $BetPrizeTmp->getTestBetResult( $_POST['SettingsForm']['ProfitOptions'],$_POST['SettingsForm']['amount_win_perc']);
                 }
             }
             $this->reload($view);
@@ -100,7 +104,21 @@ class SettingsController extends Controller
             Yii::app()->shoppingCart->emptyProfitOption();
             $this->reload($view);
         } else {
-            throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
+            $this->redirect(array('site/ErrorException', 'err_no' => 400));
+        }
+    }
+
+    public function actionGenerateOption($view='')
+    {
+        if ( Yii::app()->request->isPostRequest && Yii::app()->request->isAjaxRequest ) {
+            $data = $this->sessionInfo();
+
+            $data['TmpBetResult']->dealWithOption();
+
+            Yii::app()->shoppingCart->emptyProfitOption();
+            $this->reload($view);
+        }else{
+            $this->redirect(array('site/ErrorException', 'err_no' => 400));
         }
     }
 

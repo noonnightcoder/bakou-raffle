@@ -29,7 +29,7 @@ $this->breadcrumbs = array(
                         'option'=>$option,
                         'win_percentage'=>$win_percentage,
                     ));?>
-
+                    <br/><br/><br/><br/>
                     <?php $this->renderPartial('//layouts/admin/_grid', array(
                     'model' => $TmpBetResult,
                     'data_provider' => $data_provider ,

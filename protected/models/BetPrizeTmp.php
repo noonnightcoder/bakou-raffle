@@ -54,6 +54,7 @@ class BetPrizeTmp extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
+			'item_name' => 'Item Name',
 			'ticket_number' => 'Ticket Number',
 			'prize_category' => 'Prize Category',
 			'raffle_price' => 'Raffle Price',
@@ -98,7 +99,9 @@ class BetPrizeTmp extends CActiveRecord
 
 	public function getBetTest()
 	{
-		$sql="select ticket_number,prize_category,raffle_price from bet_prize_tmp";
+		$sql="select item_name,ticket_number,quantity,raffle_price,CONCAT(ifnull(last_name,''),' ',ifnull(first_name,'')) client_name
+			from bet_prize_tmp t1
+			left join client t2 on t1.client_id=t2.login_id";
 
 		$rawData = Yii::app()->db->createCommand($sql)->queryAll();
 
@@ -121,16 +124,22 @@ class BetPrizeTmp extends CActiveRecord
 	public function getProfitColumns()
 	{
 		return array(
+			array('name'=>'item_name',
+				'header'=>'Prize Name',
+				//'type'  => 'raw',
+			),
 			array('name'=>'ticket_number',
 				'header'=>'Ticket Number',
 				//'type'  => 'raw',
 			),
-			array('name'=>'prize_category',
-				'header'=>'Prize Category',
+			array('name'=>'quantity',
+				'header'=>'Qty',
 			),
-
 			array('name' => 'raffle_price',
 				'header'=>'Raffle Price',
+			),
+			array('name' => 'client_name',
+				'header'=>'Client Name',
 			),
 			/*array(
 				'name' => 'Qty',
@@ -158,6 +167,49 @@ class BetPrizeTmp extends CActiveRecord
 				),
 			),*/
 		);
+	}
+
+	public function getTestBetResult($opion,$win_percentage)
+	{
+		if(!empty($opion))
+		{
+			$cmd='';
+
+			if($opion=='Option1')
+			{
+				$cmd = Yii::app()->db->createCommand("CALL pro_prize_option1(:win_percentage)");
+			}
+
+			if($opion=='Option2')
+			{
+				$cmd = Yii::app()->db->createCommand("CALL pro_prize_option2(:win_percentage)");
+			}
+
+			if($opion=='Option3')
+			{
+				$cmd = Yii::app()->db->createCommand("CALL pro_prize_option3(:win_percentage)");
+			}
+
+			if($opion=='Option4')
+			{
+				$cmd = Yii::app()->db->createCommand("CALL pro_prize_option4(:win_percentage)");
+			}
+
+			$cmd->bindParam(":win_percentage", $win_percentage);
+			$cmd->execute();
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public function dealWithOption()
+	{
+		$sql="insert into bet_prize_history(client_id,ticket_number,prize_category,unit_price,created_at)
+		select client_id,ticke_number,item_name,prize_cateogry,100,now()";
+
+		$cmd = Yii::app()->db->createCommand($sql);
+		$cmd->queryAll();
 	}
 
 	/**

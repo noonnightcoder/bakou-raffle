@@ -9,6 +9,11 @@ $(document).ready(function()
         $('#profit_form').ajaxSubmit({target: "#profit_container", beforeSubmit: optionBeforeSubmit});
     });
 
+    $('#profit_option').on('click','a.deal-option', function(e) {
+        e.preventDefault();
+        $('#profit_form').ajaxSubmit({target: "#profit_container", beforeSubmit: optionBeforeSubmit});
+    });
+
     $('#profit_option').on('click','.choose-option', function(e) {
         e.preventDefault();
 
