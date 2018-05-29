@@ -6,6 +6,8 @@ class SettingsForm extends CFormModel
     public $amount_win_perc;
     public $profit_option;
     public $ProfitOptions;
+    public $profit_got;
+    public $prize_amount;
 
     /*public function rules()
     {
@@ -14,6 +16,15 @@ class SettingsForm extends CFormModel
         );
     }*/
 
+
+    public function attributeLabels()
+    {
+        return array(
+            'id' => 'ID',
+            'profit_got' => 'Profit Got',
+            'prize_amount' => 'Amount for Customer',
+        );
+    }
 
     public $exchange_rate = array(
         'USD2KHR' => '',

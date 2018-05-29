@@ -11,7 +11,7 @@ $(document).ready(function()
 
     $('#profit_option').on('click','a.deal-option', function(e) {
         e.preventDefault();
-        $('#profit_form').ajaxSubmit({target: "#profit_container", beforeSubmit: optionBeforeSubmit});
+        $('#deal-option-form').ajaxSubmit({target: "#profit_container", beforeSubmit: optionBeforeSubmit});
     });
 
     $('#profit_option').on('click','.choose-option', function(e) {
@@ -28,6 +28,12 @@ $(document).ready(function()
                 $('#select-profit-form').ajaxSubmit({target: "#profit_container", beforeSubmit: optionBeforeSubmit});
             }
         }
+    });
+
+
+    $('#manual-form-actions').on('click','a.save-manual-form', function(e) {
+        e.preventDefault();
+        $('#manual-setting-form').ajaxSubmit({target: "#profit_container", beforeSubmit: optionBeforeSubmit});
     });
 
 
