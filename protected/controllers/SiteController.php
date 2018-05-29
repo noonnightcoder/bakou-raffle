@@ -124,9 +124,9 @@ class SiteController extends Controller
             if ($model->validate() && $model->login()) {
                 //$this->redirect(Yii::app()->user->returnUrl);
 				if (Yii::app()->session['employeeid']=='0') {
-					$this->redirect('raffle/index');
+					$this->redirect('index.php/raffle/index');
 				} else {
-					$this->redirect('item/admin');
+					$this->redirect('index.php/item/admin');
 				}
             }
         }
