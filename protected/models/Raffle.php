@@ -53,9 +53,7 @@
 			$sql = "SELECT DATE(created_at) date,prize_category text,ticket_number result
 					FROM bet_prize_history
 					WHERE created_at>=DATE_ADD(CURDATE(),INTERVAL -7 DAY)
-					-- AND created_at<=CURDATE()
-					-- where ticket_number in (6649,995,9898,3710,5107,2630,667,16,5913,4189,2525)
-					order by prize_category";
+					order by prize_category,DATE(created_at) DESC";
 
 			$cmd = Yii::app()->db->createCommand($sql);
 
