@@ -694,10 +694,39 @@ class ShoppingCart extends CApplicationComponent
         return $this->session['profitOption'];
     }
 
+    public function setManualSelected($arr)
+    {
+        //$this->setSession(Yii::app()->session);
+
+        $result= array();
+
+        foreach ($arr as $key=>$value)
+        {
+            foreach ($value as $val)
+            {
+                if(!in_array($val,$result))
+                {
+                    $result[]=$val;
+                }
+            }
+
+        }
+
+        $this->setSession(Yii::app()->session);
+        $this->session['ManualSelected'] = $result;
+    }
+
     public function emptyProfitOption()
     {
         $this->setSession(Yii::app()->session);
         unset($this->session['profitOption']);
+        unset($this->session['ManualSelected']);
+    }
+
+    public function getManualSelected()
+    {
+        $this->setSession(Yii::app()->session);
+        return $this->session['ManualSelected'];
     }
     
     public function clearAll()

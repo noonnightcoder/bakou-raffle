@@ -41,5 +41,19 @@
         )); ?>
 
     <?php $this->endWidget(); ?>
+    <div class="row">
+        <div class="col-sm-9">
+            <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
+                'id'=>'info-form',
+                'method'=>'post',
+                //'action' => Yii::app()->createUrl('settings/RemoveOption?view='.$view),
+                'layout'=>TbHtml::FORM_LAYOUT_VERTICAL,
+            )); ?>
 
+            <?php echo $form->textFieldControlGroup($model,'profit_got',array('class'=>'span3')); ?>
+            <?php echo $form->textFieldControlGroup($model,'prize_amount',array('class'=>'span3')); ?>
+
+            <?php $this->endWidget(); ?>
+        </div>
+    </div>
 </div>

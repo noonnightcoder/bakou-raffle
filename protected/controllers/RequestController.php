@@ -43,7 +43,8 @@ class RequestController extends Controller
                     'listPersonsWithSameFirstname',
                     'addTabularInputs',
                     'addTabularInputsAsTable',
-                    'uploadFile'
+                    'uploadFile',
+                    'suggestTicket',
                 ),
                 'users' => array('*'),
             ),
@@ -147,6 +148,11 @@ class RequestController extends Controller
                 'class' => 'ext.actions.XTabularInputAction',
                 'modelName' => 'Person',
                 'viewName' => '/site/extensions/_tabularInputAsTable',
+            ),
+            'suggestTicket' => array(
+                'class' => 'ext.actions.XSuggestAction',
+                'modelName' => 'Raffle',
+                'methodName' => 'suggest',
             ),
         );
     }

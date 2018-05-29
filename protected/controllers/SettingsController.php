@@ -21,7 +21,9 @@ class SettingsController extends Controller
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
                 'actions' => array('index', 'view','ProfitSetting',
-                                    'SelectOption','RemoveOption','GenerateOption'),
+                                    'SelectOption','RemoveOption','GenerateOption',
+                                    'ManualSetting','SelectTicket','SelectTicket',
+                                    'ManualSelectTicket'),
                 'users' => array('@'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -76,11 +78,62 @@ class SettingsController extends Controller
         $this->reload('admin');
     }
 
+    public function actionManualSetting()
+    {
+        $this->reload('manual_option');
+    }
+
+    public function actionManualSelectTicket($view='')
+    {
+        if (Yii::app()->request->isPostRequest && Yii::app()->request->isAjaxRequest) {
+            if(isset($_POST['manual']))
+            {
+                if(!empty($_POST['manual']))
+                {
+                    $betPrizeTmp = new BetPrizeTmp;
+
+                    $betPrizeTmp->delTblBetprizetmp();
+
+                    Yii::app()->shoppingCart->setProfitOption('ManualOption',50);
+
+                    foreach ($_POST['manual'] as $key =>$value)
+                    {
+                        foreach ($value as $val)
+                        {
+                            $betPrizeTmp = new BetPrizeTmp;
+                            $betPrizeTmp->saveManualSetting($val,$key);
+                        }
+                    }
+
+                    $mySummary=explode('|',$betPrizeTmp->getTestBetSummary());
+                    $arr = array('profit_got'=>$mySummary[0],'prize_amount'=>$mySummary[1]);
+                }
+
+                $this->reload($view,$arr);
+            }
+        }else {
+            $this->redirect(array('site/ErrorException', 'err_no' => 400));
+        }
+    }
+
+    public function actionSelectTicket()
+    {
+        if (Yii::app()->request->isPostRequest && Yii::app()->request->isAjaxRequest) {
+            if(!empty($_POST['manual']))
+            {
+                Yii::app()->shoppingCart->setManualSelected($_POST['manual']);
+
+                //$my_str=implode(',', array_filter(Yii::app()->shoppingCart->getManualSelected()));
+            }
+        }
+    }
+
     public function actionSelectOption($view='')
     {
         if (Yii::app()->request->isPostRequest && Yii::app()->request->isAjaxRequest) {
 
             $BetPrizeTmp = new BetPrizeTmp;
+            //$settings = new SettingsForm;
 
             if(isset($_POST['SettingsForm']))
             {
@@ -89,9 +142,14 @@ class SettingsController extends Controller
                     Yii::app()->shoppingCart->setProfitOption($_POST['SettingsForm']['ProfitOptions'],$_POST['SettingsForm']['amount_win_perc']);
 
                     $BetPrizeTmp->getTestBetResult( $_POST['SettingsForm']['ProfitOptions'],$_POST['SettingsForm']['amount_win_perc']);
+
+                    $mySummary=explode('|',$BetPrizeTmp->getTestBetSummary());
+                    $arr = array('profit_got'=>$mySummary[0],'prize_amount'=>$mySummary[1]);
                 }
             }
-            $this->reload($view);
+
+            $this->reload($view,$arr);
+
         } else {
             //throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
             $this->redirect(array('site/ErrorException', 'err_no' => 400));
@@ -115,17 +173,26 @@ class SettingsController extends Controller
 
             $data['TmpBetResult']->dealWithOption();
 
+            //$this->reload($view);
+
+            $this->renderPartial('partial/_successful_selected_options',$data);
+
             Yii::app()->shoppingCart->emptyProfitOption();
-            $this->reload($view);
         }else{
             $this->redirect(array('site/ErrorException', 'err_no' => 400));
         }
     }
 
-    private function reload($view='')
+    private function reload($view='',$arr='')
     {
 
         $data = $this->sessionInfo();
+
+        if(!empty($arr))
+        {
+            $data['model']->profit_got=$arr['profit_got'];
+            $data['model']->prize_amount=$arr['prize_amount'];
+        }
 
         if (Yii::app()->request->isAjaxRequest) {
 

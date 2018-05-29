@@ -203,13 +203,47 @@ class BetPrizeTmp extends CActiveRecord
 		}
 	}
 
+	public function getTestBetSummary()
+	{
+		$sql="select func_return_profit_summary()";
+
+		return Yii::app()->db->createCommand($sql)->queryScalar();
+	}
+
 	public function dealWithOption()
 	{
 		$sql="insert into bet_prize_history(client_id,ticket_number,prize_category,unit_price,created_at)
-		select client_id,ticke_number,item_name,prize_cateogry,100,now()";
+		SELECT client_id,ticket_number,item_name prize_category,100,NOW() FROM bet_prize_tmp";
 
 		$cmd = Yii::app()->db->createCommand($sql);
-		$cmd->queryAll();
+		$cmd->execute();
+	}
+
+	public function delTblBetprizetmp()
+	{
+		$sql="truncate table bet_prize_tmp";
+
+		Yii::app()->db->createCommand($sql)->execute();
+	}
+
+	public function saveManualSetting($ticket_number,$prize_category)
+	{
+
+
+		$sql="insert into bet_prize_tmp(item_id,item_name,ticket_number,prize_category,quantity,raffle_price,client_id)
+			SELECT id item_id,NAME item_name,ticket_number,prize_category,quantity,unit_price raffle_price,client_id
+				FROM (			
+					SELECT ticket_number,purchased_by client_id,$prize_category prize_category
+					FROM ticket_history t1 
+					INNER JOIN client t2 ON t1.purchased_by=t2.login_id
+					where ticket_number=:ticket_number
+				)AS l1
+				INNER JOIN item it ON l1.prize_category=it.category_id";
+
+
+		$cmd = Yii::app()->db->createCommand($sql);
+		$cmd->bindParam(":ticket_number", $ticket_number);
+		$cmd->execute();
 	}
 
 	/**
