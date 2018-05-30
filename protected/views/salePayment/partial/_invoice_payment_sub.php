@@ -20,8 +20,8 @@
         'placement' => 'above',
         'tabs' => array(
             array('label' => Yii::t('app', 'Outstanding Balance'), 'id' => 'tab_1', 'content' => $this->renderPartial('partial/_invoice', array('model' => $model, 'client_id' => $client_id, 'balance' => $balance), true)),
-            //array('label' => Yii::t('app', 'Paid Invoice'), 'id' => 'tab_2', 'content' => $this->renderPartial('partial/_invoice_his', array('model' => $model, 'client_id' => $client_id, 'balance' => $balance), true)),
-            array('label' => Yii::t('app', 'Balance History'), 'id' => 'tab_3', 'content' => $this->renderPartial('partial/_sale_payment', array('model' => $model, 'client_id' => $client_id, 'balance' => $balance), true), 'active' => true),
+            array('label' => Yii::t('app', 'Transaction History'), 'id' => 'tab_2', 'content' => $this->renderPartial('partial/_sale_payment', array('model' => $model, 'client_id' => $client_id, 'balance' => $balance), true), 'active' => true),
+            array('label' => Yii::t('app', 'Buying History'), 'id' => 'tab_3', 'content' => $this->renderPartial('partial/_buying_his', array('model' => $model, 'client_id' => $client_id, 'balance' => $balance), true)),
         ),
     ));
 

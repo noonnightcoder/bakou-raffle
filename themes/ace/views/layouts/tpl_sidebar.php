@@ -112,49 +112,35 @@ $this->widget('bootstrap.widgets.TbNav', array(
             )),
             */
             array('label'=>'<span class="menu-text">'. strtoupper(Yii::t('app','PIM')) . '</span>', 'icon'=>'menu-icon fa fa-group','url'=>Yii::app()->urlManager->createUrl('client/admin'),
-                           'active'=>$this->id=='employee' || $this->id=='supplier' || $this->id=='client' || $this->id=='settings' ,
-                           'visible'=> Yii::app()->user->checkAccess('store.update') || Yii::app()->user->checkAccess('employee.index') || Yii::app()->user->checkAccess('client.index'),
-                           'items'=>array(
-                               array('label'=>Yii::t('app', sysMenuCustomer()) , 'icon'=> TbHtml::ICON_USER, 'url'=>Yii::app()->urlManager->createUrl('client/admin'),
-                                   'active'=>$this->id =='client',
-                                   'visible'=> Yii::app()->user->checkAccess('client.index') || Yii::app()->user->checkAccess('client.create') || Yii::app()->user->checkAccess('client.update') || Yii::app()->user->checkAccess('client.delete')
-                               ),
-                               array('label'=>Yii::t('app', 'Operator'), 'icon'=> TbHtml::ICON_USER, 'url'=>Yii::app()->urlManager->createUrl('employee/admin'),
-                                   'active'=>$this->id =='employee', //'active'=>$this->id .'/'. $this->action->id=='employee/admin',
-                                   'visible'=> Yii::app()->user->checkAccess('employee.index') || Yii::app()->user->checkAccess('employee.create') || Yii::app()->user->checkAccess('employee.update') || Yii::app()->user->checkAccess('employee.delete')
-                               ),
-
-                               array('label'=>Yii::t('app', 'Profit Set'), 'icon'=> TbHtml::ICON_USER, 'url'=>Yii::app()->urlManager->createUrl('settings/ProfitSetting'),
-                                   'active'=>$this->id .'/'. $this->action->id=='settings/ProfitSetting',
-                                   'visible'=> Yii::app()->user->checkAccess('employee.index') || Yii::app()->user->checkAccess('employee.create') || Yii::app()->user->checkAccess('employee.update') || Yii::app()->user->checkAccess('employee.delete')
-                               ),
-
-                               array('label'=>Yii::t('app', 'Manual Set'), 'icon'=> TbHtml::ICON_USER, 'url'=>Yii::app()->urlManager->createUrl('settings/ManualSetting'),
-                                   'active'=>$this->id .'/'. $this->action->id=='settings/ManualSetting',
-                                   'visible'=> Yii::app()->user->checkAccess('employee.index') || Yii::app()->user->checkAccess('employee.create') || Yii::app()->user->checkAccess('employee.update') || Yii::app()->user->checkAccess('employee.delete')
-                               ),
+                   'active'=>$this->id=='employee' || $this->id=='supplier' || $this->id=='client',
+                   'visible'=> Yii::app()->user->checkAccess('store.update') || Yii::app()->user->checkAccess('employee.index') || Yii::app()->user->checkAccess('client.index'),
+                   'items'=>array(
+                       array('label'=>Yii::t('app', sysMenuCustomer()) , 'icon'=> TbHtml::ICON_USER, 'url'=>Yii::app()->urlManager->createUrl('client/admin'),
+                           'active'=>$this->id =='client',
+                           'visible'=> Yii::app()->user->checkAccess('client.index') || Yii::app()->user->checkAccess('client.create') || Yii::app()->user->checkAccess('client.update') || Yii::app()->user->checkAccess('client.delete')
+                       ),
+                       array('label'=>Yii::t('app', 'Operator'), 'icon'=> TbHtml::ICON_USER, 'url'=>Yii::app()->urlManager->createUrl('employee/admin'),
+                           'active'=>$this->id =='employee', //'active'=>$this->id .'/'. $this->action->id=='employee/admin',
+                           'visible'=> Yii::app()->user->checkAccess('employee.index') || Yii::app()->user->checkAccess('employee.create') || Yii::app()->user->checkAccess('employee.update') || Yii::app()->user->checkAccess('employee.delete')
+                       ),
             )),
-            /*
-            array('label'=>'<span class="menu-text">'. strtoupper(Yii::t('app','Setting')) . '</span>', 'icon'=>'menu-icon fa fa-cogs','url'=>Yii::app()->urlManager->createUrl('settings/index'),
-                           'active'=>$this->id=='priceTier' || strtolower($this->id)=='default' || $this->id=='store' || $this->id=='settings' || $this->id=='location' || $this->id=='category',
-                           'visible'=>Yii::app()->user->checkAccess('store.update'),
-                           'items'=>array(
-                               array('label'=>Yii::t('app', 'Category'), 'icon'=> TbHtml::ICON_LIST, 'url'=>Yii::app()->urlManager->createUrl('category/admin'),
-                                   'active'=>$this->id =='category',
-                                   'visible'=> Yii::app()->user->checkAccess('item.index') || Yii::app()->user->checkAccess('item.create') || Yii::app()->user->checkAccess('item.update') || Yii::app()->user->checkAccess('item.delete')),
-                               array('label'=>Yii::t('app','Price Tier'),'icon'=> TbHtml::ICON_ADJUST, 'url'=>Yii::app()->urlManager->createUrl('priceTier/admin'),
-                                   'active'=>$this->id .'/'. $this->action->id=='priceTier/admin',
-                                   'visible'=>Yii::app()->user->checkAccess('store.update')),
-                               //array('label'=>Yii::t('app','Location'),'icon'=> TbHtml::ICON_MAP_MARKER, 'url'=>Yii::app()->urlManager->createUrl('location/admin'), 'active'=>$this->id .'/'. $this->action->id=='location/admin','visible'=>Yii::app()->user->checkAccess('store.update')),
-                               array('label'=>Yii::t('app','Shop Setting'),'icon'=> TbHtml::ICON_COG, 'url'=>Yii::app()->urlManager->createUrl('settings/index'),
-                                   'active'=>$this->id=='settings',
-                                   //'visible'=> Yii::app()->user->isAdmin
-                               ),
-                               //'visible'=>Yii::app()->user->checkAccess('store.update')),
-                               //array('label'=>Yii::t('app','Branch'),'icon'=> TbHtml::ICON_HOME, 'url'=>Yii::app()->urlManager->createUrl('store/admin'), 'active'=>$this->id .'/'. $this->action->id=='store/admin','visible'=>Yii::app()->user->checkAccess('store.update')),
-                               //array('label'=>Yii::t('app','Database Backup'),'icon'=> TbHtml::ICON_HDD, 'url'=>Yii::app()->urlManager->createUrl('backup/default/index'),'active'=> $this->id =='default'),
-            )),
-            */
+
+            array('label'=>'<span class="menu-text">'. strtoupper('Setting') . '</span>', 'icon'=>'menu-icon fa fa-cogs','url'=>Yii::app()->urlManager->createUrl('settings/ProfitSetting'),
+                'active'=>$this->id=='employee' || $this->id=='supplier' || $this->id=='client' || $this->id=='settings' ,
+                'visible'=> Yii::app()->user->checkAccess('store.update') || Yii::app()->user->checkAccess('employee.index') || Yii::app()->user->checkAccess('client.index'),
+                'items'=>array(
+                    array('label'=>Yii::t('app', 'Profit Set'), 'icon'=> TbHtml::ICON_USER, 'url'=>Yii::app()->urlManager->createUrl('settings/ProfitSetting'),
+                        'active'=>$this->id .'/'. $this->action->id=='settings/ProfitSetting',
+                        'visible'=> Yii::app()->user->checkAccess('employee.index') || Yii::app()->user->checkAccess('employee.create') || Yii::app()->user->checkAccess('employee.update') || Yii::app()->user->checkAccess('employee.delete')
+                    ),
+
+                    array('label'=>Yii::t('app', 'Manual Set'), 'icon'=> TbHtml::ICON_USER, 'url'=>Yii::app()->urlManager->createUrl('settings/ManualSetting'),
+                        'active'=>$this->id .'/'. $this->action->id=='settings/ManualSetting',
+                        'visible'=> Yii::app()->user->checkAccess('employee.index') || Yii::app()->user->checkAccess('employee.create') || Yii::app()->user->checkAccess('employee.update') || Yii::app()->user->checkAccess('employee.delete')
+                    ),
+                )
+            ),
+
             array('label'=>'<span class="menu-text">' . strtoupper(Yii::t('app', 'About US')) . '</span>', 'icon'=>'menu-icon fa fa-info-circle', 'url'=>Yii::app()->urlManager->createUrl('site/about'), 'active'=>$this->id .'/'. $this->action->id=='site/about'),
     ), 
 )); 

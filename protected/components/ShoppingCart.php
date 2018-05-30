@@ -716,11 +716,43 @@ class ShoppingCart extends CApplicationComponent
         $this->session['ManualSelected'] = $result;
     }
 
+    public function setProfitGot($ProfitGot)
+    {
+        $this->setSession(Yii::app()->session);
+        $this->session['ProfitGot'] = $ProfitGot;
+    }
+
+    public function getProfitGot()
+    {
+        $this->setSession(Yii::app()->session);
+        return $this->session['ProfitGot'];
+    }
+
+    public function setPrizeAmount($PrizeAmount)
+    {
+        $this->setSession(Yii::app()->session);
+        $this->session['PrizeAmount'] = $PrizeAmount;
+    }
+
+    public function getPrizeAmount()
+    {
+        $this->setSession(Yii::app()->session);
+        return $this->session['PrizeAmount'];
+    }
+
+    public function getTotalAmount()
+    {
+        $this->setSession(Yii::app()->session);
+        return $this->getProfitGot()+$this->getPrizeAmount();
+    }
+
     public function emptyProfitOption()
     {
         $this->setSession(Yii::app()->session);
         unset($this->session['profitOption']);
         unset($this->session['ManualSelected']);
+        unset($this->session['ProfitGot']);
+        unset($this->session['PrizeAmount']);
     }
 
     public function getManualSelected()
@@ -744,6 +776,7 @@ class ShoppingCart extends CApplicationComponent
         $this->clearTotalGST();
         $this->clearSaleRep();
         $this->clearSaleMode();
+        $this->emptyProfitOption();
     }
 
 }
