@@ -126,7 +126,7 @@ $this->widget('bootstrap.widgets.TbNav', array(
             )),
 
             array('label'=>'<span class="menu-text">'. strtoupper('Setting') . '</span>', 'icon'=>'menu-icon fa fa-cogs','url'=>Yii::app()->urlManager->createUrl('settings/ProfitSetting'),
-                'active'=>$this->id=='employee' || $this->id=='supplier' || $this->id=='client' || $this->id=='settings' ,
+                'active'=>$this->id=='settings' ,
                 'visible'=> Yii::app()->user->checkAccess('store.update') || Yii::app()->user->checkAccess('employee.index') || Yii::app()->user->checkAccess('client.index'),
                 'items'=>array(
                     array('label'=>Yii::t('app', 'Profit Set'), 'icon'=> TbHtml::ICON_USER, 'url'=>Yii::app()->urlManager->createUrl('settings/ProfitSetting'),
