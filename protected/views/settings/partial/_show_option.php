@@ -52,6 +52,7 @@
 
             <?php echo $form->textFieldControlGroup($model,'profit_got',array('class'=>'span3')); ?>
             <?php echo $form->textFieldControlGroup($model,'prize_amount',array('class'=>'span3')); ?>
+            <?php echo $form->textFieldControlGroup($model,'total_amount',array('class'=>'span3')); ?>
 
             <?php $this->endWidget(); ?>
         </div>

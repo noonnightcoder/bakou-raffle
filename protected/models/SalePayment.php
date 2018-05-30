@@ -210,6 +210,34 @@ class SalePayment extends CActiveRecord
         return $dataProvider; // Return as array object
     }
 
+    public function buyingHis($client_id)
+    {
+        $sql="SELECT t1.id,purchased_at,ticket_number,ABS(unit_price) unit_price,
+                CONCAT(IFNULL(last_name,''),' ',IFNULL(first_name,'')) client_name
+                FROM ticket_history t1
+                INNER JOIN client t2 ON t1.purchased_by=t2.login_id
+                where t2.id=$client_id
+                ORDER BY 1 DESC limit 15";
+
+
+        $rawData = Yii::app()->db->createCommand($sql)->queryAll(true, array(':client_id' => $client_id));
+
+        $dataProvider = new CArrayDataProvider($rawData, array(
+            'keyField' => 'id',
+            /*
+            'sort' => array(
+                'attributes' => array(
+                    'date_paid',
+                ),
+             ),
+             *
+            */
+            'pagination' => false,
+        ));
+
+        return $dataProvider; // Return as array object
+    }
+
     public function payment($sale_id=null,$client_id, $employee_id, $account, $total_paid, $paid_date, $note,$type='') {
 
         /*if ($type=='raffle_deposit')

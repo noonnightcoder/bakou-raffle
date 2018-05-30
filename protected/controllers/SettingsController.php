@@ -190,9 +190,13 @@ class SettingsController extends Controller
 
         if(!empty($arr))
         {
-            $data['model']->profit_got=$arr['profit_got'];
-            $data['model']->prize_amount=$arr['prize_amount'];
+            Yii::app()->shoppingCart->setProfitGot($arr['profit_got']);
+            Yii::app()->shoppingCart->setPrizeAmount($arr['prize_amount']);
         }
+
+        $data['model']->profit_got=Yii::app()->shoppingCart->getProfitGot();
+        $data['model']->prize_amount=Yii::app()->shoppingCart->getPrizeAmount();
+        $data['model']->total_amount=Yii::app()->shoppingCart->getTotalAmount();
 
         if (Yii::app()->request->isAjaxRequest) {
 

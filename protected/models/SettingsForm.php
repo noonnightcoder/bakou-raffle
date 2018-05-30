@@ -8,6 +8,7 @@ class SettingsForm extends CFormModel
     public $ProfitOptions;
     public $profit_got;
     public $prize_amount;
+    public $total_amount;
 
     /*public function rules()
     {
@@ -23,6 +24,7 @@ class SettingsForm extends CFormModel
             'id' => 'ID',
             'profit_got' => 'Profit Got',
             'prize_amount' => 'Amount for Customer',
+            'total_amount'=> 'Total Amount'
         );
     }
 

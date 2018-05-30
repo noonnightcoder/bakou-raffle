@@ -6,12 +6,12 @@ $(document).ready(function()
 
     $('#profit_option').on('click','a.detach-option', function(e) {
         e.preventDefault();
-        $('#profit_form').ajaxSubmit({target: "#profit_container", beforeSubmit: optionBeforeSubmit});
+        $('#profit_form').ajaxSubmit({target: "#profit_container", beforeSubmit: optionBeforeSubmit,success: funcAferSubmit});
     });
 
     $('#profit_option').on('click','a.deal-option', function(e) {
         e.preventDefault();
-        $('#deal-option-form').ajaxSubmit({target: "#profit_container", beforeSubmit: optionBeforeSubmit});
+        $('#deal-option-form').ajaxSubmit({target: "#profit_container", beforeSubmit: optionBeforeSubmit,success: funcAferSubmit});
     });
 
     $('#profit_option').on('click','.choose-option', function(e) {
@@ -25,15 +25,15 @@ $(document).ready(function()
             {
                 alert('Please field in the minimum percentage!')
             }else{
-                $('#select-profit-form').ajaxSubmit({target: "#profit_container", beforeSubmit: optionBeforeSubmit});
+                $('#select-profit-form').ajaxSubmit({target: "#profit_container", beforeSubmit: optionBeforeSubmit,success: funcAferSubmit});
             }
         }
     });
 
 
-    $('#manual-form-actions').on('click','a.save-manual-form', function(e) {
+    $('#profit_option').on('click','a.save_manual_form', function(e) {
         e.preventDefault();
-        $('#manual-setting-form').ajaxSubmit({target: "#profit_container", beforeSubmit: optionBeforeSubmit});
+        $('#manual-setting-form').ajaxSubmit({target: "#profit_container", beforeSubmit: optionBeforeSubmit,success: funcAferSubmit});
     });
 
 
@@ -62,6 +62,11 @@ function optionBeforeSubmit(formData, jqForm, options)
     }
     submitting = true;
     $('.waiting').show();
+}
+
+function funcAferSubmit(responseText, statusText, xhr, $form)
+{
+    $('.waiting').hide();
 }
 
 </script>

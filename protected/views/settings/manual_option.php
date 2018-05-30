@@ -56,7 +56,7 @@ $this->breadcrumbs = array(
                     <?php echo TbHtml::linkButton(Yii::t('app', 'Save'), array(
                         'color' => TbHtml::BUTTON_COLOR_PRIMARY,
                         'size' => TbHtml::BUTTON_SIZE_SMALL,
-                        'class' => 'save-manual-form',
+                        'class' => 'save_manual_form',
                         'name' => 'Manual_setting',
                         //'disabled'=>$disabled
                         //'size'=>TbHtml::BUTTON_SIZE_SMALL,
@@ -67,7 +67,6 @@ $this->breadcrumbs = array(
 
 
     <?php $this->endWidget(); ?>
-
 
     <?php if($option!='') {?>
         <?php $this->renderPartial('partial/_show_option',array(
