@@ -1,3 +1,4 @@
+
 <?php
 /*
 |-----------------------------------------------------
@@ -13,6 +14,7 @@
 <?php $this->renderPartial('partial/' . $header_view, array(
     'report' => $report,
     'advance_search' => $advance_search,
+    'filter_by'=>@$filter_by,
     'header_tab' => $header_tab, // Using for tab style
 )); ?>
 

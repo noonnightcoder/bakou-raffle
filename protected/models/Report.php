@@ -34,6 +34,7 @@ class Report extends CFormModel
     public $unit_price;
     public $cost_price;
     public $reorder_level;
+    public $filter_id;
 
     /**
      * Returns the static model of the specified AR class.
@@ -1104,6 +1105,253 @@ class Report extends CFormModel
         }
 
         return $condition;
+    }
+
+    public function paymentDailyHis()
+    {
+        $sql = "SELECT DATE(p.date_paid) date_paid,
+                    CONCAT(c.first_name,' ',c.last_name) client_name,
+                    SUM(p.payment_amount) payment_amount,
+                    CONCAT(e.first_name,' ',e.last_name) employee_name,
+                  CASE 
+                    WHEN trans_status='W' THEN 'Withdraw'
+                    ELSE 'Deposit'
+                  END note  
+                  FROM payment_history p, `client` c , employee e
+                  WHERE p.`client_id` = c.id 
+                  AND p.employee_id = e.id
+                  and p.date_paid>=STR_TO_DATE(:from_date,'%d-%m-%Y')
+                  and p.date_paid<DATE_ADD(STR_TO_DATE(:to_date,'%d-%m-%Y'),INTERVAL 1 DAY)
+                  GROUP BY DATE(p.date_paid),CONCAT(c.first_name,' ',c.last_name),
+                  CONCAT(e.first_name,' ',e.last_name),
+                  CASE 
+                    WHEN trans_status='W' THEN 'Withdraw'
+                    ELSE 'Deposit'
+                  END
+                  ORDER BY DATE(p.date_paid)";
+
+
+        $rawData = Yii::app()->db->createCommand($sql)->queryAll(true,array(':from_date' => $this->from_date, ':to_date' => $this->to_date));
+
+        $dataProvider = new CArrayDataProvider($rawData, array(
+            'keyField' => 'client_name',
+            /*'sort' => array(
+                'attributes' => array(
+                    'item_name',
+                ),
+            ),*/
+            'pagination' => false,
+        ));
+
+        return $dataProvider;
+    }
+
+    public function paymentWeeklyHis()
+    {
+        $sql = "SELECT YEARWEEK(DATE(p.date_paid)) Weekly,
+                    CONCAT(c.first_name,' ',c.last_name) client_name,
+                    SUM(p.payment_amount) payment_amount,
+                    CONCAT(e.first_name,' ',e.last_name) employee_name,
+                  CASE 
+                    WHEN trans_status='W' THEN 'Withdraw'
+                    ELSE 'Deposit'
+                  END note  
+                  FROM payment_history p, `client` c , employee e
+                  WHERE p.`client_id` = c.id 
+                  AND p.employee_id = e.id
+                  and p.date_paid>=STR_TO_DATE(:from_date,'%d-%m-%Y')
+                  and p.date_paid<DATE_ADD(STR_TO_DATE(:to_date,'%d-%m-%Y'),INTERVAL 1 DAY)
+                  GROUP BY YEARWEEK(DATE(p.date_paid)),CONCAT(c.first_name,' ',c.last_name),
+                  CONCAT(e.first_name,' ',e.last_name),
+                  CASE 
+                    WHEN trans_status='W' THEN 'Withdraw'
+                    ELSE 'Deposit'
+                  END
+                  ORDER BY YEARWEEK(DATE(p.date_paid))";
+
+        $rawData = Yii::app()->db->createCommand($sql)->queryAll(true,array(':from_date' => $this->from_date, ':to_date' => $this->to_date));
+
+        $dataProvider = new CArrayDataProvider($rawData, array(
+            'keyField' => 'client_name',
+            /*'sort' => array(
+                'attributes' => array(
+                    'item_name',
+                ),
+            ),*/
+            'pagination' => false,
+        ));
+
+        return $dataProvider;
+    }
+
+    public function paymentMonthlyhis()
+    {
+        $sql="SELECT DATE_FORMAT(p.date_paid,'%Y%m') Monthly,
+                    CONCAT(c.first_name,' ',c.last_name) client_name,
+                    SUM(p.payment_amount) payment_amount,
+                    CONCAT(e.first_name,' ',e.last_name) employee_name,
+                  CASE 
+                    WHEN trans_status='W' THEN 'Withdraw'
+                    ELSE 'Deposit'
+                  END note  
+                  FROM payment_history p, `client` c , employee e
+                  WHERE p.`client_id` = c.id 
+                  AND p.employee_id = e.id
+                  and p.date_paid>=STR_TO_DATE(:from_date,'%d-%m-%Y')
+                  and p.date_paid<DATE_ADD(STR_TO_DATE(:to_date,'%d-%m-%Y'),INTERVAL 1 DAY)
+                  GROUP BY DATE_FORMAT(p.date_paid,'%Y%m'),CONCAT(c.first_name,' ',c.last_name),
+                  CONCAT(e.first_name,' ',e.last_name),
+		          CASE 
+                    WHEN trans_status='W' THEN 'Withdraw'
+                    ELSE 'Deposit'
+                  END
+                  ORDER BY DATE_FORMAT(p.date_paid,'%Y%m')";
+
+        $rawData = Yii::app()->db->createCommand($sql)->queryAll(true,array(':from_date' => $this->from_date, ':to_date' => $this->to_date));
+
+        $dataProvider = new CArrayDataProvider($rawData, array(
+            'keyField' => 'client_name',
+            /*'sort' => array(
+                'attributes' => array(
+                    'item_name',
+                ),
+            ),*/
+            'pagination' => false,
+        ));
+
+        return $dataProvider;
+    }
+
+    public function profitDailyhis()
+    {
+        $sql="SELECT date_report,ClientWin,ClientLose,ClientLose Revenue,ClientWin+ClientLose Total
+            FROM (
+                SELECT date_report,
+                SUM(CASE WHEN STATUS='ClientWin' THEN price ELSE 0 END) ClientWin,
+                SUM(CASE WHEN STATUS='ClientLose' THEN price ELSE 0 END) ClientLose
+                FROM (
+                    SELECT DATE(purchased_at) date_report,
+                    ABS(t1.unit_price) price, 
+                    CASE
+                        WHEN t2.id IS NULL THEN 'ClientLose'
+                        ELSE 'ClientWin'
+                    END STATUS
+                    FROM ticket_history t1
+                    LEFT JOIN bet_prize_history t2
+                    ON t1.ticket_number=t2.ticket_number 
+                    AND t1.purchased_by=t2.client_id
+                    AND t2.ticket_buy_id=t1.id
+                    WHERE purchased_at>=STR_TO_DATE(:from_date,'%d-%m-%Y')
+                  and purchased_at<DATE_ADD(STR_TO_DATE(:to_date,'%d-%m-%Y'),INTERVAL 1 DAY)
+                )AS l1
+                GROUP BY date_report
+            )AS l2";
+
+        $rawData = Yii::app()->db->createCommand($sql)->queryAll(true,array(':from_date' => $this->from_date, ':to_date' => $this->to_date));
+
+        $dataProvider = new CArrayDataProvider($rawData, array(
+            'keyField' => 'date_report',
+            /*'sort' => array(
+                'attributes' => array(
+                    'item_name',
+                ),
+            ),*/
+            'pagination' => false,
+        ));
+
+        return $dataProvider;
+    }
+
+    public function profitWeeklyhis()
+    {
+        $sql="SELECT YEARWEEK(DATE(date_report)) date_report,SUM(ClientWin) ClientWin,SUM(ClientLose) ClientLose,
+            SUM(Revenue) Revenue,SUM(Total) Total
+            FROM (
+                SELECT date_report,ClientWin,ClientLose,ClientLose Revenue,ClientWin+ClientLose Total
+                FROM (
+                    SELECT date_report,
+                    SUM(CASE WHEN STATUS='ClientWin' THEN price ELSE 0 END) ClientWin,
+                    SUM(CASE WHEN STATUS='ClientLose' THEN price ELSE 0 END) ClientLose
+                    FROM (
+                        SELECT DATE(purchased_at) date_report,
+                        ABS(t1.unit_price) price, 
+                        CASE
+                            WHEN t2.id IS NULL THEN 'ClientLose'
+                            ELSE 'ClientWin'
+                        END STATUS
+                        FROM ticket_history t1
+                        LEFT JOIN bet_prize_history t2
+                        ON t1.ticket_number=t2.ticket_number 
+                        AND t1.purchased_by=t2.client_id
+                        AND t2.ticket_buy_id=t1.id
+                        WHERE purchased_at>=STR_TO_DATE(:from_date,'%d-%m-%Y')
+                        and purchased_at<DATE_ADD(STR_TO_DATE(:to_date,'%d-%m-%Y'),INTERVAL 1 DAY)
+                    )AS l1
+                    GROUP BY date_report
+                )AS l2
+            )AS l3
+            GROUP BY YEARWEEK(DATE(date_report))
+            ORDER BY 1";
+
+        $rawData = Yii::app()->db->createCommand($sql)->queryAll(true,array(':from_date' => $this->from_date, ':to_date' => $this->to_date));
+
+        $dataProvider = new CArrayDataProvider($rawData, array(
+            'keyField' => 'date_report',
+            /*'sort' => array(
+                'attributes' => array(
+                    'item_name',
+                ),
+            ),*/
+            'pagination' => false,
+        ));
+
+        return $dataProvider;
+    }
+
+    public function profitMonthlyhis()
+    {
+        $sql="SELECT DATE_FORMAT(date_report,'%Y%m') date_report,SUM(ClientWin) ClientWin,SUM(ClientLose) ClientLose,
+            SUM(Revenue) Revenue,SUM(Total) Total
+            FROM (
+                SELECT date_report,ClientWin,ClientLose,ClientLose Revenue,ClientWin+ClientLose Total
+                FROM (
+                    SELECT date_report,
+                    SUM(CASE WHEN STATUS='ClientWin' THEN price ELSE 0 END) ClientWin,
+                    SUM(CASE WHEN STATUS='ClientLose' THEN price ELSE 0 END) ClientLose
+                    FROM (
+                        SELECT DATE(purchased_at) date_report,
+                        ABS(t1.unit_price) price, 
+                        CASE
+                            WHEN t2.id IS NULL THEN 'ClientLose'
+                            ELSE 'ClientWin'
+                        END STATUS
+                        FROM ticket_history t1
+                        LEFT JOIN bet_prize_history t2
+                        ON t1.ticket_number=t2.ticket_number 
+                        AND t1.purchased_by=t2.client_id
+                        AND t2.ticket_buy_id=t1.id
+                        WHERE purchased_at>=STR_TO_DATE(:from_date,'%d-%m-%Y')
+                        and purchased_at<DATE_ADD(STR_TO_DATE(:to_date,'%d-%m-%Y'),INTERVAL 1 DAY)
+                    )AS l1
+                    GROUP BY date_report
+                )AS l2
+            )AS l3
+            GROUP BY DATE_FORMAT(date_report,'%Y%m')
+            ORDER BY 1";
+
+        $rawData = Yii::app()->db->createCommand($sql)->queryAll(true,array(':from_date' => $this->from_date, ':to_date' => $this->to_date));
+
+        $dataProvider = new CArrayDataProvider($rawData, array(
+            'keyField' => 'date_report',
+            /*'sort' => array(
+                'attributes' => array(
+                    'item_name',
+                ),
+            ),*/
+            'pagination' => false,
+        ));
+
+        return $dataProvider;
     }
 
 }

@@ -17,7 +17,7 @@ return array(
     'DASHBOARD' => 'ផ្ទៃតាប្លូ',
     'Item' => 'ផលិតផល',
     'Sale' => 'លក់',
-    'Report' => 'របាយការណ៏',
+    //'Report' => 'របាយការណ៏',
     'Setting' => 'កំណត់ប្រព័ន្ធ',
     'Employee' => 'បុគ្គលិក',
     'Branch' => 'សាខា',
