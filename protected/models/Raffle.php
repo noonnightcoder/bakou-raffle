@@ -99,5 +99,49 @@
 			}
 			return $suggest;
 		}
+
+		public function getPrizeCategory()
+		{
+			$sql="SELECT NAME prize_name,unit_price 
+				FROM item
+				WHERE STATUS='1'
+				ORDER BY category_id";
+
+			return Yii::app()->db->createCommand($sql)->queryAll();
+		}
+
+		public function getClientRaffleResult($userid,$sdate,$edate)
+		{
+			$sql="SELECT t1.created_at purchasted_date,CONCAT(IFNULL(last_name,''),' ',IFNULL(first_name,'')) client_name,
+				ticket_number,prize_category
+				FROM bet_prize_history t1
+				INNER JOIN client t2 ON t1.client_id=t2.login_id
+				where t1.client_id=:userid
+				and t1.created_at>=STR_TO_DATE(:from_date,'%d-%m-%Y')
+                and t1.created_at<DATE_ADD(STR_TO_DATE(:to_date,'%d-%m-%Y'),INTERVAL 1 DAY)";
+
+			$cmd = Yii::app()->db->createCommand($sql);
+			$cmd->bindParam(":userid", $userid);
+			$cmd->bindParam(":from_date", $sdate);
+			$cmd->bindParam(":to_date", $edate);
+			return $cmd->queryAll();
+		}
+
+		public function getClientRaffleHistory($userid,$sdate,$edate)
+		{
+			$sql="SELECT t1.purchased_at purchasted_date,CONCAT(IFNULL(last_name,''),' ',IFNULL(first_name,'')) client_name,
+				ticket_number
+				FROM ticket_history t1
+				INNER JOIN client t2 ON t1.purchased_by=t2.login_id
+				where t1.purchased_by=:userid
+				and t1.purchased_at>=STR_TO_DATE(:from_date,'%d-%m-%Y')
+                and t1.purchased_at<DATE_ADD(STR_TO_DATE(:to_date,'%d-%m-%Y'),INTERVAL 1 DAY)";
+
+			$cmd = Yii::app()->db->createCommand($sql);
+			$cmd->bindParam(":userid", $userid);
+			$cmd->bindParam(":from_date", $sdate);
+			$cmd->bindParam(":to_date", $edate);
+			return $cmd->queryAll();
+		}
 	}
 ?>

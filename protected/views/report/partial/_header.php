@@ -12,7 +12,11 @@
                 'report' => $report,
             )); ?>
         <?php } ?>
-
+        <?php if(@$filter_by!==null) {?>
+            <?php $this->renderPartial('partial/_filter_by', array(
+                'report' => $report,'form'=>$form
+            )); ?>
+        <?php } ?>
         <?php $this->renderPartial('partial/_header_date_range', array(
             'report' => $report,
         )); ?>

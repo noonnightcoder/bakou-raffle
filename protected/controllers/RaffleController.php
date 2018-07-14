@@ -24,7 +24,8 @@ class RaffleController extends Controller
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view','login','Casino','Sport','Lottery'
 									,'promotion','ButtonTest','PickupTicket'
-									,'GetTicketList','GetResultToday','GetResult7day'),
+									,'GetTicketList','GetResultToday','GetResult7day'
+									,'GetPrizeCategory','GetClientResult','GetClientHistory'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -133,7 +134,6 @@ class RaffleController extends Controller
 		$Raffle = new Raffle();
 		$userid = Yii::app()->user->getId();
 		$myList = $Raffle->getTicketList($userid);
-		//return $myList;
 		echo json_encode($myList);
 	}
 
@@ -148,7 +148,29 @@ class RaffleController extends Controller
 	{
 		$Raffle = new Raffle();
 		$myList = $Raffle->getResult7Day();
-		//echo json_encode($myList);
+		echo CJSON::encode($myList);
+	}
+
+	public function actionGetPrizeCategory()
+	{
+		$Raffle = new Raffle();
+		$myList = $Raffle->getPrizeCategory();
+		echo CJSON::encode($myList);
+	}
+
+	public function actionGetClientResult($sdate,$edate)
+	{
+		$Raffle = new Raffle();
+		$userid = Yii::app()->user->getId();
+		$myList = $Raffle->getClientRaffleResult($userid,$sdate,$edate);
+		echo CJSON::encode($myList);
+	}
+
+	public function actionGetClientHistory($sdate,$edate)
+	{
+		$Raffle = new Raffle();
+		$userid = Yii::app()->user->getId();
+		$myList = $Raffle->getClientRaffleHistory($userid,$sdate,$edate);
 		echo CJSON::encode($myList);
 	}
 }

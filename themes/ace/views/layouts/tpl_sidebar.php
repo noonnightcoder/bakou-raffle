@@ -35,6 +35,10 @@ $this->widget('bootstrap.widgets.TbNav', array(
                 'active'=>$this->id .'/'. $this->action->id=='salePayment/index',
                 'visible'=>Yii::app()->user->checkAccess('payment.index')),
 
+            array('label'=>'<span class="menu-text">' . strtoupper(Yii::t('app', 'Withdraw')) . '</span>', 'icon'=>'menu-icon fa fa-money', 'url'=>Yii::app()->urlManager->createUrl('salePayment/Withdraw'),
+                'active'=>$this->id .'/'. $this->action->id=='salePayment/Withdraw',
+                'visible'=>Yii::app()->user->checkAccess('payment.index')),
+
             array('label'=>'<span class="menu-text">' . strtoupper(Yii::t('app', 'Balance History')) . '</span>', 'icon'=>'menu-icon fa fa-usd', 'url'=>Yii::app()->urlManager->createUrl('salePayment/BalanceHistory'),
                 'active'=>$this->id .'/'. $this->action->id=='salePayment/BalanceHistory',
                 'visible'=>Yii::app()->user->checkAccess('payment.index')),
@@ -44,16 +48,20 @@ $this->widget('bootstrap.widgets.TbNav', array(
                 'active'=>$this->id .'/'. $this->action->id=='receivingPayment/index',
                 'visible'=>Yii::app()->user->checkAccess('payment.index')),
             */
-            /*
+
             array('label'=>'<span class="menu-text">' . strtoupper(Yii::t('app', 'Report')) .'</span>', 'icon'=>'menu-icon fa fa-signal', 'url'=>Yii::app()->urlManager->createUrl('report/reporttab'),
                 'active'=>$this->id =='report',
                 'visible'=> Yii::app()->user->checkAccess('report.index') || Yii::app()->user->checkAccess('invoice.index') || Yii::app()->user->checkAccess('invoice.print') || Yii::app()->user->checkAccess('invoice.delete') || Yii::app()->user->checkAccess('invoice.update') ,
                 'items'=>array(
-                    array('label'=> Yii::t('app','Sale Invoice'),'icon'=> 'menu-icon fa fa-caret-right', 'url'=>Yii::app()->urlManager->createUrl('report/SaleInvoice'),
-                        'active'=>$this->id .'/'. $this->action->id =='report/SaleInvoice',
+                    array('label'=> Yii::t('app','Transaction History'),'icon'=> 'menu-icon fa fa-caret-right', 'url'=>Yii::app()->urlManager->createUrl('report/RaffleBuyHistory'),
+                        'active'=>$this->id .'/'. $this->action->id =='report/RaffleBuyHistory',
                         'visible'=> Yii::app()->user->checkAccess('invoice.index') || Yii::app()->user->checkAccess('invoice.print') || Yii::app()->user->checkAccess('invoice.delete') || Yii::app()->user->checkAccess('invoice.update')
                     ),
-                    array('label'=> Yii::t('app','Sale Daily'), 'icon'=> 'menu-icon fa fa-caret-right', 'url'=>Yii::app()->urlManager->createUrl('report/SaleDaily'),
+                    array('label'=> Yii::t('app','Profit Report'),'icon'=> 'menu-icon fa fa-caret-right', 'url'=>Yii::app()->urlManager->createUrl('report/RaffleProfitHistory'),
+                        'active'=>$this->id .'/'. $this->action->id =='report/RaffleProfitHistory',
+                        'visible'=> Yii::app()->user->checkAccess('invoice.index') || Yii::app()->user->checkAccess('invoice.print') || Yii::app()->user->checkAccess('invoice.delete') || Yii::app()->user->checkAccess('invoice.update')
+                    ),
+                    /*array('label'=> Yii::t('app','Sale Daily'), 'icon'=> 'menu-icon fa fa-caret-right', 'url'=>Yii::app()->urlManager->createUrl('report/SaleDaily'),
                         'active'=>$this->id .'/'. $this->action->id =='report/SaleDaily',
                         'visible'=> Yii::app()->user->checkAccess('report.index')
                     ),
@@ -108,9 +116,8 @@ $this->widget('bootstrap.widgets.TbNav', array(
                     array('label'=>Yii::t('app','User Log Summary'),'icon'=> 'menu-icon fa fa-caret-right', 'url'=>Yii::app()->urlManager->createUrl('report/UserLogSummary'),
                         'active'=>$this->id .'/'. $this->action->id =='report/UserLogSummary',
                         'visible'=> Yii::app()->user->isAdmin,
-                    ),
+                    ),*/
             )),
-            */
             array('label'=>'<span class="menu-text">'. strtoupper(Yii::t('app','PIM')) . '</span>', 'icon'=>'menu-icon fa fa-group','url'=>Yii::app()->urlManager->createUrl('client/admin'),
                    'active'=>$this->id=='employee' || $this->id=='supplier' || $this->id=='client',
                    'visible'=> Yii::app()->user->checkAccess('store.update') || Yii::app()->user->checkAccess('employee.index') || Yii::app()->user->checkAccess('client.index'),

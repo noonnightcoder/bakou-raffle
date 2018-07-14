@@ -937,4 +937,174 @@ class ReportColumn extends CModel
         );
     }
 
+    public static function getRaffleDailyColumns() {
+        return array(
+            array('name'=>'date_paid',
+                'header'=>Yii::t('app','Date'),
+                'value'=>'$data["date_paid"]',
+            ),
+            array('name'=>'client_name',
+                'header'=>Yii::t('app','Player'),
+            ),
+            array('name'=>'payment_amount',
+                'header'=>Yii::t('app','Total'),
+                'htmlOptions'=>array('style' => 'text-align: right;'),
+                'headerHtmlOptions'=>array('style' => 'text-align: right;'),
+                'value' =>'number_format($data["payment_amount"],Common::getDecimalPlace(), ".", ",")',
+            ),
+            array('name'=>'employee_name',
+                'header'=>Yii::t('app','Employee Name'),
+            ),
+            array('name'=>'note',
+                'header'=>Yii::t('app','Note'),
+            ),
+        );
+    }
+
+    public static function getRaffleWeeklyColumns() {
+        return array(
+            array('name'=>'Weekly',
+                'header'=>Yii::t('app','Weekly'),
+                'value'=>'$data["Weekly"]',
+            ),
+            array('name'=>'client_name',
+                'header'=>Yii::t('app','Player'),
+            ),
+            array('name'=>'payment_amount',
+                'header'=>Yii::t('app','Total'),
+                'htmlOptions'=>array('style' => 'text-align: right;'),
+                'headerHtmlOptions'=>array('style' => 'text-align: right;'),
+                'value' =>'number_format($data["payment_amount"],Common::getDecimalPlace(), ".", ",")',
+            ),
+            array('name'=>'employee_name',
+                'header'=>Yii::t('app','Employee Name'),
+            ),
+            array('name'=>'note',
+                'header'=>Yii::t('app','Note'),
+            ),
+        );
+    }
+
+    public static function getRaffleMonthlyColumns() {
+        return array(
+            array('name'=>'Monthly',
+                'header'=>Yii::t('app','Monthly'),
+                'value'=>'$data["Monthly"]',
+            ),
+            array('name'=>'client_name',
+                'header'=>Yii::t('app','Player'),
+            ),
+            array('name'=>'payment_amount',
+                'header'=>Yii::t('app','Total'),
+                'htmlOptions'=>array('style' => 'text-align: right;'),
+                'headerHtmlOptions'=>array('style' => 'text-align: right;'),
+                'value' =>'number_format($data["payment_amount"],Common::getDecimalPlace(), ".", ",")',
+            ),
+            array('name'=>'employee_name',
+                'header'=>Yii::t('app','Employee Name'),
+            ),
+            array('name'=>'note',
+                'header'=>Yii::t('app','Note'),
+            ),
+        );
+    }
+
+    public static function getRaffleProfitDailyColumns() {
+        return array(
+            array('name'=>'date_report',
+                'header'=>Yii::t('app','Date'),
+                'value'=>'$data["date_report"]',
+            ),
+            array('name'=>'ClientWin',
+                'header'=>Yii::t('app','Client Win'),
+                'htmlOptions'=>array('style' => 'text-align: right;'),
+                'value' =>'number_format($data["ClientWin"],Common::getDecimalPlace(), ".", ",")',
+            ),
+            array('name'=>'ClientLose',
+                'header'=>Yii::t('app','Client Lose'),
+                'htmlOptions'=>array('style' => 'text-align: right;'),
+                'headerHtmlOptions'=>array('style' => 'text-align: right;'),
+                'value' =>'number_format($data["ClientLose"],Common::getDecimalPlace(), ".", ",")',
+            ),
+            array('name'=>'Revenue',
+                'header'=>Yii::t('app','Revenue'),
+                'htmlOptions'=>array('style' => 'text-align: right;'),
+                'headerHtmlOptions'=>array('style' => 'text-align: right;'),
+                'value' =>'number_format($data["Revenue"],Common::getDecimalPlace(), ".", ",")',
+            ),
+            array('name'=>'Total',
+                'header'=>Yii::t('app','Total'),
+                'htmlOptions'=>array('style' => 'text-align: right;'),
+                'headerHtmlOptions'=>array('style' => 'text-align: right;'),
+                'value' =>'number_format($data["Total"],Common::getDecimalPlace(), ".", ",")',
+            ),
+        );
+    }
+
+    public static function getRaffleProfitWeeklyColumns() {
+        return array(
+            array('name'=>'date_report',
+                'header'=>Yii::t('app','Weekly'),
+                'value'=>'$data["date_report"]',
+            ),
+            array('name'=>'ClientWin',
+                'header'=>Yii::t('app','Client Win'),
+                'htmlOptions'=>array('style' => 'text-align: right;'),
+                'headerHtmlOptions'=>array('style' => 'text-align: right;'),
+                'value' =>'number_format($data["ClientWin"],Common::getDecimalPlace(), ".", ",")',
+            ),
+            array('name'=>'ClientLose',
+                'header'=>Yii::t('app','Client Lose'),
+                'htmlOptions'=>array('style' => 'text-align: right;'),
+                'headerHtmlOptions'=>array('style' => 'text-align: right;'),
+                'value' =>'number_format($data["ClientLose"],Common::getDecimalPlace(), ".", ",")',
+            ),
+            array('name'=>'Revenue',
+                'header'=>Yii::t('app','Revenue'),
+                'htmlOptions'=>array('style' => 'text-align: right;'),
+                'headerHtmlOptions'=>array('style' => 'text-align: right;'),
+                'value' =>'number_format($data["Revenue"],Common::getDecimalPlace(), ".", ",")',
+            ),
+            array('name'=>'Total',
+                'header'=>Yii::t('app','Total'),
+                'htmlOptions'=>array('style' => 'text-align: right;'),
+                'headerHtmlOptions'=>array('style' => 'text-align: right;'),
+                'value' =>'number_format($data["Total"],Common::getDecimalPlace(), ".", ",")',
+            ),
+        );
+    }
+
+    public static function getRaffleProfitMonthlyColumns() {
+        return array(
+            array('name'=>'date_report',
+                'header'=>Yii::t('app','Monthly'),
+                'value'=>'$data["date_report"]',
+            ),
+            array('name'=>'ClientWin',
+                'header'=>Yii::t('app','Client Win'),
+                'htmlOptions'=>array('style' => 'text-align: right;'),
+                'headerHtmlOptions'=>array('style' => 'text-align: right;'),
+                'value' =>'number_format($data["ClientWin"],Common::getDecimalPlace(), ".", ",")',
+            ),
+            array('name'=>'ClientLose',
+                'header'=>Yii::t('app','Client Lose'),
+                'htmlOptions'=>array('style' => 'text-align: right;'),
+                'headerHtmlOptions'=>array('style' => 'text-align: right;'),
+                'value' =>'number_format($data["ClientLose"],Common::getDecimalPlace(), ".", ",")',
+            ),
+            array('name'=>'Revenue',
+                'header'=>Yii::t('app','Revenue'),
+                'htmlOptions'=>array('style' => 'text-align: right;'),
+                'headerHtmlOptions'=>array('style' => 'text-align: right;'),
+                'value' =>'number_format($data["Revenue"],Common::getDecimalPlace(), ".", ",")',
+            ),
+            array('name'=>'Total',
+                'header'=>Yii::t('app','Total'),
+                'htmlOptions'=>array('style' => 'text-align: right;'),
+                'headerHtmlOptions'=>array('style' => 'text-align: right;'),
+                'value' =>'number_format($data["Total"],Common::getDecimalPlace(), ".", ",")',
+            ),
+        );
+    }
+
 }

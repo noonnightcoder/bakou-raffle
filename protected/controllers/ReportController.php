@@ -64,6 +64,8 @@ class ReportController extends Controller
                     'ProfitByInvoice',
                     'SaleInvoiceDetail',
                     'SaleWeeklyByCustomer',
+                    'RaffleBuyHistory',
+                    'RaffleProfitHistory'
                 ),
                 'users' => array('@'),
             ),
@@ -327,6 +329,70 @@ class ReportController extends Controller
         $this->renderView($data,'index_2');
 
 
+    }
+
+    public function actionRaffleBuyHistory()
+    {
+        $this->canViewReport();
+
+        $grid_id = 'rpt-raffle-grid';
+        $title = 'Transaction Report';
+
+        $data = $this->commonData($grid_id,$title);
+
+        $data['filter_by']="1";
+
+        if(isset($data['report']->filter_id))
+        {
+            if($data['report']->filter_id=='Weekly')
+            {
+                $data['grid_columns'] = ReportColumn::getRaffleWeeklyColumns();
+                $data['data_provider'] = $data['report']->paymentWeeklyHis();
+
+            }elseif ($data['report']->filter_id=='Monthly')
+            {
+                $data['grid_columns'] = ReportColumn::getRaffleMonthlyColumns();
+                $data['data_provider'] = $data['report']->paymentMonthlyhis();
+
+            }else{
+                $data['grid_columns'] = ReportColumn::getRaffleDailyColumns();
+                $data['data_provider'] = $data['report']->paymentDailyHis();
+            }
+        }
+
+        $this->renderView($data);
+    }
+
+    public function actionRaffleProfitHistory()
+    {
+        $this->canViewReport();
+
+        $grid_id = 'rpt-raffle-grid';
+        $title = 'Profit Report';
+
+        $data = $this->commonData($grid_id,$title);
+
+        $data['filter_by']="1";
+
+        if(isset($data['report']->filter_id))
+        {
+            if($data['report']->filter_id=='Weekly')
+            {
+                $data['grid_columns'] = ReportColumn::getRaffleProfitWeeklyColumns();
+                $data['data_provider'] = $data['report']->profitWeeklyhis();
+
+            }elseif ($data['report']->filter_id=='Monthly')
+            {
+                $data['grid_columns'] = ReportColumn::getRaffleProfitMonthlyColumns();
+                $data['data_provider'] = $data['report']->profitMonthlyhis();
+
+            }else{
+                $data['grid_columns'] = ReportColumn::getRaffleProfitDailyColumns();
+                $data['data_provider'] = $data['report']->profitDailyhis();
+            }
+        }
+
+        $this->renderView($data);
     }
 
     public function actionTransactionItem($receive_id, $employee_id, $remark)
@@ -753,6 +819,8 @@ class ReportController extends Controller
         $data['from_date'] = isset($_GET['Report']['from_date']) ? $_GET['Report']['from_date'] : date('d-m-Y');
         $data['to_date'] = isset($_GET['Report']['to_date']) ? $_GET['Report']['to_date'] : date('d-m-Y');
         $data['search_id'] = isset($_GET['Report']['search_id']) ? $_GET['Report']['search_id'] : '';
+        $data['filter_id'] = isset($_GET['Report']['filter_id']) ? $_GET['Report']['filter_id'] : 'Daily';
+
         $data['advance_search'] = $advance_search;
         $data['header_tab'] = '';
 
@@ -765,6 +833,7 @@ class ReportController extends Controller
         $data['report']->from_date = $data['from_date'];
         $data['report']->to_date = $data['to_date'];
         $data['report']->search_id = $data['search_id'];
+        $data['report']->filter_id = $data['filter_id'];
 
         return $data;
     }
