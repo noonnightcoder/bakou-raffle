@@ -13,22 +13,22 @@
     <legend>Profit Generate</legend>-->
     <div class="row">
 
-        <div class="middle col-sm-5">
+        <div class="middle col-sm-7">
 
         <?php echo $form->radioButtonList($model,'ProfitOptions',array(
-                'Option1' => '<div class="inline" title="This is my tooltip 1">Option one</div>',
-                'Option2' => '<div class="inline" title="This is my tooltip 2">Option two</div>',
-                'Option3' => '<div class="inline" title="This is my tooltip 3">Option three</div>',
-                'Option4' => '<div class="inline" title="This is my tooltip 4">Option four</div>',
+                'Option1' => '<div class="inline" title="Give a bigger to small prize">Bigger To Smaller Prize</div>',
+                'Option2' => '<div class="inline" title="Give a smaller to bigger prize">Smaller to Bigger Prize</div>',
+                'Option3' => '<div class="inline" title="Give all bigger to smaller prize">All Bigger to Smaller Prize</div>',
+                'Option4' => '<div class="inline" title="Give all smaller to bigger prize">All Smaller to Bigger Prize</div>',
         ), array()); ?>
 
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <?php echo CHtml::activeTelField($model, 'amount_win_perc',
                 array('class'=>'col-sm-12','id'=>'win_percentage','placeholder' => 'Minimum win percentage'));
             ?>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
         <?php echo TbHtml::linkButton(Yii::t('app', 'Submit'), array(
             'color' => TbHtml::BUTTON_COLOR_PRIMARY,
             'size' => TbHtml::BUTTON_SIZE_SMALL,

@@ -31,11 +31,11 @@ $this->widget('bootstrap.widgets.TbNav', array(
                 'visible'=> Yii::app()->user->checkAccess('sale.edit') || Yii::app()->user->checkAccess('sale.discount') || Yii::app()->user->checkAccess('sale.editprice') ),
             */
 
-            array('label'=>'<span class="menu-text">' . strtoupper(Yii::t('app', 'Deposit')) . '</span>', 'icon'=>'menu-icon fa fa-heart', 'url'=>Yii::app()->urlManager->createUrl('salePayment/index'),
+            array('label'=>'<span class="menu-text">' . strtoupper(Yii::t('app', 'Cash In')) . '</span>', 'icon'=>'menu-icon fa fa-heart', 'url'=>Yii::app()->urlManager->createUrl('salePayment/index'),
                 'active'=>$this->id .'/'. $this->action->id=='salePayment/index',
                 'visible'=>Yii::app()->user->checkAccess('payment.index')),
 
-            array('label'=>'<span class="menu-text">' . strtoupper(Yii::t('app', 'Withdraw')) . '</span>', 'icon'=>'menu-icon fa fa-money', 'url'=>Yii::app()->urlManager->createUrl('salePayment/Withdraw'),
+            array('label'=>'<span class="menu-text">' . strtoupper(Yii::t('app', 'Cash Out')) . '</span>', 'icon'=>'menu-icon fa fa-money', 'url'=>Yii::app()->urlManager->createUrl('salePayment/Withdraw'),
                 'active'=>$this->id .'/'. $this->action->id=='salePayment/Withdraw',
                 'visible'=>Yii::app()->user->checkAccess('payment.index')),
 
