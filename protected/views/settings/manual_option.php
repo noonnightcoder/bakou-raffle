@@ -37,7 +37,7 @@ $this->breadcrumbs = array(
         <?php if($option=='') {?>
             <div class="container">
                 <div class="col-sm-10">
-                    <?php foreach (item::model()->findAll(array('order'=>'category_id',)) as $k=>$value){ ?>
+                    <?php foreach (Item::model()->findAll(array('order'=>'category_id',)) as $k=>$value){ ?>
                         <label class="control-label" for="<?php echo $value->name; ?>">
                             <strong><u><?php echo $value->name; ?></u></strong>
                         </label>
