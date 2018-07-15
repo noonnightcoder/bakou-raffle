@@ -230,10 +230,10 @@ class BetPrizeTmp extends CActiveRecord
 	{
 
 
-		$sql="insert into bet_prize_tmp(item_id,item_name,ticket_number,prize_category,quantity,raffle_price,client_id)
-			SELECT id item_id,NAME item_name,ticket_number,prize_category,quantity,unit_price raffle_price,client_id
+		$sql="insert into bet_prize_tmp(item_id,item_name,ticket_number,prize_category,quantity,raffle_price,client_id,ticket_buy_id)
+			SELECT id item_id,NAME item_name,ticket_number,prize_category,quantity,unit_price raffle_price,client_id,ticket_buy_id
 				FROM (			
-					SELECT ticket_number,purchased_by client_id,$prize_category prize_category
+					SELECT ticket_number,purchased_by client_id,$prize_category prize_category,t1.id ticket_buy_id
 					FROM ticket_history t1 
 					INNER JOIN client t2 ON t1.purchased_by=t2.login_id
 					where ticket_number=:ticket_number

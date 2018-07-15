@@ -62,9 +62,9 @@
 
 		public function suggest($keyword,$limit=7)
 		{
-			if(!empty(Yii::app()->shoppingCart->getManualSelected()))
+			$arr=Yii::app()->shoppingCart->getManualSelected();
+			if(!empty($arr))
 			{
-				$arr=Yii::app()->shoppingCart->getManualSelected();
 				$my_str=implode(',', array_filter($arr));
 				$cond = "and ticket_number not in ($my_str)";
 			}else {
