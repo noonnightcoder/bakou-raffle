@@ -50,13 +50,22 @@
                     { src: 'http://www.winwin97.com/wp-content/uploads/2017/03/slide03.jpg?v=1.0' },
                     { src: 'http://www.winwin97.com/wp-content/uploads/2017/03/slide04.jpg?v=1.0' }
                 ],
-                lotteries:[]
+                lotteries:[],
+								menu1: null,
+								menu2: null,
+								clientHistory: [],
+								start_date: null,
+								end_date: null
             }
         },
         created(){
             this.Spin()
             this.insertLuckyNumber(0)
             this.getLast7DaysResult();
+
+						var d = new Date();
+    				this.start_date = d.getFullYear() + '-' + (d.getMonth() < 10 ? '0' + d.getMonth() : d.getMonth()) + '-' + d.getDate()
+						this.end_date = d.getFullYear() + '-' + (d.getMonth() < 10 ? '0' + d.getMonth() : d.getMonth()) + '-' + d.getDate()
         },
         watch:{
             price:function(){
@@ -116,12 +125,22 @@
                 // }else{
 
                 // }
-                
+
             },
             resetAmount(){
                 this.price=this.credit
                 this.dialog=false;
-            }
+            },
+						getClientHistory(){
+							var vm = this
+							axios.get('<?php echo Yii::app()->createUrl('/raffle/GetClientHistory?sdate=')?>'+vm.start_date + '&edate=' + vm.end_date)
+								.then(function (response) {
+									vm.clientHistory = response.data
+								})
+								.catch(function (error) {
+									console.log(error);
+								});
+						}
         }
     })
 </script>

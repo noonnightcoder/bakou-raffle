@@ -25,7 +25,7 @@ class RaffleController extends Controller
 				'actions'=>array('index','view','login','Casino','Sport','Lottery'
 									,'promotion','ButtonTest','PickupTicket'
 									,'GetTicketList','GetResultToday','GetResult7day'
-									,'GetPrizeCategory','GetClientResult','GetClientHistory'),
+									,'GetPrizeCategory','GetClientResult','GetClientHistory','History'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -52,6 +52,12 @@ class RaffleController extends Controller
 		$this->render('_login');
 	}
 
+
+		public function actionHistory()
+		{
+			$this->render('history');
+		}
+
 	public function actionCasino()
     {
 		$this->render('_online_casino');
@@ -71,7 +77,7 @@ class RaffleController extends Controller
 
 		$this->render('_promotion');
 	}
-	
+
 	public function actionButtonTest()
 	{
 		$this->render('forTest/_draw_button');
@@ -162,14 +168,17 @@ class RaffleController extends Controller
 	{
 		$Raffle = new Raffle();
 		$userid = Yii::app()->user->getId();
+
 		$myList = $Raffle->getClientRaffleResult($userid,$sdate,$edate);
 		echo CJSON::encode($myList);
 	}
 
-	public function actionGetClientHistory($sdate,$edate)
+	public function actionGetClientHistory($sdate = null,$edate = null)
 	{
 		$Raffle = new Raffle();
 		$userid = Yii::app()->user->getId();
+		$sdate = $sdate !== null || $sdate !== ''  ? date('d-m-y', strtotime($sdate)) : date('d-m-Y');
+		$edate = $edate !== null || $edate !== '' ? date('d-m-y', strtotime($edate)) : date('d-m-Y');
 		$myList = $Raffle->getClientRaffleHistory($userid,$sdate,$edate);
 		echo CJSON::encode($myList);
 	}
