@@ -10,7 +10,7 @@
 			<center>
 					<span  style="color:#FFF !important; text-decoration: none;text-align: center;">Copyright 2017 ©  <a title="Winwin97 : SPORT AND CASINO ONLINE" href="http://www.winwin97.com/" style="color:#FFF !important; text-decoration: none;">WINWIN97.COM </a> All Rights Reserved.</span>
 			</center>
-			
+
 		</div> -->
 		<div class="tt_main">
 			<div class="tt_l tt_full tt-footer">
@@ -47,7 +47,7 @@
 									<a href="http://www.winwin97.com/savan-vegas/">SAVAN VEGAS</a>
 								</li>
 							</ul>
-						</div> 
+						</div>
 					</div>
 					<div class="tt-l menu_li fr">
 					<span>SPORT ONLINE</span>
@@ -72,7 +72,7 @@
 									<a href="http://www.winwin97.com/winning-ft/">WINNING FT</a>
 								</li>
 							</ul>
-						</div> 
+						</div>
 					</div>
 				</div>
 				<div class="tt-l menu_footer">
@@ -82,15 +82,11 @@
 							<a :href="fmenu.link" style="font-size: 13px;">{{fmenu.text}}</a>
 						</li>
 					</ul>
-				</div> 
+				</div>
 				</div>
 				<div class="tt-l tt-full copyright_footer">
 					<span class="tt-l tt-full sc_copy">Copyright 2017 ©  <a title="Winwin97 : SPORT AND CASINO ONLINE" href="http://www.winwin97.com/">WINWIN97.COM </a> All Rights Reserved.</span>
-					
+
 				</div>
 			</div>
-		</div><!-- 
-    </v-layout>
-</v-footer> -->
-
-				
+		</div>

@@ -25,7 +25,7 @@ class RaffleController extends Controller
 				'actions'=>array('index','view','login','Casino','Sport','Lottery'
 									,'promotion','ButtonTest','PickupTicket'
 									,'GetTicketList','GetResultToday','GetResult7day'
-									,'GetPrizeCategory','GetClientResult','GetClientHistory','History'),
+									,'GetPrizeCategory','GetClientResult','GetClientHistory','History','Result','GetClientRaffleHistory'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -53,10 +53,16 @@ class RaffleController extends Controller
 	}
 
 
-		public function actionHistory()
-		{
-			$this->render('history');
-		}
+	public function actionHistory()
+	{
+		$this->render('history');
+	}
+
+
+	public function actionResult()
+  {
+		$this->render('raffle_result');
+	}
 
 	public function actionCasino()
     {
@@ -64,7 +70,7 @@ class RaffleController extends Controller
 	}
 
 	public function actionSport()
-    {
+  {
 		$this->render('_online_sport');
 	}
 
@@ -177,9 +183,27 @@ class RaffleController extends Controller
 	{
 		$Raffle = new Raffle();
 		$userid = Yii::app()->user->getId();
-		$sdate = $sdate !== null || $sdate !== ''  ? date('d-m-y', strtotime($sdate)) : date('d-m-Y');
-		$edate = $edate !== null || $edate !== '' ? date('d-m-y', strtotime($edate)) : date('d-m-Y');
+		$sdate = $sdate !== null || $sdate !== ''  ? date('d-m-Y', strtotime($sdate)) : date('d-m-Y');
+		$edate = $edate !== null || $edate !== '' ? date('d-m-Y', strtotime($edate)) : date('d-m-Y');
 		$myList = $Raffle->getClientRaffleHistory($userid,$sdate,$edate);
 		echo CJSON::encode($myList);
+	}
+
+	public function actionGetClientRaffleHistory()
+	{
+		$Raffle = new Raffle();
+		$userid = Yii::app()->user->getId();
+
+		$sdate=date_create(date('d-m-Y'));
+		date_add($sdate,date_interval_create_from_date_string("-15 days"));
+		$sdate = date_format($sdate,"d-m-Y'");
+
+		$edate=date_create(date('d-m-Y'));
+		date_add($edate,date_interval_create_from_date_string("1 days"));
+		$edate = date_format($edate,"d-m-Y'");
+
+		$myList = $Raffle->getClientRaffleHistory($userid,$sdate,$edate);
+		echo CJSON::encode($myList);
+
 	}
 }

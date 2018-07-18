@@ -21,9 +21,7 @@
                 betAmount:10,
                 spinNumber:0,
                 spining:false,
-                luckyDraw:[
-                    {"price":"100","luckyNum":"6798"},{"price":"100","luckyNum":"7831"}
-                ], //should return value from database
+                luckyDraw:[], //should return value from database
                 current:'',
                 links: ['Home', 'About Us', 'Team', 'Services', 'Contact Us'],
                 menus:[
@@ -55,17 +53,29 @@
 								menu2: null,
 								clientHistory: [],
 								start_date: null,
-								end_date: null
+								end_date: null,
+								price_categories: [],
+								raffle_results:[],
+								client_raffle_history:[]
             }
         },
         created(){
             this.Spin()
             this.insertLuckyNumber(0)
-            this.getLast7DaysResult();
+            this.getLast7DaysResult()
 
-						var d = new Date();
-    				this.start_date = d.getFullYear() + '-' + (d.getMonth() < 10 ? '0' + d.getMonth() : d.getMonth()) + '-' + d.getDate()
-						this.end_date = d.getFullYear() + '-' + (d.getMonth() < 10 ? '0' + d.getMonth() : d.getMonth()) + '-' + d.getDate()
+						var start_date = new Date();
+						start_date.setDate(15)
+
+						var end_date = new Date();
+						end_date.setDate(49)
+
+    				this.start_date = start_date.getFullYear() + '-' + (start_date.getMonth() < 10 ? '0' + start_date.getMonth() : start_date.getMonth()) + '-' + start_date.getDate()
+						this.end_date = end_date.getFullYear() + '-' + (end_date.getMonth() < 10 ? '0' + end_date.getMonth() : end_date.getMonth()) + '-' + end_date.getDate()
+
+						this.getPrizeCategory()
+						this.getClientRaffleHistory()
+						this.getClientHistory()
         },
         watch:{
             price:function(){
@@ -133,14 +143,45 @@
             },
 						getClientHistory(){
 							var vm = this
-							axios.get('<?php echo Yii::app()->createUrl('/raffle/GetClientHistory?sdate=')?>'+vm.start_date + '&edate=' + vm.end_date)
+							axios.get('<?php echo Yii::app()->createUrl('/raffle/GetClientHistory?sdate=')?>' + vm.start_date + '&edate=' + vm.end_date)
 								.then(function (response) {
 									vm.clientHistory = response.data
 								})
 								.catch(function (error) {
 									console.log(error);
 								});
+						},
+						getRaffleResult(){
+							var vm = this
+							axios.get('<?php echo Yii::app()->createUrl('/raffle/GetClientResult?sdate=')?>' + vm.start_date + '&edate=' + vm.end_date)
+								.then(function (response) {
+									vm.raffle_results = response.data
+								})
+								.catch(function (error) {
+									console.log(error);
+								});
+						},
+						getPrizeCategory(){
+							var vm = this
+							axios.get('<?php echo Yii::app()->createUrl('raffle/GetPrizeCategory')?>')
+								.then(function (response) {
+									vm.price_categories = response.data
+								})
+								.catch(function (error) {
+									console.log(error);
+								});
+						},
+						getClientRaffleHistory(){
+							var vm = this
+							axios.get('<?php echo Yii::app()->createUrl('raffle/GetClientRaffleHistory')?>')
+								.then(function (response) {
+									vm.client_raffle_history = response.data
+								})
+								.catch(function (error) {
+									console.log(error);
+								});
 						}
+
         }
     })
 </script>

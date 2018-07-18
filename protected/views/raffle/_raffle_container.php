@@ -1,9 +1,9 @@
 <v-container >
-    
+
     <v-layout row wrap>
         <v-flex xs12 sm3 md3 style="z-index: 1">
             <v-card style="height: 350px; z-index: 1">
-                
+
                  <div class="my-grid-table text-lg-center" style="background-color:#ffe8a0;font-size: 15px;font-weight: bold;">
                     <h3>เครดิตของคุณ</h3>
                 </div>
@@ -56,17 +56,21 @@
                                 <h3>Lottery Prize</h3>
                             </div>
                         </v-flex>
-                        <v-layout row wrap v-for="i in ['First','Second','Third','Fourth','Fiveth']" :key="i">
-                            <v-flex xs6 sm6 md6>
-                                <div class="my-grid-table">
-                                    {{i}} Prize
-                                </div>
-                            </v-flex>
-                            <v-flex xs6 sm6 md6>
-                                <div class="my-grid-table text-lg-center">
-                                    XXX
-                                </div>
-                            </v-flex>
+
+                        <v-layout row wrap>
+                          <table class="table border">
+                            <thead>
+                              <tr>
+                                <th>Type</th><th>Prize</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr v-for="(category,i ) in price_categories" :key="i">
+                                <td align="center">{{ category.prize_name }}</td>
+                                <td align="center">{{ category.unit_price }}</td>
+                              </tr>
+                            </tbody>
+                          </table>
                         </v-layout>
                     </v-container>
                 </v-flex>
@@ -99,9 +103,9 @@
                                     ประวัติหวยของคุณ
                                 </div>
                             </v-flex>
-                            <v-flex xs6 sm6 md6 v-for="(m,mi) in 20">
+                            <v-flex xs6 sm6 md6 v-for="(history, i) in client_raffle_history" :key="i">
                                 <div class="my-grid-table text-lg-center">
-                                    xxx
+                                    {{ history.ticket_number }}
                                 </div>
                             </v-flex>
                         </v-layout>

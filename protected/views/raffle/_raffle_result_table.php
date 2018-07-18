@@ -58,7 +58,7 @@
                       </v-menu>
                   </v-flex>
                   <v-flex xs12 sm2 md2>
-                    <v-btn @click="getClientHistory">Search</v-btn>
+                    <v-btn @click="getRaffleResult">Search</v-btn>
                   </v-flex>
                 </v-layout>
               </v-container>
@@ -68,12 +68,12 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th align="left">Purchase Date</th><th align="left">Name</th><th align="left">Purchase Number</th>
+                            <th align="left">Purchase Date</th><th align="left">Name</th><th align="left">Purchase Number</th><th align="left">Type</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(history, i) in clientHistory" :key="i">
-                            <td>{{ history.purchasted_date }}</td><td>{{ history.client_name }}</td><td>{{ history.ticket_number }}</td>
+                        <tr v-for="(result, i) in raffle_results" :key="i">
+                            <td>{{ result.purchasted_date }}</td><td>{{ result.client_name }}</td><td>{{ result.ticket_number }}</td><td>{{ result.ticket_number }}</td>
                         </tr>
                     </tbody>
                 </table>

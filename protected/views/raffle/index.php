@@ -9,11 +9,11 @@
                     <?php $this->renderPartial('_header') ?>
 
                     <?php $this->renderPartial('_raffle_container') ?>
-                    <img src="http://www.winwin97.com/wp-content/uploads/2017/03/banking-bg.jpg?v=1.0"/>
+                    <img width="100%" src="http://www.winwin97.com/wp-content/uploads/2017/03/banking-bg.jpg?v=1.0"/>
                     <?php $this->renderPartial('_footer') ?>
                 </v-card>
 
-                
+
 
             </v-flex>
 
