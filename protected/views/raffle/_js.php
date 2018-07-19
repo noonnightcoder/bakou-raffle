@@ -49,14 +49,14 @@
                     { src: 'http://www.winwin97.com/wp-content/uploads/2017/03/slide04.jpg?v=1.0' }
                 ],
                 lotteries:[],
-								menu1: null,
-								menu2: null,
-								clientHistory: [],
-								start_date: null,
-								end_date: null,
-								price_categories: [],
-								raffle_results:[],
-								client_raffle_history:[]
+                menu1: null,
+                menu2: null,
+                clientHistory: [],
+                start_date: null,
+                end_date: null,
+                price_categories: [],
+                raffle_results:[],
+                client_raffle_history:[]
             }
         },
         created(){
@@ -64,18 +64,18 @@
             this.insertLuckyNumber(0)
             this.getLast7DaysResult()
 
-						var start_date = new Date();
-						start_date.setDate(15)
+            var start_date = new Date();
+            // start_date.setDate()
 
-						var end_date = new Date();
-						end_date.setDate(49)
+            var end_date = new Date();
+            // end_date.setDate()
 
-    				this.start_date = start_date.getFullYear() + '-' + (start_date.getMonth() < 10 ? '0' + start_date.getMonth() : start_date.getMonth()) + '-' + start_date.getDate()
-						this.end_date = end_date.getFullYear() + '-' + (end_date.getMonth() < 10 ? '0' + end_date.getMonth() : end_date.getMonth()) + '-' + end_date.getDate()
+            this.start_date = start_date.getFullYear() + '-' + (start_date.getMonth()+1 < 10 ? '0' + (start_date.getMonth()+1) : start_date.getMonth()+1) + '-' + (start_date.getDate()-1)
+            this.end_date = end_date.getFullYear() + '-' + (end_date.getMonth()+1 < 10 ? '0' + (end_date.getMonth()+1) : end_date.getMonth()+1) + '-' + end_date.getDate()
 
-						this.getPrizeCategory()
-						this.getClientRaffleHistory()
-						this.getClientHistory()
+            this.getPrizeCategory()
+            this.getClientRaffleHistory()
+            this.getClientHistory()
         },
         watch:{
             price:function(){

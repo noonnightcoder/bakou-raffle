@@ -21,7 +21,7 @@
                     'style' => 'font-size: 13px;text-decoration: none;color: #333; padding: 5px 10px 0px 10px;'
             )); ?>
 
-            <?= l(t('Raffle History','app'),url('raffle/history'), array(
+            <?= l(t('My History','app'),url('raffle/history'), array(
                 'style' => 'font-size: 13px;text-decoration: none;color: #333; padding: 5px 10px 0px 10px;'
             )); ?>
 
