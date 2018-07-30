@@ -213,7 +213,7 @@ class BetPrizeTmp extends CActiveRecord
 	public function dealWithOption()
 	{
 		$sql="insert into bet_prize_history(client_id,ticket_number,prize_category,unit_price,created_at,ticket_buy_id)
-		      SELECT client_id,ticket_number,item_name prize_category,100,NOW(),ticket_buy_id FROM bet_prize_tmp";
+		      SELECT client_id,ticket_number,item_name prize_category,raffle_price,NOW(),ticket_buy_id FROM bet_prize_tmp";
 
 		$cmd = Yii::app()->db->createCommand($sql);
 		$cmd->execute();
