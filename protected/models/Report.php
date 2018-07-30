@@ -1231,7 +1231,10 @@ class Report extends CFormModel
                 SUM(CASE WHEN STATUS='ClientLose' THEN price ELSE 0 END) ClientLose
                 FROM (
                     SELECT DATE(purchased_at) date_report,
-                    ABS(t1.unit_price) price, 
+                    CASE
+                        WHEN t2.id IS NULL THEN ABS(t1.unit_price)
+                        ELSE t2.unit_price
+                    END price, 
                     CASE
                         WHEN t2.id IS NULL THEN 'ClientLose'
                         ELSE 'ClientWin'
@@ -1274,7 +1277,10 @@ class Report extends CFormModel
                     SUM(CASE WHEN STATUS='ClientLose' THEN price ELSE 0 END) ClientLose
                     FROM (
                         SELECT DATE(purchased_at) date_report,
-                        ABS(t1.unit_price) price, 
+                        CASE
+                            WHEN t2.id IS NULL THEN ABS(t1.unit_price)
+                            ELSE t2.unit_price
+                        END price, 
                         CASE
                             WHEN t2.id IS NULL THEN 'ClientLose'
                             ELSE 'ClientWin'
@@ -1320,7 +1326,10 @@ class Report extends CFormModel
                     SUM(CASE WHEN STATUS='ClientLose' THEN price ELSE 0 END) ClientLose
                     FROM (
                         SELECT DATE(purchased_at) date_report,
-                        ABS(t1.unit_price) price, 
+                        CASE
+                            WHEN t2.id IS NULL THEN ABS(t1.unit_price)
+                            ELSE t2.unit_price
+                        END price, 
                         CASE
                             WHEN t2.id IS NULL THEN 'ClientLose'
                             ELSE 'ClientWin'
