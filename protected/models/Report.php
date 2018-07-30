@@ -1224,17 +1224,19 @@ class Report extends CFormModel
 
     public function profitDailyhis()
     {
-        $sql="SELECT date_report,ClientWin,ClientLose,ClientLose Revenue,ClientWin+ClientLose Total
+        $sql="SELECT date_report,ClientWin,ClientLose,ClientLose-ClientWin Revenue,Total
             FROM (
                 SELECT date_report,
                 SUM(CASE WHEN STATUS='ClientWin' THEN price ELSE 0 END) ClientWin,
-                SUM(CASE WHEN STATUS='ClientLose' THEN price ELSE 0 END) ClientLose
+                SUM(CASE WHEN STATUS='ClientLose' THEN price ELSE 0 END) ClientLose,
+                sum(unit_price) Total
                 FROM (
                     SELECT DATE(purchased_at) date_report,
                     CASE
                         WHEN t2.id IS NULL THEN ABS(t1.unit_price)
                         ELSE t2.unit_price
                     END price, 
+                    ABS(t1.unit_price) unit_price,
                     CASE
                         WHEN t2.id IS NULL THEN 'ClientLose'
                         ELSE 'ClientWin'
@@ -1270,17 +1272,19 @@ class Report extends CFormModel
         $sql="SELECT YEARWEEK(DATE(date_report)) date_report,SUM(ClientWin) ClientWin,SUM(ClientLose) ClientLose,
             SUM(Revenue) Revenue,SUM(Total) Total
             FROM (
-                SELECT date_report,ClientWin,ClientLose,ClientLose Revenue,ClientWin+ClientLose Total
+                SELECT date_report,ClientWin,ClientLose,ClientLose-ClientWin Revenue,Total
                 FROM (
                     SELECT date_report,
                     SUM(CASE WHEN STATUS='ClientWin' THEN price ELSE 0 END) ClientWin,
-                    SUM(CASE WHEN STATUS='ClientLose' THEN price ELSE 0 END) ClientLose
+                    SUM(CASE WHEN STATUS='ClientLose' THEN price ELSE 0 END) ClientLose,
+                    sum(unit_price) Total
                     FROM (
                         SELECT DATE(purchased_at) date_report,
                         CASE
                             WHEN t2.id IS NULL THEN ABS(t1.unit_price)
                             ELSE t2.unit_price
                         END price, 
+                        ABS(t1.unit_price) unit_price,
                         CASE
                             WHEN t2.id IS NULL THEN 'ClientLose'
                             ELSE 'ClientWin'
@@ -1319,17 +1323,19 @@ class Report extends CFormModel
         $sql="SELECT DATE_FORMAT(date_report,'%Y%m') date_report,SUM(ClientWin) ClientWin,SUM(ClientLose) ClientLose,
             SUM(Revenue) Revenue,SUM(Total) Total
             FROM (
-                SELECT date_report,ClientWin,ClientLose,ClientLose Revenue,ClientWin+ClientLose Total
+                SELECT date_report,ClientWin,ClientLose,ClientLose-ClientWin Revenue,Total
                 FROM (
                     SELECT date_report,
                     SUM(CASE WHEN STATUS='ClientWin' THEN price ELSE 0 END) ClientWin,
-                    SUM(CASE WHEN STATUS='ClientLose' THEN price ELSE 0 END) ClientLose
+                    SUM(CASE WHEN STATUS='ClientLose' THEN price ELSE 0 END) ClientLose,
+                    sum(unit_price) Total
                     FROM (
                         SELECT DATE(purchased_at) date_report,
                         CASE
                             WHEN t2.id IS NULL THEN ABS(t1.unit_price)
                             ELSE t2.unit_price
                         END price, 
+                        ABS(t1.unit_price) unit_price,
                         CASE
                             WHEN t2.id IS NULL THEN 'ClientLose'
                             ELSE 'ClientWin'
